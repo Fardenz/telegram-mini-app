@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/telegram-bot/',
+  base: '/telegram-mini-app/',
   server: {
     port: 4000,
     host: "0.0.0.0",

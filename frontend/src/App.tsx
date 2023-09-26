@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: '/telegram-bot/'
+  basename: '/telegram-mini-app/'
 })
 
 const App: React.FC = () => {

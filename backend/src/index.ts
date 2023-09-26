@@ -21,7 +21,7 @@ bot.on('message', async (msg) => {
     menu_button: {
       type: 'web_app',
       text: 'Play!',
-      web_app: { url: "https://fardenz.github.io/telegram-bot/" }
+      web_app: { url: "https://fardenz.github.io/telegram-mini-app/" }
     }
   })
 });
