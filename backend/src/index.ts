@@ -1,36 +1,33 @@
-import express, { Express } from "express"
 import dotenv from "dotenv"
-import cors from "cors"
-import userRoutes from "./endpoints/user"
-import TelegramBot from 'node-telegram-bot-api'
-
-// replace the value below with the Telegram token you receive from @BotFather
-const token = 'TOKEN'
-
-// Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, { polling: true })
-
-bot.on('message', async (msg) => {
-  await bot.sendMessage(msg.chat.id, "ale", {
-    reply_markup: {
-      keyboard: [[]]
-    } 
-  })
-  await bot.setChatMenuButton({
-    chat_id: msg.chat.id,
-    menu_button: {
-      type: 'web_app',
-      text: 'Play!',
-      web_app: { url: "https://fardenz.github.io/telegram-mini-app/" }
-    }
-  })
-});
-
-
 dotenv.config()
 
+import express, { Express } from "express"
+import cors from "cors"
+import userRoutes from "./endpoints/user"
+import { Telegraf } from "telegraf"
+import { message } from 'telegraf/filters'
+import config from "./config"
+
+
+// Create a bot that uses 'polling' to fetch new updates
+const bot = new Telegraf(config.botToken)
+bot.on(message('text'), async (ctx) => {
+  ctx.reply('👍')
+
+  await ctx.setChatMenuButton({
+    type: 'web_app',
+    text: 'Play!',
+    web_app: { url: config.frontendEndpoint }
+  });
+});
+bot.launch()
+
+// Enable graceful stop
+process.once('SIGINT', () => bot.stop('SIGINT'))
+process.once('SIGTERM', () => bot.stop('SIGTERM'))
+
 const app: Express = express()
-const port = process.env.PORT
+const port = config.webServerPort;
 
 app.use(cors())
 app.use(express.json())
