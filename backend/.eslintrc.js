@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {
-    "no-comments": "error",
+    // "no-comments": "error",
     "no-undef": "off",
     "quote-props": ["error", "consistent"],
     "@typescript-eslint/no-var-requires": "off",

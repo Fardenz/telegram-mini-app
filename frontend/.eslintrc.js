@@ -23,7 +23,7 @@ module.exports = {
         "testing-library"
     ],
     "rules": {
-        "no-comments": "error",
+        // "no-comments": "error",
         "no-console": "error",
         "no-undef": "off",
         "quote-props": ["error", "consistent"],
