@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  api-seed:
+    user: node
+    build: ./
+    volumes:
+      - ./:/api
+      - /api/node_modules/
+    ports:
+      - 8000:8000
+    container_name: api-seed
