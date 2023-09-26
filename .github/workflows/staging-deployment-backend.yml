@@ -30,5 +30,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/home/ubuntu/
-          ls
+          cd ~/telegram-mini-app/backend
+          git pull
+          git status
+          docker-compose up -d --force-recreate --build
+          
