@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "email": "Email",
+    "password": "Contraseña",
+    "error": {
+      "email": "El email no puede estar vacío",
+      "password": "La contraseña no puede estar vacía",
+      "name": "El nombre no puede estar vacío",
+      "surname": "El apellido no puede estar vacío"
+    }
+  }
+}

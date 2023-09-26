@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  seed:
+    user: node
+    build: ./
+    volumes:
+      - ./:/app
+      - /app/node_modules/
+    ports: 
+      - 4000:4000
+    container_name: seed
+
+ 

@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "login": "Log in",
+    "register": "Register",
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "password": "Password",
+    "error": {
+      "email": "Email can not be empty",
+      "password": "Password can not be empty",
+      "name": "Username can not be empty",
+      "surname": "Surname can not be empty"
+    }
+  }
+}
