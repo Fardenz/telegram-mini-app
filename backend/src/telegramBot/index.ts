@@ -1,22 +1,25 @@
-import { Telegraf } from "telegraf"
 import { message } from 'telegraf/filters'
 import config from "../config"
+import { injectable } from "inversify";
+import { Telegraf } from 'telegraf';
 
-export const setupTelegramBot = () => {
-  // Create a bot that uses 'polling' to fetch new updates
-  const bot = new Telegraf(config.botToken)
-  bot.on(message('text'), async (ctx) => {
-    ctx.reply('👍')
+@injectable()
+export default class TelegramBot {
+  constructor(readonly bot: Telegraf) {
+    // Create a bot that uses 'polling' to fetch new updates
+    bot.on(message('text'), async (ctx) => {
+      ctx.reply('👍')
 
-    await ctx.setChatMenuButton({
-      type: 'web_app',
-      text: 'Play!',
-      web_app: { url: config.frontendEndpoint }
+      await ctx.setChatMenuButton({
+        type: 'web_app',
+        text: 'Play!',
+        web_app: { url: config.frontendEndpoint }
+      });
     });
-  });
-  bot.launch()
+    bot.launch();
 
-  // Enable graceful stop
-  process.once('SIGINT', () => bot.stop('SIGINT'))
-  process.once('SIGTERM', () => bot.stop('SIGTERM'))
+    // Enable graceful stop
+    process.once('SIGINT', () => bot.stop('SIGINT'))
+    process.once('SIGTERM', () => bot.stop('SIGTERM'))
+  }
 }

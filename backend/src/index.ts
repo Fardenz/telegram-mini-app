@@ -1,7 +1,10 @@
 import dotenv from "dotenv"
 dotenv.config()
-import { serverStartup } from './webserver'
-import { setupTelegramBot } from "./telegramBot";
+import 'reflect-metadata';
+import { setupContainer } from './inversify.config';
+import WebAppServer from "./webserver";
+import TelegramBot from "./telegramBot";
 
-serverStartup();
-setupTelegramBot();
+const container = setupContainer();
+const bot = container.get(TelegramBot)
+const webAppServer = container.get(WebAppServer)
