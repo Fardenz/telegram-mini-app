@@ -35,4 +35,5 @@ jobs:
           git status
           echo "${{ secrets.ENV_VARIABLES }}" > .env
           docker-compose up -d --force-recreate --build
+          docker-compose logs --tail=1000
           
