@@ -33,5 +33,6 @@ jobs:
           cd ~/telegram-mini-app/backend
           git pull
           git status
+          echo "${{ secrets.ENV_VARIABLES }}" > .env
           docker-compose up -d --force-recreate --build
           
