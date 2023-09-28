@@ -10,12 +10,14 @@ export default class TelegramBot {
     bot.on(message('text'), async (ctx) => {
       ctx.reply('👍')
 
+
       await ctx.setChatMenuButton({
         type: 'web_app',
-        text: 'Play!',
+        text: 'Open',
         web_app: { url: config.frontendEndpoint }
       });
     });
+
     bot.launch();
 
     // Enable graceful stop

@@ -10,3 +10,14 @@ services:
     ports:
       - 8000:8000
     container_name: api-seed
+  mongodb:
+    image: mongo
+    restart: always
+    scale: 0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongoData:/data/db

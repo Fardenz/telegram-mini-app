@@ -4,5 +4,9 @@ module.exports = {
   usePolling: true,
   botToken: undefined,
   webServerPort: 3000,
-  frontendEndpoint: 'https://fardenz.github.io/telegram-mini-app/'
+  frontendEndpoint: 'https://fardenz.github.io/telegram-mini-app/',
+  mongodb: {
+    user: 'root',
+    password: 'example'
+  }
 };
