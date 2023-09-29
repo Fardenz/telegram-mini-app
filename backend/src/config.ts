@@ -18,7 +18,7 @@ const config: Config = {
   botToken: nodeConfig.get<string>('botToken'),
   webServerPort: nodeConfig.get<number>('webServerPort'),
   frontendEndpoint: nodeConfig.get<string>('frontendEndpoint'),
-  dbConnectionString: `mongodb://${nodeConfig.get('mongodb.username')}:${nodeConfig.get('mongodb.password')}@${nodeConfig.get('mongodb.host')}:${nodeConfig.get('mongodb.port')}/${nodeConfig.get('mongodb.db')}`
+  dbConnectionString: `mongodb+srv://${nodeConfig.get('mongodb.username')}:${nodeConfig.get('mongodb.password')}@${nodeConfig.get('mongodb.host')}/${nodeConfig.get('mongodb.db')}?ssl=true&retryWrites=true&w=majority`
 };
 
 export default config;

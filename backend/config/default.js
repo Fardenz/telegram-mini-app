@@ -7,9 +7,9 @@ module.exports = {
   frontendEndpoint: 'https://fardenz.github.io/telegram-mini-app/',
   mongodb: {
     db: 'main',
-    host: '127.0.0.1',
+    host: 'cluster0.rrmhr5q.mongodb.net',
     port: 27017,
-    username: 'root',
-    password: 'example'
+    username: 'adminUser',
+    password: undefined
   }
 };

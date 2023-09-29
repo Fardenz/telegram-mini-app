@@ -1,5 +1,8 @@
 module.exports = {
   botToken: 'BOT_TOKEN',
   frontendEndpoint: 'TELEGRAM_FRONTEND',
-  webServerPort: 'WEB_PORT'
+  webServerPort: 'WEB_PORT',
+  mongodb: {
+    passowrd: 'DB_PASSWORD'
+  }
 }
