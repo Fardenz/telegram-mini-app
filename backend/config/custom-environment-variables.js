@@ -3,6 +3,6 @@ module.exports = {
   frontendEndpoint: 'TELEGRAM_FRONTEND',
   webServerPort: 'WEB_PORT',
   mongodb: {
-    passowrd: 'DB_PASSWORD'
+    password: 'DB_PASSWORD'
   }
 }
