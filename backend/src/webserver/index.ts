@@ -8,10 +8,11 @@ import { injectable } from "inversify";
 import WalletEndpoints from './api/paths/wallet/walletHandlers'
 import { initialize } from "express-openapi";
 import TelegramAuth from "./telegramAuth";
+import GameEndpoints from "./api/paths/game/gameHandlers";
 @injectable()
 export default class WebAppServer {
   public readonly server: Server;
-  constructor(private readonly walletEndpoints: WalletEndpoints) {
+  constructor(private readonly walletEndpoints: WalletEndpoints, private readonly gameEndpoints: GameEndpoints) {
     const app: Express = express()
     const port = config.webServerPort;
 
@@ -28,7 +29,8 @@ export default class WebAppServer {
       exposeApiDocs: true,
       docsPath: '/api-documentation',
       operations: {
-        getWallet: walletEndpoints.getWallet
+        getWallet: this.walletEndpoints.getWallet,
+        postGame: this.gameEndpoints.postGame
       }
     });
 

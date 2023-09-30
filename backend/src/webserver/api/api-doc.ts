@@ -20,6 +20,15 @@ const apiDoc: OpenAPIV2.Document = {
       },
       required: ["telegramId", "amount"],
     },
+    Game: {
+      type: "object",
+      properties: {
+        result: {
+          type: "number",
+        },
+      },
+      required: ["result"],
+    },
   },
   paths: {
     ['/wallet']: {
@@ -30,6 +39,38 @@ const apiDoc: OpenAPIV2.Document = {
             description: 'get wallet',
             schema: {
               $ref: "#/definitions/Wallet",
+            }
+          }
+        }
+      }
+    },
+    ['/game']: {
+      post: {
+        operationId: 'postGame',
+        consumes: ['application/json'],
+        parameters: [{
+          in: 'body',
+          name: 'body',
+          required: true,
+          schema: {
+            type: 'object',
+            properties: {
+              choice: {
+                type: "number",
+              },
+              type: {
+                type: "string",
+                enum: ['dice', 'coinflip']
+              },
+            },
+            required: ["choice", "type"],
+          }
+        }],
+        responses: {
+          [200]: {
+            description: 'play game',
+            schema: {
+              $ref: "#/definitions/Game",
             }
           }
         }

@@ -13,6 +13,16 @@ interface CustomData {
   queryId: string
 }
 
-export interface CustomExpressRequest extends Request {
+export interface CustomExpressRequest<Params = any, ResBody = any, ReqBody = any> extends Request<Params, ResBody, ReqBody> {
   customData: CustomData
+}
+
+export interface ErrorResponse {
+  error: string
+}
+
+export class CustomError extends Error {
+  constructor(message: string, options?: ErrorOptions) {
+    super(message, options)
+  }
 }
