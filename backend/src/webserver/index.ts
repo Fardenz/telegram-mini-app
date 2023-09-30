@@ -5,25 +5,48 @@ import config from "../config";
 import { Server } from "http";
 import { injectable } from "inversify";
 
-import WalletEndpoints from './endpoints/walletEndpoints'
-
+import WalletEndpoints from './api/paths/wallet/walletHandlers'
+import { initialize } from "express-openapi";
+import TelegramAuth from "./telegramAuth";
 @injectable()
 export default class WebAppServer {
   public readonly server: Server;
-  constructor(private readonly WalletEndpoints: WalletEndpoints){
+  constructor(private readonly walletEndpoints: WalletEndpoints) {
     const app: Express = express()
     const port = config.webServerPort;
 
     app.use(cors())
     app.use(express.json())
     app.use(userRoutes)
+    app.use(TelegramAuth)
+
+
+    // OpenAPI routes
+    initialize({
+      app,
+      apiDoc: require("./api/api-doc"),
+      exposeApiDocs: true,
+      docsPath: '/api-documentation',
+      operations: {
+        getWallet: walletEndpoints.getWallet
+      }
+    });
+
+    // // OpenAPI UI
+    // app.use(
+    //   "/api-documentation",
+    //   SwaggerUi.serve,
+    //   SwaggerUi.setup(undefined, {
+    //     swaggerOptions: {
+    //       url: `http://localhost:${port}/api-documentation`,
+    //     },
+    //   })
+    // );
 
     this.server = app.listen(port, () => {
       console.log(`⚡️[server]: Server is running at http://localhost:${port}`)
+      console.log(`⚡️[server]: Documentation available at http://localhost:${port}/api-documentation`)
     })
-
-    app.get('/wallet', WalletEndpoints.getHandler)
-    app.post('/wallet', WalletEndpoints.handler)
 
     process.once('SIGINT', () => this.server.close())
     process.once('SIGTERM', () => this.server.close())

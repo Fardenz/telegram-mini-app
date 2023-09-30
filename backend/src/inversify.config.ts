@@ -5,7 +5,7 @@ import { Telegraf } from "telegraf";
 import WebAppServer from './webserver';
 import TelegramBot from './telegramBot';
 import mongoose, { Mongoose } from 'mongoose';
-import WalletEndpoints from './webserver/endpoints/walletEndpoints';
+import WalletEndpoints from './webserver/api/paths/wallet/walletHandlers';
 
 export const setupContainer = async () => {
   const container = new Container()
