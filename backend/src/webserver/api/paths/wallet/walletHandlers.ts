@@ -15,7 +15,6 @@ export default class WalletEndpoints {
     const wallet = await User.findOne({
       telegramId: req.customData.telegramId.toString()
     });
-    console.log(req.customData.telegramId, wallet);
     
     res.send({
       telegramId: req.customData.telegramId,
