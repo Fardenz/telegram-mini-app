@@ -6,6 +6,7 @@ import { GameType, PostGameBody, PostGameResult } from "./types";
 import Decimal from "decimal.js";
 import { getCoinflipResult, getDiceResult } from "./helpers";
 import config from "../../../../config";
+import { executeWalletIncrement } from "../../../../helpers";
 
 const GAME_AMOUNT = 100
 
@@ -51,24 +52,11 @@ export default class GameEndpoints {
     } catch (error) {
       console.error(error);
 
-      res.send({
-        error: 'Game could not run'
+      res.status(500).send({
+        error: error as string
       })
     }
   }
 
 
 }
-
-async function executeWalletIncrement(telegramId: string, amount: number): Promise<unknown> {
-  return User.findOneAndUpdate({
-    telegramId: telegramId
-  }, {
-    $inc: {
-      walletAmountInCents: amount
-    }
-  }, {
-    new: true
-  }).exec();
-}
-

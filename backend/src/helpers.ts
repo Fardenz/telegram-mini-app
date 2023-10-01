@@ -1,4 +1,5 @@
 import { createHmac } from "node:crypto";
+import User from "./models/User";
 
 interface HmacParameters {
   getAsHex?: boolean,
@@ -15,4 +16,16 @@ export function generateHMAC(data: string, key: string | Buffer, {
     return hmac.digest('hex');
   }
   return hmac.digest();
+}
+
+export async function executeWalletIncrement(telegramId: string, amount: number): Promise<unknown> {
+  return User.findOneAndUpdate({
+    telegramId: telegramId
+  }, {
+    $inc: {
+      walletAmountInCents: amount
+    }
+  }, {
+    new: true
+  }).exec();
 }

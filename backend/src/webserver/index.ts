@@ -30,6 +30,7 @@ export default class WebAppServer {
       docsPath: '/api-documentation',
       operations: {
         getWallet: this.walletEndpoints.getWallet,
+        postWithdrawMoney: this.walletEndpoints.postWithdrawMoney,
         postGame: this.gameEndpoints.postGame
       }
     });
