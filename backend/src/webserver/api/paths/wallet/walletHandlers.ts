@@ -13,16 +13,18 @@ export default class WalletEndpoints {
   public async getWallet(req: CustomExpressRequest, res: Response<GetWalletResponse>) {
    try {
     const wallet = await User.findOne({
-      telegramId: req.customData.telegramId
+      telegramId: req.customData.telegramId.toString()
     });
+    console.log(req.customData.telegramId, wallet);
+    
     res.send({
       telegramId: req.customData.telegramId,
-      amount: wallet?.walletAmount ?? '0'
+      amountInCents: wallet?.walletAmountInCents?.toString() ?? '0'
     })
    } catch (error) {
     res.send({
       telegramId: req.customData.telegramId,
-      amount: '0'
+      amountInCents: '0'
     })
    }
   }

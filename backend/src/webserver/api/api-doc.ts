@@ -14,11 +14,11 @@ const apiDoc: OpenAPIV2.Document = {
         id: {
           type: "string",
         },
-        amount: {
+        amountInCents: {
           type: "string",
         },
       },
-      required: ["telegramId", "amount"],
+      required: ["telegramId", "amountInCents"],
     },
     Game: {
       type: "object",

@@ -7,6 +7,8 @@ import Decimal from "decimal.js";
 import { getCoinflipResult, getDiceResult } from "./helpers";
 import config from "../../../../config";
 
+const GAME_AMOUNT = 100
+
 @injectable()
 export default class GameEndpoints {
 
@@ -19,7 +21,7 @@ export default class GameEndpoints {
         telegramId: req.customData.telegramId
       });
 
-      if (user === null || new Decimal(user?.walletAmount ?? 0).lessThan(1)) {
+      if (user === null || new Decimal(user?.walletAmountInCents ?? 0).lessThan(GAME_AMOUNT)) {
         throw new CustomError("Not enough balance");
       }
 
@@ -32,14 +34,14 @@ export default class GameEndpoints {
         throw new Error("Unrecognized game type");
       }
 
-      await this.executeWalletIncrement(req.customData.telegramId, -1)
+      await executeWalletIncrement(req.customData.telegramId, GAME_AMOUNT * -1)
 
       if (req.body.choice === result) {
         // the user choice is correct
         if (req.body.type === GameType.DICE) {
-          await this.executeWalletIncrement(req.customData.telegramId, new Decimal(6).mul(new Decimal(1).sub(config.houseEdge)).toNumber())
+          await executeWalletIncrement(req.customData.telegramId, new Decimal(GAME_AMOUNT * 6).mul(new Decimal(1).sub(config.houseEdge)).toNumber())
         } else if (req.body.type === GameType.COINFLIP) {
-          await this.executeWalletIncrement(req.customData.telegramId, new Decimal(2).mul(new Decimal(1).sub(config.houseEdge)).toNumber())
+          await executeWalletIncrement(req.customData.telegramId, new Decimal(GAME_AMOUNT * 2).mul(new Decimal(1).sub(config.houseEdge)).toNumber())
         }
       }
 
@@ -47,21 +49,26 @@ export default class GameEndpoints {
         result
       })
     } catch (error) {
+      console.error(error);
+
       res.send({
         error: 'Game could not run'
       })
     }
   }
 
-  private executeWalletIncrement(telegramId: string, amount: number): Promise<unknown> {
-    return User.findOneAndUpdate({
-      telegramId: telegramId
-    }, {
-      $inc: {
-        walletAmount: amount
-      }
-    }, {
-      new: true
-    }).exec();}
-  
+
 }
+
+async function executeWalletIncrement(telegramId: string, amount: number): Promise<unknown> {
+  return User.findOneAndUpdate({
+    telegramId: telegramId
+  }, {
+    $inc: {
+      walletAmountInCents: amount
+    }
+  }, {
+    new: true
+  }).exec();
+}
+

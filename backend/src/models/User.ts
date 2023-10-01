@@ -2,6 +2,6 @@ import mongoose, { Schema } from "mongoose";
 
 const User = mongoose.model('User', new Schema({
   telegramId: String,
-  walletAmount: String
+  walletAmountInCents: Number
 }));
 export default User;
