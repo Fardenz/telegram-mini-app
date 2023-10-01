@@ -4,5 +4,6 @@ module.exports = {
   webServerPort: 'WEB_PORT',
   mongodb: {
     password: 'DB_PASSWORD'
-  }
+  },
+  stripeToken: 'STRIPE_TOKEN'
 }

@@ -12,5 +12,6 @@ module.exports = {
     username: 'adminUser',
     password: undefined
   },
-  houseEdge: 0.01
+  houseEdge: 0.01,
+  stripeToken: undefined
 };
