@@ -42,6 +42,35 @@ const apiDoc: OpenAPIV2.Document = {
             }
           }
         }
+      },
+      post: {
+        operationId: 'postWithdrawMoney',
+        consumes: ['application/json'],
+        parameters: [{
+          in: 'body',
+          name: 'body',
+          required: true,
+          schema: {
+            type: 'object',
+            properties: {
+              iban: {
+                type: "string",
+              },
+              amountInCents: {
+                type: "string",
+              },
+            },
+            required: ["iban", "amountInCents"],
+          }
+        }],
+        responses: {
+          [200]: {
+            description: 'withdraw money from wallet',
+            schema: {
+              $ref: "#/definitions/Wallet",
+            }
+          }
+        }
       }
     },
     ['/game']: {
