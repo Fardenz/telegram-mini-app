@@ -5,6 +5,11 @@ import { generateHMAC } from "../helpers";
 
 const TelegramAuth = (req: Request, res: Response, next: NextFunction) => {
 try {
+  if (req.path === '/api-documentation') {
+    next();
+    return;
+  }
+  
   const customRequest = req as CustomExpressRequest;
   const authorization = customRequest.headers?.authorization ?? '';
   // helper to decode the parameters easily
