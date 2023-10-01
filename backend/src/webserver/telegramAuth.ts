@@ -29,7 +29,9 @@ try {
   }
 
   const secret_key = generateHMAC(config.botToken, "WebAppData")
-  const calculatedHash = generateHMAC(reconstructedAuthData, secret_key, true)
+  const calculatedHash = generateHMAC(reconstructedAuthData, secret_key, {
+    getAsHex: true
+  })
   
   if ( calculatedHash !== hash) {
     throw new Error("Auth not valid");
