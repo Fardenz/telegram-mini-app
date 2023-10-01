@@ -2,9 +2,9 @@ FROM node:18
 
 WORKDIR /api
 
-COPY package.json package-lock.json* /api/
+COPY package.json package-lock.json* .env /api/
 
-RUN npm install
+RUN npm ci
 RUN chown -R node:node .
 USER node
 
