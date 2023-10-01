@@ -2,7 +2,7 @@ FROM node:18
 
 WORKDIR /api
 
-RUN apk --update --no-cache add curl
+RUN apt-get update && apt-get install -y wget
 COPY package.json package-lock.json* .env /api/
 
 RUN npm ci
