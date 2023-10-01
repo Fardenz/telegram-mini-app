@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import { CustomExpressRequest } from "./types";
 import config from "../config";
-import { createHmac } from "crypto";
+import { generateHMAC } from "../helpers";
 
 const TelegramAuth = (req: Request, res: Response, next: NextFunction) => {
 try {
@@ -39,15 +39,6 @@ try {
 } catch (error) {
   return res.status(403).send('Auth not valid!');
 }
-}
-
-function generateHMAC(data: string, key: string | Buffer, getAsHex: boolean = false) {
-  const hmac = createHmac('sha256', key);
-  hmac.update(data);
-  if (getAsHex) {
-    return hmac.digest('hex');
-  }
-  return hmac.digest();
 }
 
 export default TelegramAuth;
