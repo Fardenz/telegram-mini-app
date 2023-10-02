@@ -4,11 +4,11 @@ import userRoutes from "./endpoints/user"
 import config from "../config";
 import { Server } from "http";
 import { injectable } from "inversify";
-
 import WalletEndpoints from './api/paths/wallet/walletHandlers'
 import { initialize } from "express-openapi";
 import TelegramAuth from "./telegramAuth";
 import GameEndpoints from "./api/paths/game/gameHandlers";
+
 @injectable()
 export default class WebAppServer {
   public readonly server: Server;
@@ -30,7 +30,9 @@ export default class WebAppServer {
       docsPath: '/api-documentation',
       operations: {
         getWallet: this.walletEndpoints.getWallet,
-        postGame: this.gameEndpoints.postGame
+        postWithdrawMoney: this.walletEndpoints.postWithdrawMoney,
+        postGame: this.gameEndpoints.postGame,
+        getPaymentLink: this.walletEndpoints.getPaymentLink
       }
     });
 

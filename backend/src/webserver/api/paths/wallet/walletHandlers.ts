@@ -1,49 +1,94 @@
 import { injectable } from "inversify";
 import { Response } from "express"
-import { CustomExpressRequest } from "../../../types";
+import { CustomError, CustomExpressRequest, ErrorResponse } from "../../../types";
 import User from "../../../../models/User";
-import { GetWalletResponsee as GetWalletResponse } from "./types";
+import { GetWalletResponsee as GetWalletResponse, PaymentLinkResponseBody, PostWithdrawMoneyRequestBody, PostWithdrawMoneyResponse, SUPPORTED_CURRENCIES, WithdrawalRequest } from "./types";
+import Decimal from "decimal.js";
+import { Telegraf } from "telegraf";
+import config from "../../../../config";
+
+const DEFAULT_CURRENCY = SUPPORTED_CURRENCIES.EURO;
 
 @injectable()
 export default class WalletEndpoints {
-
-  constructor() {
+  private readonly bot: Telegraf
+  constructor(bot: Telegraf) {
+    this.bot = bot;
   }
 
-  public async postWallet(req: CustomExpressRequest, res: Response<GetWalletResponse>) {
-    try {
-      const filter = { telegramId: req.customData.telegramId.toString() };
-      const update = { $inc: { walletAmountInCents: req.body.amount } };
-
-      const wallet = await User.findOneAndUpdate(filter, update, { new: true, upsert: true });
-
-      res.send({
-        telegramId: req.customData.telegramId,
-        amountInCents: wallet?.walletAmountInCents?.toString() ?? '0'
-      })
-    } catch (error) {
-      res.send({
-        telegramId: req.customData.telegramId,
-        amountInCents: '0'
-      })
-    }
-  }
-
-  public async getWallet(req: CustomExpressRequest, res: Response<GetWalletResponse>) {
+  public async getWallet(req: CustomExpressRequest, res: Response<GetWalletResponse | ErrorResponse>) {
     try {
       const wallet = await User.findOne({
         telegramId: req.customData.telegramId.toString()
       });
-      console.log(req.customData.telegramId, wallet);
 
       res.send({
         telegramId: req.customData.telegramId,
         amountInCents: wallet?.walletAmountInCents?.toString() ?? '0'
       })
     } catch (error) {
+      res.status(500).send({
+        error: error as string
+      })
+    }
+  }
+
+  public async postWithdrawMoney(req: CustomExpressRequest<unknown, unknown, PostWithdrawMoneyRequestBody>, res: Response<PostWithdrawMoneyResponse | ErrorResponse>) {
+    try {
+      const user = await User.findOne({
+        telegramId: req.customData.telegramId.toString()
+      });
+
+      if (user === null || new Decimal(user?.walletAmountInCents ?? 0).lessThan(req.body.amountInCents)) {
+        throw new CustomError("Not enough balance");
+      }
+
+      user.walletAmountInCents = new Decimal(user?.walletAmountInCents ?? 0).sub(req.body.amountInCents).toNumber();
+      user.withdrawalRequests = [...(user?.withdrawalRequests ?? []), {
+        amountInCents: req.body.amountInCents,
+        iban: req.body.iban,
+        isCompleted: false
+      }] as WithdrawalRequest[];
+
+      await user.save();
+
       res.send({
         telegramId: req.customData.telegramId,
-        amountInCents: '0'
+        amountInCents: user?.walletAmountInCents?.toString() ?? '0'
+      })
+    } catch (error) {
+      res.status(500).send({
+        error: error as string
+      })
+    }
+  }
+
+  public async getPaymentLink(req: CustomExpressRequest<{ amount: number }, unknown, unknown>, res: Response<PaymentLinkResponseBody | ErrorResponse>) {
+
+    if (!req.query.amount) {
+      res.status(400).send({ error: "Query param 'amount' required!" });
+      return;
+    }
+    try {
+      const url = await this.bot.telegram.createInvoiceLink({
+        currency: DEFAULT_CURRENCY,
+        description: 'Adding money to account',
+        payload: "asd",//req.customData.telegramId,
+        prices: [{
+          amount: parseFloat(req.query.amount as string) * 100,
+          label: 'Value'
+        }],
+        provider_token: config.stripeToken,
+        title: 'Payment'
+      })
+
+      res.send({
+        telegramId: req.customData.telegramId,
+        url
+      })
+    } catch (error) {
+      res.status(500).send({
+        error: error as string
       })
     }
   }

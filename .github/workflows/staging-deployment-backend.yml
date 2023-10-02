@@ -35,5 +35,6 @@ jobs:
           git status
           echo "${{ secrets.ENV_VARIABLES }}" > .env
           docker-compose up -d --force-recreate --build
-          docker-compose logs --tail=1000
-          
+          echo "showing logs"
+          sleep 20 # this can be improved to make sure container is healthy https://stackoverflow.com/a/42738182
+          docker-compose logs --tail=1000 -t
