@@ -1,4 +1,4 @@
-import { AuthInfo } from "../types/auth"
+import { AuthInfo } from "../types/Auth"
 
 export default class Stash {
   static AUTH: string = "Auth"

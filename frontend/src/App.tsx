@@ -1,46 +1,28 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { LOGIN, PROFILE, REGISTER } from "./infrastructure/paths"
-import Register from "./views/auth/Register"
-import Login from "./views/auth/Login"
-import Profile from "./views/profile/Profile"
-import { AuthContextProvider } from "./cotexts/authContext"
-import PublicRoute from "./components/router/PublicRoute"
-import PrivateRout from "./components/router/PrivateRoute"
+import { RouterProvider } from "react-router-dom"
+import { ChakraProvider } from "@chakra-ui/react"
+import { Router } from "@router/router"
+import { TelegramContextProvider } from "@contexts/telegramContext"
 
-const router = createBrowserRouter([
-  {
-    path: PROFILE,
-    element: <PrivateRout />,
-    children: [
-      {
-        index: true,
-        element: <Profile />,
-      },
-    ],
-  },
-  {
-    path: "/",
-    element: <PublicRoute />,
-    children: [
-      {
-        path: LOGIN,
-        element: <Login />,
-      },
-      {
-        path: REGISTER,
-        element: <Register />,
-      },
-    ],
-  },
-], {
-  basename: '/telegram-mini-app/'
-})
+// We can extend theme options with Chakra UI theme
+// const theme = extendTheme({
+//   colors: {
+//     brand: {
+//       900: "#1a365d",
+//       800: "#153e75",
+//       700: "#2a69ac",
+//     },
+//   },
+// })
+// <ChakraProvider theme={theme} resetCSS>
+// https://chakra-ui.com/getting-started/cra-guide
 
 const App: React.FC = () => {
   return (
-    <AuthContextProvider>
-      <RouterProvider router={router} />
-    </AuthContextProvider>
+    <TelegramContextProvider>
+      <ChakraProvider resetCSS>
+        <RouterProvider router={Router} />
+      </ChakraProvider>
+    </TelegramContextProvider>
   )
 }
 
