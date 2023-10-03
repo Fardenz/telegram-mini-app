@@ -21,6 +21,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@assets": `${process.cwd()}/src/assets`,
       "@components": `${process.cwd()}/src/components`,
       "@contexts": `${process.cwd()}/src/contexts`,
       "@hooks": `${process.cwd()}/src/hooks`,
