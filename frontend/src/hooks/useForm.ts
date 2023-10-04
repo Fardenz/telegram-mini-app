@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import { AuthFieldsErrors, LoginData, RegisterData } from "../types/auth"
+import { AuthFieldsErrors, LoginData, RegisterData } from "@types/Auth"
 
 export const useForm = <T>(emptyData: T) => {
   const { t } = useTranslation()

@@ -1,3 +1,15 @@
+## Summary
+
+@ Route mapping -> Update tsconfig.json and tsconfig.vite.json, just like all the rest, to use the new path aliases. 
+
+### Add new view 
+
+Routing handler in /routes: 
+  -  Create new route in paths.ts
+  -  add route to router, if header needed ensure to include the MainLayout component
+  -  Create view in views folder
+  -  And thats it, happy coding!
+
 ## Usage
 ### Build the docker container
   make build
