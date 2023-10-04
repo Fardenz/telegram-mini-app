@@ -11,5 +11,7 @@ module.exports = {
     port: 27017,
     username: 'adminUser',
     password: undefined
-  }
+  },
+  houseEdge: 0.01,
+  stripeToken: undefined
 };

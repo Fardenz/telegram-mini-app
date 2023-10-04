@@ -5,6 +5,8 @@ import { Telegraf } from "telegraf";
 import WebAppServer from './webserver';
 import TelegramBot from './telegramBot';
 import mongoose, { Mongoose } from 'mongoose';
+import WalletEndpoints from './webserver/api/paths/wallet/walletHandlers';
+import GameEndpoints from './webserver/api/paths/game/gameHandlers';
 
 export const setupContainer = async () => {
   const container = new Container()
@@ -24,6 +26,11 @@ export const setupContainer = async () => {
   container
     .bind(WebAppServer).toSelf();
 
+    /** Controllers */
+    container
+    .bind(WalletEndpoints).toSelf();
+    container
+    .bind(GameEndpoints).toSelf();
   return container
 };
 

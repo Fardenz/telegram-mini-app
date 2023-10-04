@@ -14,3 +14,68 @@ TELEGRAM_FRONTEND=localtunnel result url`\
  && npm run start
 
 cd frontend && npm i && npm run dev
+
+
+
+<!-- ABOUT THE PROJECT -->
+
+## About the Project
+_insert vid like cal_
+
+### Overview
+_brief overview of the coding contest and the purpose of your solution_
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+### Prerequisites
+_list any prerequisites or dependencies that users need to have installed on their machines_
+
+## Development
+
+### Setup 
+_provide step-by-step instructions for setting up the environment_
+
+### Configuration
+_explain any configuration files or settings that need to be adjusted_
+
+#### Setting up your first game
+_do we need this ?_
+
+## Solution Overview
+
+### Architecture
+_provide a high-level overview of your solution's architecture_
+
+### Code Structure
+_explain the organization of your code, detailing the purpose of each major component or module_
+
+## In-Depth Explanation
+
+### Main Components
+_break down the major components of your solution with detailed explanations_
+
+### Algorithms and Data Structures
+_describe the algorithms and data structures used in your solution_
+
+### Code Samples
+_include snippets of code to illustrate key points_
+
+## Error Handling
+
+### Common Errors
+_list potential errors that users may encounter and explain how to troubleshoot them_
+
+### Exception Handling
+_detail how your solution handles exceptions gracefully_
+
+## Recap
+_summarize the key points covered in the documentation?_
+
+## Next Steps/Roadmap
+_roadmap project for a list of proposed features (and known issues)_
+
+
+
+

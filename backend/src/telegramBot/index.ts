@@ -10,7 +10,6 @@ export default class TelegramBot {
     bot.on(message('text'), async (ctx) => {
       ctx.reply('👍')
 
-
       await ctx.setChatMenuButton({
         type: 'web_app',
         text: 'Open',

@@ -2,9 +2,10 @@ FROM node:18
 
 WORKDIR /api
 
-COPY package.json package-lock.json* /api/
+RUN apt-get update && apt-get install -y wget
+COPY package.json package-lock.json* .env /api/
 
-RUN npm install
+RUN npm i
 RUN chown -R node:node .
 USER node
 
