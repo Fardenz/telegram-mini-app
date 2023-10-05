@@ -1,4 +1,4 @@
-import express, { Express } from "express"
+import express, { Express, Request, Response } from "express"
 import cors from "cors"
 import userRoutes from "./endpoints/user"
 import config from "../config";
@@ -8,6 +8,8 @@ import WalletEndpoints from './api/paths/wallet/walletHandlers'
 import { initialize } from "express-openapi";
 import TelegramAuth from "./telegramAuth";
 import GameEndpoints from "./api/paths/game/gameHandlers";
+import * as OpenApiValidator from 'express-openapi-validator';
+// import * as SwaggerUi from 'swagger-ui-express';
 
 @injectable()
 export default class WebAppServer {
@@ -21,11 +23,12 @@ export default class WebAppServer {
     app.use(userRoutes)
     app.use(TelegramAuth)
 
+    const apiDocPath = './api-doc';
 
     // OpenAPI routes
     initialize({
       app,
-      apiDoc: require("./api/api-doc"),
+      apiDoc: require(apiDocPath),
       exposeApiDocs: true,
       docsPath: '/api-documentation',
       operations: {
@@ -35,14 +38,34 @@ export default class WebAppServer {
         getPaymentLink: this.walletEndpoints.getPaymentLink
       }
     });
+    app.use(
+      OpenApiValidator.middleware({
+        apiSpec: apiDocPath,
+        validateRequests: true,
+        validateResponses: true,
+        // ignoreUndocumented: true,
+        // ignorePaths: /.*/
+      })
+    );
 
-    // // OpenAPI UI
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    app.use((err: any, req: Request, res: Response, _next: unknown) => {
+      // format errors
+      console.log(err);
+
+      res.status(err.status || 500).json({
+        message: err.message,
+        errors: err.errors,
+      });
+    });
+
+    // OpenAPI UI
     // app.use(
-    //   "/api-documentation",
+    //   "/api-documentation-ui",
     //   SwaggerUi.serve,
     //   SwaggerUi.setup(undefined, {
     //     swaggerOptions: {
-    //       url: `http://localhost:${port}/api-documentation`,
+    //       url: `http://localhost:${port}/api-documentation-ui`,
     //     },
     //   })
     // );
