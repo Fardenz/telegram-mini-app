@@ -9,7 +9,7 @@ import { initialize } from "express-openapi";
 import TelegramAuth from "./telegramAuth";
 import GameEndpoints from "./api/paths/game/gameHandlers";
 import * as OpenApiValidator from 'express-openapi-validator';
-// import * as SwaggerUi from 'swagger-ui-express';
+import * as SwaggerUi from 'swagger-ui-express';
 
 @injectable()
 export default class WebAppServer {
@@ -40,18 +40,17 @@ export default class WebAppServer {
     });
     app.use(
       OpenApiValidator.middleware({
-        apiSpec: apiDocPath,
+        apiSpec: require(apiDocPath),
         validateRequests: true,
         validateResponses: true,
-        // ignoreUndocumented: true,
-        // ignorePaths: /.*/
+        ignoreUndocumented: true,
       })
     );
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     app.use((err: any, req: Request, res: Response, _next: unknown) => {
       // format errors
-      console.log(err);
+      // console.log(err);
 
       res.status(err.status || 500).json({
         message: err.message,
@@ -60,19 +59,15 @@ export default class WebAppServer {
     });
 
     // OpenAPI UI
-    // app.use(
-    //   "/api-documentation-ui",
-    //   SwaggerUi.serve,
-    //   SwaggerUi.setup(undefined, {
-    //     swaggerOptions: {
-    //       url: `http://localhost:${port}/api-documentation-ui`,
-    //     },
-    //   })
-    // );
+    app.use(
+      "/api-documentation-ui",
+      SwaggerUi.serve,
+      SwaggerUi.setup(require(apiDocPath), { })
+    );
 
     this.server = app.listen(port, () => {
       console.log(`⚡️[server]: Server is running at http://localhost:${port}`)
-      console.log(`⚡️[server]: Documentation available at http://localhost:${port}/api-documentation`)
+      console.log(`⚡️[server]: Documentation available at http://localhost:${port}/api-documentation-ui`)
     })
 
     process.once('SIGINT', () => this.server.close())
