@@ -73,7 +73,7 @@ export default class WalletEndpoints {
       const url = await this.bot.telegram.createInvoiceLink({
         currency: DEFAULT_CURRENCY,
         description: 'Adding money to account',
-        payload: "asd",//req.customData.telegramId,
+        payload: req.customData.telegramId,
         prices: [{
           amount: parseFloat(req.query.amount as string) * 100,
           label: 'Value'
