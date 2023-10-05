@@ -9,13 +9,14 @@ npx localtunnel --port 4000
 
 cd backend \
  && echo `BOT_TOKEN=66....
-TELEGRAM_FRONTEND=localtunnel result url`\
+TELEGRAM_FRONTEND=localtunnel result url` > .env\
  &&  npm i \
  && npm run start
 
 cd frontend && npm i && npm run dev
 
-
+cada cambio de back & front se sube
+front en github pages
 
 <!-- ABOUT THE PROJECT -->
 
@@ -30,12 +31,29 @@ _brief overview of the coding contest and the purpose of your solution_
 ## Getting Started
 
 ### Prerequisites
+- Node.js (Version: >=16.x)
+- npm
+- Docker
+- MongoDB
+
 _list any prerequisites or dependencies that users need to have installed on their machines_
 
 ## Development
 
 ### Setup 
-_provide step-by-step instructions for setting up the environment_
+
+1. Clone the repo into a public GitHub repository (or fork https://github.com/calcom/cal.com/fork).
+
+    ```sh
+   git clone https://github.com/Fardenz/telegram-mini-app.git
+   ```
+    
+   > If you are on Windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true https://github.com/Fardenz/telegram-mini-app` <br>
+
+2. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
+
+3. set up frontend
+
 
 ### Configuration
 _explain any configuration files or settings that need to be adjusted_
