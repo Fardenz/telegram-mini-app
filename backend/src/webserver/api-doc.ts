@@ -80,6 +80,7 @@ const apiDoc: OpenAPIV3.Document = {
                     type: "array",
                     items: {
                       type: "number",
+                      enum: [1, 2, 3, 4, 5, 6], 
                     },
                   },
                   type: {
