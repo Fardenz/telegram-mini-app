@@ -9,7 +9,7 @@ npx localtunnel --port 4000
 
 cd backend \
  && echo `BOT_TOKEN=66....
-TELEGRAM_FRONTEND=localtunnel result url`\
+TELEGRAM_FRONTEND=localtunnel result url` > .env\
  &&  npm i \
  && npm run start
 
@@ -51,16 +51,9 @@ _list any prerequisites or dependencies that users need to have installed on the
     
    > If you are on Windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true https://github.com/Fardenz/telegram-mini-app` <br>
 
-2. Install packages with npm.
-   
-   ```sh
-   npm install
-   ```
-This command will install all the required packages listed [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/package.json) for the backend.
-   
+2. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
 
-3. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
-
+3. set up frontend
 
 
 ### Configuration
