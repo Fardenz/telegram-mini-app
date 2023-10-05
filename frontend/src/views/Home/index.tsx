@@ -1,6 +1,7 @@
 import { Link as ReactRouterLink } from "react-router-dom"
 import { Box, Button, Flex, Link as ChakraLink } from "@chakra-ui/react"
 import { COIN_GAME, DICE_GAME } from '../../router/paths';
+import Wallet from "../../services/wallet";
 
 const HomeView: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const HomeView: React.FC = () => {
       <Box w="100%" h="20%" display="flex" alignContent="center" justifyContent="end">
         <Button
           onClick={() => {
-            console.log("test")
+            Wallet.createPaymentLink(/*get from input*/ { amount: 15 })
           }}
         >
           Reload

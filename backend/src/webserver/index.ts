@@ -62,7 +62,7 @@ export default class WebAppServer {
     app.use(
       "/api-documentation-ui",
       SwaggerUi.serve,
-      SwaggerUi.setup(require(apiDocPath), { })
+      SwaggerUi.setup(require(apiDocPath), {})
     );
 
     this.server = app.listen(port, () => {

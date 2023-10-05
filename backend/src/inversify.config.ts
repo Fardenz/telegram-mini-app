@@ -31,6 +31,7 @@ export const setupContainer = async () => {
     .bind(WalletEndpoints).toSelf();
     container
     .bind(GameEndpoints).toSelf();
+
   return container
 };
 
