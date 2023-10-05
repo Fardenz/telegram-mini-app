@@ -35,7 +35,6 @@ _brief overview of the coding contest and the purpose of your solution_
 - npm
 - Docker
 - MongoDB
-- Typescript
 
 _list any prerequisites or dependencies that users need to have installed on their machines_
 
