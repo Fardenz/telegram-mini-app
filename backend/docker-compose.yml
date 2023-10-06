@@ -4,9 +4,6 @@ services:
   api-seed:
     user: node
     build: ./
-    volumes:
-      - ./:/api
-      - /api/node_modules/
     ports:
       - 3333:3333
     healthcheck:
