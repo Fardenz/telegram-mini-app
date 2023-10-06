@@ -1,4 +1,4 @@
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { Response } from "express"
 import { CustomError, CustomExpressRequest, ErrorResponse } from "../../../types";
 import User from "../../../../models/User";
@@ -11,9 +11,11 @@ const DEFAULT_CURRENCY = SUPPORTED_CURRENCIES.EURO;
 
 @injectable()
 export default class WalletEndpoints {
-  private readonly bot: Telegraf
-  constructor(bot: Telegraf) {
-    this.bot = bot;
+  private readonly _bot: Telegraf
+
+  constructor(@inject(Telegraf) bot: Telegraf) {
+    this._bot = bot;
+    this.getPaymentLink = this.getPaymentLink.bind(this);
   }
 
   public async getWallet(req: CustomExpressRequest, res: Response<GetWalletResponse | ErrorResponse>) {
@@ -64,16 +66,15 @@ export default class WalletEndpoints {
   }
 
   public async getPaymentLink(req: CustomExpressRequest<{ amount: number }, unknown, unknown>, res: Response<PaymentLinkResponseBody | ErrorResponse>) {
-
     if (!req.query.amount) {
       res.status(400).send({ error: "Query param 'amount' required!" });
       return;
     }
     try {
-      const url = await this.bot.telegram.createInvoiceLink({
+      const url = await this._bot.telegram.createInvoiceLink({
         currency: DEFAULT_CURRENCY,
         description: 'Adding money to account',
-        payload: "asd",//req.customData.telegramId,
+        payload: req.customData.telegramId,
         prices: [{
           amount: parseFloat(req.query.amount as string) * 100,
           label: 'Value'
@@ -87,9 +88,11 @@ export default class WalletEndpoints {
         url
       })
     } catch (error) {
+      console.log("[WalletEndpoints][getPaymentLink] Error: ", error)
       res.status(500).send({
         error: error as string
       })
     }
   }
+
 }

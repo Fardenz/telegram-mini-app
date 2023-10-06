@@ -7,10 +7,13 @@ import TelegramBot from "./telegramBot";
 
 
 async function main() {
-  const container = await setupContainer();
-  
-  const bot = container.get(TelegramBot)
-  const webAppServer = container.get(WebAppServer)
+  try {
+    const container = await setupContainer();
+    const bot = container.get(TelegramBot)
+    const webAppServer = container.get(WebAppServer)
+  } catch (error) {
+    console.error("Error during initialization:", error);
+  }
 }
 
 main()

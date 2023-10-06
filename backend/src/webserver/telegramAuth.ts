@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from "express"
-import { CustomExpressRequest } from "./types";
+import { CustomError, CustomExpressRequest } from "./types";
 import config from "../config";
 import { generateHMAC } from "../helpers";
 
 const TelegramAuth = (req: Request, res: Response, next: NextFunction) => {
 try {
-  if (req.path === '/api-documentation') {
+  const unauthenticatedPath = [/^\/api-documentation/, /^\/$/].some((path) => path.test(req.path))
+  if (unauthenticatedPath) {
     next();
     return;
   }
@@ -39,7 +40,7 @@ try {
   })
   
   if ( calculatedHash !== hash) {
-    throw new Error("Auth not valid");
+    throw new CustomError("Auth not valid. Use the telegram auth or connect from the web app");
   }
 
   next()

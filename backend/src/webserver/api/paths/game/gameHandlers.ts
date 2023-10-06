@@ -21,8 +21,9 @@ export default class GameEndpoints {
       const user = await User.findOne({
         telegramId: req.customData.telegramId
       });
-
-      if (user === null || new Decimal(user?.walletAmountInCents ?? 0).lessThan(GAME_AMOUNT)) {
+      const gameCost = new Decimal(GAME_AMOUNT).mul(req.body.choice.length);
+      const walletAvailable = new Decimal(user?.walletAmountInCents ?? 0);
+      if (user === null || walletAvailable.lessThan(gameCost)) {
         throw new CustomError("Not enough balance");
       }
 
@@ -32,12 +33,16 @@ export default class GameEndpoints {
       } else if (req.body.type === GameType.COINFLIP) {
         result = await getCoinflipResult()
       } else {
-        throw new Error("Unrecognized game type");
+        throw new CustomError("Unrecognized game type");
       }
 
-      await executeWalletIncrement(req.customData.telegramId, GAME_AMOUNT * -1)
-
-      if (req.body.choice === result) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      for (const choice of req.body.choice) {
+        // charge game amount
+        await executeWalletIncrement(req.customData.telegramId, GAME_AMOUNT * -1)
+      }
+      
+      if (req.body.choice.includes(result)) {
         // the user choice is correct
         if (req.body.type === GameType.DICE) {
           await executeWalletIncrement(req.customData.telegramId, new Decimal(GAME_AMOUNT * 6).mul(new Decimal(1).sub(config.houseEdge)).toNumber())
@@ -52,9 +57,15 @@ export default class GameEndpoints {
     } catch (error) {
       console.error(error);
 
-      res.status(500).send({
-        error: error as string
-      })
+      try {
+        res.status(500).send({
+          error: JSON.stringify(error)
+        })
+      } catch (error) {
+        res.status(500).send({
+          error: error as string
+        })
+      }
     }
   }
 

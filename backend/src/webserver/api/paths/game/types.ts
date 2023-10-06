@@ -8,7 +8,7 @@ export enum GameType{
 }
 
 export interface PostGameBody {
-  choice: number
+  choice: number[]
   type: GameType
 }
 
