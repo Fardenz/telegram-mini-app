@@ -4,9 +4,13 @@ import React, { useState } from "react"
 import { Box, Button, Checkbox, Flex, Grid, Stack, Text } from "@chakra-ui/react"
 import Dice from "@components/Dice"
 import GamesService from "@services/games"
+import { useTelegramContext } from "@contexts/telegramContext"
 
 const DiceView: React.FC = () => {
-  const options = [1, 2, 3, 4, 5, 6] // Coin options duh
+  const { getBalance } = useTelegramContext()
+
+  const options = [1, 2, 3, 4, 5, 6]
+
   const [checkedItems, setCheckedItems] = useState(options.map(() => false))
   const [triggerRoll, setTriggerRoll] = useState<boolean>(false)
   const [outputDice, setOutputDice] = useState<number>(1)
@@ -21,7 +25,6 @@ const DiceView: React.FC = () => {
     setTriggerRoll(true)
 
     const res: number | undefined = await GamesService.playDice(opt, "dice")
-    console.log(res)
 
     if (!res) {
       setTriggerRoll(false)
@@ -30,6 +33,8 @@ const DiceView: React.FC = () => {
 
     setOutputDice(res)
     setTriggerRoll(false)
+    await getBalance()
+    alert(`It was a ${res}`)
   }
 
   return (

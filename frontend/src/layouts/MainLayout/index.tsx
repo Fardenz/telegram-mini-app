@@ -1,11 +1,14 @@
 // MainLayout with applogo and balance
 // Path: src/layouts/MainLayout/mainLayout.tsx
 
-import React, { ReactNode } from "react"
+import React, { ReactNode, useEffect } from "react"
 import { Box, Flex, IconButton, Text } from "@chakra-ui/react"
 import { ArrowBackIcon } from "@chakra-ui/icons"
 import { useNavigate, useLocation } from "react-router-dom"
 import { HOME } from "@router/paths"
+import Wallet from "@services/wallet"
+import { useState, useContext } from "react"
+import { useTelegramContext } from "@contexts/telegramContext"
 
 interface MainLayoutProps {
   children: ReactNode
@@ -14,6 +17,11 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const navigate = useNavigate()
   const location = useLocation()
+  const { balance, getBalance } = useTelegramContext()
+
+  useEffect(() => {
+    getBalance()
+  }, [location])
 
   return (
     <Flex direction="column" align="center" maxW={{ xl: "1200px" }} m="0 auto">
@@ -35,7 +43,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           Telegram Mini App
         </Text>
         <Text fontSize="medium" fontWeight="bold">
-          15€
+          {balance}€
         </Text>
       </Box>
       <Box w="100%" h="calc(100vh - 100px)">
