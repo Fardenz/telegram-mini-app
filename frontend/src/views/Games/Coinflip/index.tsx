@@ -34,9 +34,10 @@ const CoinflipView: React.FC = () => {
     console.log(coin)
     const res = await GamesService.play(coin === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
-    alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
     getBalance()
-    setResult("")
+    setTimeout(() => {
+      alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
+    }, 2600);
   }
 
   return (
