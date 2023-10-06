@@ -31,6 +31,9 @@ export default class GameEndpoints {
       if (req.body.type === GameType.DICE) {
         result = await getDiceResult()
       } else if (req.body.type === GameType.COINFLIP) {
+        if (req.body.choice.some((choice) => choice !== 1 && choice !== 2)) {
+          throw new CustomError("Invalid choice, only '1' or '2' are allowed");
+        }
         result = await getCoinflipResult()
       } else {
         throw new CustomError("Unrecognized game type");
