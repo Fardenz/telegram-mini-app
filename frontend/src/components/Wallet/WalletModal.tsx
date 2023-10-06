@@ -16,7 +16,7 @@ import {
 import TopUpTab from "./TopUpTab";
 import WithdrawalTab from "./WithdrawalTab";
 import Wallet from "@services/wallet";
-import { TelegramContextProvider, useTelegramContext } from "@contexts/telegramContext";
+import { useTelegramContext } from "@contexts/telegramContext";
 
 interface WalletModalProps {
     isOpen: boolean;

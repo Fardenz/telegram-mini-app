@@ -30,7 +30,7 @@ const HomeView: React.FC = () => {
             setModalOpen(true);
           }}
         >
-          Reload
+          Wallet
         </Button>
       </Box>
       <WalletModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
