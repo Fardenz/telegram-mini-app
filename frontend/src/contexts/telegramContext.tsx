@@ -24,7 +24,6 @@ const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) 
     WebApp.ready()
     setUserData(WebApp.initDataUnsafe)
     SuperFetch.setToken(WebApp.initData)
-    console.log('entra')
   }, [])
 
   const value = useMemo(

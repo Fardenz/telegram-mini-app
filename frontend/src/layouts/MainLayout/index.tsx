@@ -35,7 +35,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           Telegram Mini App
         </Text>
         <Text fontSize="medium" fontWeight="bold">
-          $$$: 15€
+          15€
         </Text>
       </Box>
       <Box w="100%" h="calc(100vh - 100px)">

@@ -1,29 +1,22 @@
 // Coinflip component
 
-import React, { useState, useEffect } from "react"
-import {
-  Box,
-  Button,
-  Checkbox,
-  CheckboxGroup,
-  Flex,
-  Grid,
-  HStack,
-  Image,
-  Stack,
-  Text,
-  useRadioGroup,
-} from "@chakra-ui/react"
-import RadioCard from "@components/RadioCard"
+import React, { useState } from "react"
+import { Box, Button, Checkbox, Flex, Grid, Stack, Text } from "@chakra-ui/react"
+import Dice from "@components/Dice"
 
 const DiceView: React.FC = () => {
   const options = [1, 2, 3, 4, 5, 6] // Coin options duh
   const [checkedItems, setCheckedItems] = useState(options.map(() => false))
+  const [triggerRoll, setTriggerRoll] = useState<boolean>(false)
+  const [outputDice, setOutputDice] = useState<number>(1)
 
   // Handle backend call
   const handleThrowDice = () => {
     const res = options.filter((val, idx) => checkedItems[idx] && val)
     console.log(res)
+
+    setOutputDice(6)
+    setTriggerRoll(!triggerRoll)
   }
 
   return (
@@ -36,8 +29,7 @@ const DiceView: React.FC = () => {
         alignItems="center"
         justifyContent="space-between"
       >
-        {/* TODO: Ver porque no carg, posiblemente ts loaders */}
-        {/* <Image src="../../../assets/img/dice.svg" alt="Dice" /> */}
+        <Dice triggerRoll={triggerRoll} outputDice={outputDice} />
       </Box>
       <Box
         w="100%"
