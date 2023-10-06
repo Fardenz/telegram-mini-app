@@ -11,7 +11,7 @@ const Dice = ({ triggerRoll, outputDice }: DiceInterface) => {
   const FACES = 6
 
   const [intrvl, setIntrvl] = useState<any>()
-  const [diceFace, setDiceFace] = useState<any>(4)
+  const [diceFace, setDiceFace] = useState<any>(1)
 
   useEffect(() => {
     if (!triggerRoll) {

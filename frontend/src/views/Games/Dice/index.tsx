@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Box, Button, Checkbox, Flex, Grid, Stack, Text } from "@chakra-ui/react"
 import Dice from "@components/Dice"
+import GamesService from "@services/games"
 
 const DiceView: React.FC = () => {
   const options = [1, 2, 3, 4, 5, 6] // Coin options duh
@@ -11,12 +12,24 @@ const DiceView: React.FC = () => {
   const [outputDice, setOutputDice] = useState<number>(1)
 
   // Handle backend call
-  const handleThrowDice = () => {
-    const res = options.filter((val, idx) => checkedItems[idx] && val)
+  const handleThrowDice = async () => {
+    const opt = options.filter((val, idx) => checkedItems[idx] && val)
+    console.log(opt)
+
+    if (opt.length < 3) return alert("Please select 3 options")
+
+    setTriggerRoll(true)
+
+    const res: number | undefined = await GamesService.playDice(opt, "dice")
     console.log(res)
 
-    setOutputDice(6)
-    setTriggerRoll(!triggerRoll)
+    if (!res) {
+      setTriggerRoll(false)
+      return alert("Something went wrong")
+    }
+
+    setOutputDice(res)
+    setTriggerRoll(false)
   }
 
   return (
