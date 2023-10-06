@@ -3,10 +3,13 @@
 import React, { useState } from "react"
 import { Box, Button, Flex, HStack, Text, useRadioGroup } from "@chakra-ui/react"
 import RadioCard from "@components/RadioCard"
+import GamesService from "@services/games"
+import { useTelegramContext } from "@contexts/telegramContext"
 
 // Coinflip component TODO: Refactor
 const CoinflipView: React.FC = () => {
-  const [coin, setCoin] = useState<"Heads" | "Tails" | null>(null) // Coin state TODO: Improve external types
+  const { getBalance } = useTelegramContext() // Telegram context
+  const [coin, setCoin] = useState<"Heads" | "Tails">("Heads") // Coin state TODO: Improve external types
   const options = ["Heads", "Tails"] // Coin options duh
 
   // Radio Group hook
@@ -21,8 +24,13 @@ const CoinflipView: React.FC = () => {
   const group = getRootProps() // Group props
 
   // Method who handles server call with the side chosen by user
-  const handleThrowCoin = () => {
+  const handleThrowCoin = async () => {
+    if (!coin) return alert("Please select a side")
+
     console.log(coin)
+    const res = await GamesService.play(coin === "Heads" ? [1] : [2], "coinflip")
+    alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
+    getBalance()
   }
 
   return (
