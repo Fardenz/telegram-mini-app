@@ -1,9 +1,8 @@
 import { Link as ReactRouterLink } from "react-router-dom"
 import { Box, Button, Flex, Link as ChakraLink } from "@chakra-ui/react"
-import { COIN_GAME, DICE_GAME } from '../../router/paths';
-import Wallet from "../../services/wallet";
 import { useState } from "react";
 import WalletModal from "../../components/Wallet/WalletModal";
+import { COIN_GAME, DICE_GAME } from '@router/paths';
 
 const HomeView: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);

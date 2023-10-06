@@ -35,7 +35,6 @@ export default class WalletEndpoints {
   }
 
   public async postWithdrawMoney(req: CustomExpressRequest<unknown, unknown, PostWithdrawMoneyRequestBody>, res: Response<PostWithdrawMoneyResponse | ErrorResponse>) {
-    console.log("postWithdrawMoney");
     try {
       const user = await User.findOne({
         telegramId: req.customData.telegramId.toString()

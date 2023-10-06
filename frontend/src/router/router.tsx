@@ -4,7 +4,7 @@ import PublicRoute from "./PublicRoute"
 import HomeView from "@views/Home"
 import CoinFlipView from "@views/Games/Coinflip"
 import MainLayout from "@layouts/MainLayout"
-import DiceView from '../views/Games/Dice/index';
+import DiceView from '@views/Games/Dice/index';
 
 const Router = createBrowserRouter(
   [

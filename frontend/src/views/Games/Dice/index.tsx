@@ -24,7 +24,7 @@ const DiceView: React.FC = () => {
 
     setTriggerRoll(true)
 
-    const res: number | undefined = await GamesService.playDice(opt, "dice")
+    const res: number | undefined = await GamesService.play(opt, "dice")
 
     if (!res) {
       setTriggerRoll(false)

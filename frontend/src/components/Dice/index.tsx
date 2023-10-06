@@ -1,4 +1,4 @@
-// Code adapdet from https://codepen.io/danncortes
+// Code adapted from https://codepen.io/danncortes
 import { useEffect, useState } from "react"
 import "./style.scss"
 

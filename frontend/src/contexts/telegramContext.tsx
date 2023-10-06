@@ -30,7 +30,7 @@ const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) 
 
   const getBalance = async () => {
     const res = await Wallet.getBalance()
-    if (!res) return console.error("Something went wrong")
+    if (!res) return alert("Something went wrong getting your balance")
     setBalance(res)
   }
 
