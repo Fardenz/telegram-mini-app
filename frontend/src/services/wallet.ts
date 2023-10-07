@@ -30,7 +30,6 @@ export default class Wallet {
 
   static async getBalance(): Promise<number | undefined> {
     try {
-      console.log(Settings.apiUrl())
       const response = await fetch(`${Settings.apiUrl()}/wallet`, {
         headers: {
           Authorization: window.Telegram.WebApp.initData,
@@ -38,7 +37,6 @@ export default class Wallet {
       })
 
       const res = await response.json()
-      console.log(res)
       return centsToEuros(res.amountInCents)
     } catch (e) {
       console.error(e)

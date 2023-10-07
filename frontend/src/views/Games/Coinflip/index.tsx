@@ -12,7 +12,7 @@ type CoinType = "Heads" | "Tails"
 // Coinflip component TODO: Refactor
 const CoinflipView: React.FC = () => {
   const { getBalance } = useTelegramContext() // Telegram context
-  const [coin, setCoin] = useState<CoinType>("Heads") // Coin state TODO: Improve external types
+  const [userChoice, setUserChoice] = useState<CoinType>("Heads") // Coin state TODO: Improve external types
   const [result, setResult] = useState<CoinType | "">("") // Result state
   const options = ["Heads", "Tails"] // Coin options duh
 
@@ -21,7 +21,7 @@ const CoinflipView: React.FC = () => {
     name: "CoinGame",
     defaultValue: "Heads",
     onChange: (val) => {
-      setCoin(val as CoinType)
+      setUserChoice(val as CoinType)
     },
   })
 
@@ -29,14 +29,16 @@ const CoinflipView: React.FC = () => {
 
   // Method who handles server call with the side chosen by user
   const handleThrowCoin = async () => {
-    if (!coin) return alert("Please select a side")
+    if (!userChoice) return alert("Please select a side")
 
-    console.log(coin)
-    const res = await GamesService.play(coin === "Heads" ? [1] : [2], "coinflip")
+    const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
-    alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
-    getBalance()
-    setResult("")
+    await getBalance()
+    // Timeout for animation
+    setTimeout(() => {
+      alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
+      setResult("")
+    }, 1500)
   }
 
   return (

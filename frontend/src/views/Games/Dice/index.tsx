@@ -18,7 +18,6 @@ const DiceView: React.FC = () => {
   // Handle backend call
   const handleThrowDice = async () => {
     const opt = options.filter((val, idx) => checkedItems[idx] && val)
-    console.log(opt)
 
     if (opt.length < 3) return alert("Please select 3 options")
 

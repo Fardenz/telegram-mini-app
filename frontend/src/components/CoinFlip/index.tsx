@@ -6,9 +6,20 @@ interface CoinFlipInterface {
 }
 
 const CoinFlip = ({ result }: CoinFlipInterface) => {
+  const [animationClass, setAnimationClass] = useState("")
+
+  useEffect(() => {
+    if (result) {
+      setAnimationClass("")
+      setTimeout(() => {
+        setAnimationClass(result)
+      }, 50)
+    }
+  }, [result])
+
   return (
     <div className="App">
-      <div id="coin" className={result} key={+new Date()}>
+      <div id="coin" className={animationClass}>
         <div className="side-a">
           <h2>TAIL</h2>
         </div>

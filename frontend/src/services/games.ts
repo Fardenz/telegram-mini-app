@@ -7,7 +7,6 @@ export default class GamesService {
         choice: choices,
         type: type,
       }
-      console.log(Settings.apiUrl())
       const response = await fetch(`${Settings.apiUrl()}/game`, {
         headers: {
           Authorization: window.Telegram.WebApp.initData,
@@ -19,7 +18,6 @@ export default class GamesService {
       })
 
       const res = await response.json()
-      console.log(res)
       return res.result as number
     } catch (e) {
       console.error(e)
