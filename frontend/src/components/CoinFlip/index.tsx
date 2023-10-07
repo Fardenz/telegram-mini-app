@@ -19,14 +19,12 @@ const CoinFlip = ({ result }: CoinFlipInterface) => {
   }, [result])
 
   return (
-    <div className="App">
-      <div id="coin" className={animationClass}>
-        <div className="side-a">
-          <h2>TAIL</h2>
-        </div>
-        <div className="side-b">
-          <h2>HEAD</h2>
-        </div>
+    <div id="coin" className={animationClass}>
+      <div className="side-a">
+        <h2>TAIL</h2>
+      </div>
+      <div className="side-b">
+        <h2>HEAD</h2>
       </div>
     </div>
   )

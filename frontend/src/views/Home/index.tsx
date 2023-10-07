@@ -1,17 +1,29 @@
-import { Link as ReactRouterLink } from "react-router-dom"
+import { Link as ReactRouterLink, useLocation } from "react-router-dom"
 import { Box, Button, Flex, Link as ChakraLink } from "@chakra-ui/react"
-import { useState } from "react";
-import WalletModal from "../../components/Wallet/WalletModal";
-import { COIN_GAME, DICE_GAME } from '@router/paths';
+import { useEffect, useState } from "react"
+import WalletModal from "../../components/Wallet/WalletModal"
+import { COIN_GAME, DICE_GAME } from "@router/paths"
+import { WebApp } from "@grammyjs/web-app"
 
 const HomeView: React.FC = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  
+  const location = useLocation()
+  const [isModalOpen, setModalOpen] = useState(false)
+
+  const openModal = () => setModalOpen(true)
+
+  useEffect(() => {
+    WebApp.MainButton.setText("Wallet").show().onClick(openModal)
+
+    return () => {
+      WebApp.MainButton.offClick(openModal)
+    }
+  }, [location.pathname])
+
   return (
     <Flex direction="column" align="center" maxW={{ xl: "1200px" }} m="0 auto" h="100%" px="10%">
       <Box
         w="100%"
-        h="80%"
+        h="100%"
         color="white"
         display="flex"
         alignItems="center"
@@ -24,19 +36,9 @@ const HomeView: React.FC = () => {
           Coinflip
         </ChakraLink>
       </Box>
-      <Box w="100%" h="20%" display="flex" alignContent="center" justifyContent="end">
-        <Button
-          onClick={() => {
-            setModalOpen(true);
-          }}
-        >
-          Wallet
-        </Button>
-      </Box>
       <WalletModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </Flex>
   )
 }
-
 
 export default HomeView

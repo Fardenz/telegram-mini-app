@@ -1,10 +1,12 @@
 // Coinflip component
 
-import React, { useState } from "react"
-import { Box, Button, Checkbox, Flex, Grid, Stack, Text } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react"
+import { Box, Checkbox, Flex, Grid, Stack, Text } from "@chakra-ui/react"
 import Dice from "@components/Dice"
 import GamesService from "@services/games"
 import { useTelegramContext } from "@contexts/telegramContext"
+import { WebApp } from "@grammyjs/web-app"
+import { DiceContainerStyle, OptionsContainerStyle, StackStyle, WrapperStyle } from "./styles"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()
@@ -36,34 +38,34 @@ const DiceView: React.FC = () => {
     alert(`It was a ${res}`)
   }
 
+  const handleCheckboxChange = (index: number, checked: boolean) => {
+    const alreadyChecked = checkedItems.filter((check) => check === true).length
+    if (checked && alreadyChecked > 2) return
+
+    const newCheckedItems = [
+      ...checkedItems.slice(0, index),
+      checked,
+      ...checkedItems.slice(index + 1),
+    ]
+    setCheckedItems(newCheckedItems)
+  }
+
+  useEffect(() => {
+    if (WebApp.MainButton.isVisible)
+      WebApp.MainButton.setText("Throw Dice").offClick(handleThrowDice).onClick(handleThrowDice)
+
+    return () => {
+      WebApp.MainButton.offClick(handleThrowDice)
+    }
+  }, [location.pathname, checkedItems])
+
   return (
-    <Flex direction="column" align="center" maxW={{ xl: "1200px" }} m="0 auto" h="100%" px="10%">
-      <Box
-        w="100%"
-        h="50%"
-        color="white"
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
+    <Flex style={WrapperStyle} direction="column">
+      <Box style={DiceContainerStyle}>
         <Dice triggerRoll={triggerRoll} outputDice={outputDice} />
       </Box>
-      <Box
-        w="100%"
-        h="30%"
-        color="white"
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Stack
-          spacing={[1, 5]}
-          direction={["column", "row"]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          w="100%"
-        >
+      <Box style={OptionsContainerStyle}>
+        <Stack direction={["column", "row"]} style={StackStyle}>
           <Grid templateColumns="repeat(3, 1fr)" gap={10}>
             {options.map((option, index) => {
               return (
@@ -72,15 +74,7 @@ const DiceView: React.FC = () => {
                   color="telegram"
                   key={index}
                   value={option}
-                  onChange={(e) => {
-                    const checked = checkedItems.filter((check) => check === true).length
-                    if (e.target.checked && checked > 2) return
-                    setCheckedItems([
-                      ...checkedItems.slice(0, index),
-                      e.target.checked,
-                      ...checkedItems.slice(index + 1),
-                    ])
-                  }}
+                  onChange={(e) => handleCheckboxChange(index, e.target.checked)}
                 >
                   <Text color="black">{option}</Text>
                 </Checkbox>
@@ -88,9 +82,6 @@ const DiceView: React.FC = () => {
             })}
           </Grid>
         </Stack>
-      </Box>
-      <Box w="100%" h="20%" display="flex" alignContent="center" justifyContent="center" pt="20px">
-        <Button onClick={handleThrowDice}>Throw dice</Button>
       </Box>
     </Flex>
   )

@@ -1,11 +1,13 @@
 // Coinflip component
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Button, Flex, HStack, Text, useRadioGroup } from "@chakra-ui/react"
 import RadioCard from "@components/RadioCard"
 import GamesService from "@services/games"
 import { useTelegramContext } from "@contexts/telegramContext"
 import CoinFlip from "@components/CoinFlip"
+import { WebApp } from "@grammyjs/web-app"
+import { CoinBoxStyle, HStackStyle, OptionBoxStyle, WrapperStyle } from "./styles"
 
 type CoinType = "Heads" | "Tails"
 
@@ -34,35 +36,28 @@ const CoinflipView: React.FC = () => {
     const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
     await getBalance()
-    // Timeout for animation
     setTimeout(() => {
       alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
       setResult("")
     }, 1500)
   }
 
+  useEffect(() => {
+    if (WebApp.MainButton.isVisible)
+      WebApp.MainButton.setText("Throw Coin").offClick(handleThrowCoin).onClick(handleThrowCoin)
+
+    return () => {
+      WebApp.MainButton.offClick(handleThrowCoin)
+    }
+  }, [location.pathname, userChoice])
+
   return (
-    <Flex direction="column" align="center" maxW={{ xl: "1200px" }} m="0 auto" h="100%" px="10%">
-      {/* Here goes the coin animation */}
-      <Box
-        w="100%"
-        h="60%"
-        color="black"
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
+    <Flex direction="column" style={WrapperStyle}>
+      <Box style={CoinBoxStyle}>
         <CoinFlip result={result} />
       </Box>
-      <Box
-        w="100%"
-        h="30%"
-        color="white"
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <HStack {...group} w="100%" justifyContent="center">
+      <Box style={OptionBoxStyle}>
+        <HStack {...group} style={HStackStyle}>
           {options.map((value) => {
             const radio = getRadioProps({ value })
             return (
@@ -72,9 +67,6 @@ const CoinflipView: React.FC = () => {
             )
           })}
         </HStack>
-      </Box>
-      <Box h="10%" mb="5%">
-        <Button onClick={handleThrowCoin}>Throw Coin</Button>
       </Box>
     </Flex>
   )
