@@ -23,6 +23,23 @@
     ```sh
    npm install
    ```
+6. Execute the frontend in your local machine:
+
+   ```sh
+   npm run dev
+   ```
+
+
+## Deployment
+Build the Docker Container:
+   
+     ```sh
+   docker-compose up 
+   ```
+
+
+
+## Developing
     - Route mapping: update the [`tsconfig.json`](https://github.com/Fardenz/telegram-mini-                  
       app/blob/main/frontend/tsconfig.json) and [`tsconfig.vite.json`](https://github.com/Fardenz/telegram-mini- 
       app/blob/main/frontend/tsconfig.vite.json) to use the new path aliases, just like all the rest.
@@ -32,18 +49,6 @@
          app/blob/main/frontend/src/router/paths.ts).
       2. Add the route to the router. If a header is needed, ensure to include the `MainLayout` component.
       3. Create the view in the `views` folder.
-
-5. Build the Docker Container:
-   
-     ```sh
-   npm run dev
-   ```
-  
-6. Build the app for production:
-
-   ```sh
-   npm run build
-   ```
 
 
 ---------------------------------------------------------------
