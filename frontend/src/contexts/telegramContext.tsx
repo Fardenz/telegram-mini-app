@@ -3,6 +3,7 @@ import SuperFetch from "@infrastructure/superFetch"
 import { WebApp } from "@grammyjs/web-app"
 import { useLocation } from "react-router-dom"
 import Wallet from "@services/wallet"
+import { useCustomToast } from "@helpers/toastUtil"
 
 interface TelegramContextType {
   userData: WebAppInitData
@@ -12,7 +13,7 @@ interface TelegramContextType {
 
 const emptyTelegramContext: TelegramContextType = {
   userData: { hash: "", auth_date: 0 },
-  getBalance: async () => {},
+  getBalance: async () => { },
   balance: 0,
 }
 
@@ -27,10 +28,10 @@ const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) 
   const emptyUserData: WebAppInitData = { hash: "", auth_date: 0 }
   const [userData, setUserData] = useState<WebAppInitData>(emptyUserData)
   const [balance, setBalance] = useState<number>(0)
-
+  const showToast = useCustomToast();
   const getBalance = async () => {
-    const res = await Wallet.getBalance()
-    if (!res) return alert("Something went wrong getting your balance")
+    const res = await Wallet.getBalance(showToast)
+    if (!res) return;
     setBalance(res)
   }
 
