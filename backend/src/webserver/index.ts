@@ -32,10 +32,10 @@ export default class WebAppServer {
       exposeApiDocs: true,
       docsPath: '/api-documentation',
       operations: {
-        getWallet: this.walletEndpoints.getWallet,
-        postWithdrawMoney: this.walletEndpoints.postWithdrawMoney,
-        postGame: this.gameEndpoints.postGame,
-        getPaymentLink: this.walletEndpoints.getPaymentLink
+        getWallet: (req, res) => this.walletEndpoints.getWallet(req, res),
+        postWithdrawMoney: (req, res) => this.walletEndpoints.postWithdrawMoney(req, res),
+        postGame: (req, res) => this.gameEndpoints.postGame(req, res),
+        getPaymentLink: (req, res) => this.walletEndpoints.getPaymentLink(req, res)
       }
     });
     app.use(

@@ -15,7 +15,6 @@ export default class WalletEndpoints {
 
   constructor(@inject(Telegraf) bot: Telegraf) {
     this._bot = bot;
-    this.getPaymentLink = this.getPaymentLink.bind(this);
   }
 
   public async getWallet(req: CustomExpressRequest, res: Response<GetWalletResponse | ErrorResponse>) {

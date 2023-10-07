@@ -1,3 +1,4 @@
+// Code adapted from https://codesandbox.io/s/coin-flip-react-example-01j7q?file=/src/App.js
 import { useEffect, useState } from "react"
 import "./style.scss"
 

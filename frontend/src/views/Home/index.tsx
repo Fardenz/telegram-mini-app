@@ -1,9 +1,12 @@
 import { Link as ReactRouterLink } from "react-router-dom"
 import { Box, Button, Flex, Link as ChakraLink } from "@chakra-ui/react"
+import { useState } from "react";
+import WalletModal from "../../components/Wallet/WalletModal";
 import { COIN_GAME, DICE_GAME } from '@router/paths';
-import Wallet from "@services/wallet";
 
 const HomeView: React.FC = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  
   return (
     <Flex direction="column" align="center" maxW={{ xl: "1200px" }} m="0 auto" h="100%" px="10%">
       <Box
@@ -24,14 +27,16 @@ const HomeView: React.FC = () => {
       <Box w="100%" h="20%" display="flex" alignContent="center" justifyContent="end">
         <Button
           onClick={() => {
-            Wallet.createPaymentLink(/*get from input*/ { amount: 15 })
+            setModalOpen(true);
           }}
         >
-          Reload
+          Wallet
         </Button>
       </Box>
+      <WalletModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </Flex>
   )
 }
+
 
 export default HomeView
