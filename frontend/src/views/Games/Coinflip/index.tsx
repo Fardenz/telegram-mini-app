@@ -8,6 +8,7 @@ import { useTelegramContext } from "@contexts/telegramContext"
 import CoinFlip from "@components/CoinFlip"
 import { WebApp } from "@grammyjs/web-app"
 import { CoinBoxStyle, HStackStyle, OptionBoxStyle, WrapperStyle } from "./styles"
+import { useCustomToast } from "@helpers/toastUtil"
 
 type CoinType = "Heads" | "Tails"
 
@@ -17,6 +18,7 @@ const CoinflipView: React.FC = () => {
   const [userChoice, setUserChoice] = useState<CoinType>("Heads") // Coin state TODO: Improve external types
   const [result, setResult] = useState<CoinType | "">("") // Result state
   const options = ["Heads", "Tails"] // Coin options duh
+  const showToast = useCustomToast()
 
   // Radio Group hook
   const { getRootProps, getRadioProps } = useRadioGroup({
@@ -37,7 +39,15 @@ const CoinflipView: React.FC = () => {
     setResult(res === 1 ? "Heads" : "Tails")
     await getBalance()
     setTimeout(() => {
-      alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
+      // WebApp.showPopup({
+      //   title: "hola",
+      //   message: `The result was ${res === 1 ? "Heads" : "Tails"}`,
+      // })
+      // alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
+      showToast({
+        title: `Has ${res === (userChoice == "Heads" ? 1 : 2) ? "ganado" : "perdido"}`,
+        status: res === (userChoice == "Heads" ? 1 : 2) ? "success" : "error",
+      })
       setResult("")
     }, 1500)
   }
