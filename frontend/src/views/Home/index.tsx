@@ -34,7 +34,7 @@ const HomeView: React.FC = () => {
         <ChakraLink color="black" as={ReactRouterLink} to={DICE_GAME}>
           <Flex direction="column">
             <Box>
-              <img src="/assets/img/dice.gif" style={GameSelectorGifStyle} alt="Description of GIF" />
+              <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Description of GIF" />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
@@ -46,7 +46,7 @@ const HomeView: React.FC = () => {
         <ChakraLink color="black" as={ReactRouterLink} to={COIN_GAME}>
           <Flex direction="column">
             <Box>
-              <img src="/assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
+              <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
