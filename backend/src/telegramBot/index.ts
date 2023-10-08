@@ -9,7 +9,16 @@ export default class TelegramBot {
   constructor(readonly bot: Telegraf) {
     // Create a bot that uses 'polling' to fetch new updates
     bot.on(message('text'), async (ctx) => {
-      ctx.reply('👍')
+      ctx.reply('👍', {
+        reply_markup: {
+          inline_keyboard: [[{
+            text: 'Open',
+            web_app: {
+              url: config.frontendEndpoint
+            }
+          }]]
+        }
+      })
 
       await ctx.setChatMenuButton({
         type: 'web_app',

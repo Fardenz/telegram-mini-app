@@ -13,7 +13,7 @@ import isDarkMode from "@helpers/isDarkMode"
 import promisifiedSetTimeout from "@helpers/promisifiedSetTimeout"
 
 const DiceView: React.FC = () => {
-  const { getBalance } = useTelegramContext()
+  const { balance, getBalance } = useTelegramContext()
   const options = [{ display: "1️⃣", value: 1 }, { display: "2️⃣", value: 2 }, { display: "3️⃣", value: 3 }, { display: "4️⃣", value: 4 }, { display: "5️⃣", value: 5 }, { display: "6️⃣", value: 6 }];
 
   const [checkedItems, setCheckedItems] = useState(options.map(() => false))
@@ -28,6 +28,14 @@ const DiceView: React.FC = () => {
       showToast({
         title: 'Please select at least one option 1️⃣',
         status: 'info'
+      })
+      return;
+    }
+
+    if (balance && balance < opt.length * 1) {
+      showToast({
+        title: 'You don\'t have enough money to play this game. 💸',
+        status: 'error'
       })
       return;
     }
