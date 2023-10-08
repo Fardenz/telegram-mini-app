@@ -15,7 +15,7 @@ type CoinType = "Heads" | "Tails"
 
 // Coinflip component TODO: Refactor
 const CoinflipView: React.FC = () => {
-  const { getBalance } = useTelegramContext() // Telegram context
+  const { balance, getBalance } = useTelegramContext() // Telegram context
   const [userChoice, setUserChoice] = useState<CoinType>("Heads") // Coin state TODO: Improve external types
   const [result, setResult] = useState<CoinType | "">("") // Result state
   const options = ["Heads", "Tails"] // Coin options duh
@@ -41,6 +41,14 @@ const CoinflipView: React.FC = () => {
       });
       return;
     }
+    if (balance && balance < 1) {
+      showToast({
+        title: 'You don\'t have enough money to play this game. 💸',
+        status: 'error'
+      })
+      return;
+    }
+
 
     const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
