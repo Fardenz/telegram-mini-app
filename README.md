@@ -69,7 +69,9 @@ We're using Github Actions as our CI/CD tool. You can find the configuration in 
 
 <details>
 <summary>Backend</summary>
-The backend is automatically deployed to a custom server owned by us running Linux. You can set your custom secrets in the repository settings and it will automatically deploy to your server. The secrets are:
+The backend is automatically deployed to a custom server owned by us running Linux. We use docker to package the code so it's easier to spin multiple copies, isolate instances and deploy the minimum amount of code.
+
+You can set your custom secrets in the repository settings and it will automatically deploy to your server. The secrets are:
 
 ```
 SSH_HOST
