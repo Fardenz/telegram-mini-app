@@ -1,14 +1,14 @@
 // Coinflip component
 
 import React, { useEffect, useState } from "react"
-import { Box, Checkbox, Flex, Grid, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger, Stack, Text } from "@chakra-ui/react"
+import { Box, Checkbox, Flex, Grid, Stack, Text } from "@chakra-ui/react"
 import Dice from "@components/Dice"
 import GamesService from "@services/games"
 import { useTelegramContext } from "@contexts/telegramContext"
 import { WebApp } from "@grammyjs/web-app"
 import { DiceContainerStyle, OptionsContainerStyle, StackStyle, WrapperStyle } from "./styles"
 import { useCustomToast } from "@helpers/toastUtil"
-import { InfoOutlineIcon } from "@chakra-ui/icons"
+import { InformationPopover } from "@components/Games/informationPopover"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()
@@ -77,19 +77,7 @@ const DiceView: React.FC = () => {
 
   return (
     <Flex style={WrapperStyle} direction="column">
-
-      <Box display={'flex'} justifyContent={'right'} paddingTop={'5px'}>
-        <Popover>
-          <PopoverTrigger>
-            <InfoOutlineIcon></InfoOutlineIcon>
-          </PopoverTrigger>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverBody>Every bet is 1€</PopoverBody>
-          </PopoverContent>
-        </Popover >
-      </Box>
+      <InformationPopover />
       <Box style={DiceContainerStyle}>
         <Dice triggerRoll={triggerRoll} outputDice={outputDice} />
       </Box>
