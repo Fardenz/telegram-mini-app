@@ -6,11 +6,21 @@ import { COIN_GAME, DICE_GAME } from "@router/paths"
 import { WebApp } from "@grammyjs/web-app"
 import { GameSelectorGifStyle } from "./styles"
 import { useTelegramContext } from "../../contexts/telegramContext"
+import { useCustomToast } from "../../helpers/toastUtil"
 
 const HomeView: React.FC = () => {
   const location = useLocation()
   const [isModalOpen, setModalOpen] = useState(false)
   const { balance } = useTelegramContext()
+  const showToast = useCustomToast()
+  const hasNotEnoughMoneyToPlay = balance < 1
+
+  useEffect(() => {
+      showToast({
+        title: 'Please deposit money in your wallet to play',
+        status: "info"
+      })
+  }, [])
 
   const openModal = () => setModalOpen(true)
 
@@ -33,26 +43,26 @@ const HomeView: React.FC = () => {
         justifyContent="flex-start"
         flexDirection={{ base: "column", md: "row" }}
       >
-        <ChakraLink color="black" as={ReactRouterLink} to={DICE_GAME}>
+        <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : DICE_GAME}>
           <Flex direction="column">
             <Box>
               <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Description of GIF" />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="teal" variant="outline" disabled={balance < 1}> Dice </Button>
+                <Button colorScheme="teal" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
               </Flex>
             </Box>
           </Flex>
         </ChakraLink>
-        <ChakraLink color="black" as={ReactRouterLink} to={COIN_GAME}>
+        <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : COIN_GAME}>
           <Flex direction="column">
             <Box>
               <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="teal" variant="outline" disabled={balance < 1} > Coinflip </Button>
+                <Button colorScheme="teal" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
               </Flex>
             </Box>
           </Flex>
