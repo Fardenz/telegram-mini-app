@@ -45,7 +45,7 @@ $dotSize: $diceSize * 0.18;
   display: grid;
   grid-template-columns: repeat(3, $dotSize);
   grid-template-rows: repeat(3, $dotSize);
-  grid-gap: $dotSize/4 $dotSize/4;
+  grid-gap: calc($dotSize / 4) calc($dotSize / 4);
 }
 
 .dot {
@@ -67,7 +67,7 @@ $dotSize: $diceSize * 0.18;
   }
 
   .face-1 {
-    transform: translateX(0) translateY(0) translateZ($diceSize/2);
+    transform: translateX(0) translateY(0) translateZ(calc($diceSize / 2));
     .dot-container {
       .dot {
         grid-column: 2 / span 1;
@@ -157,7 +157,7 @@ $dotSize: $diceSize * 0.18;
   }
 
   .face-6 {
-    transform: translateX(0) translateY(0) translateZ(-$diceSize/2);
+    transform: translateX(0) translateY(0) translateZ(calc($diceSize * -1 / 2));
     .dot-container {
       .dot:nth-child(1) {
         grid-column: 1 / span 1;
