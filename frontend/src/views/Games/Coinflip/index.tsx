@@ -57,7 +57,7 @@ const CoinflipView: React.FC = () => {
 
   useEffect(() => {
     if (WebApp.MainButton.isVisible)
-      WebApp.MainButton.setText("Throw Coin").offClick(handleThrowCoin).onClick(handleThrowCoin)
+      WebApp.MainButton.setText("Throw Coin 🪙").offClick(handleThrowCoin).onClick(handleThrowCoin)
 
     return () => {
       WebApp.MainButton.offClick(handleThrowCoin)
