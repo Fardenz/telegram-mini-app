@@ -16,10 +16,12 @@ const HomeView: React.FC = () => {
   const hasNotEnoughMoneyToPlay = balance < 1
 
   useEffect(() => {
-      showToast({
-        title: 'Please deposit money in your wallet to play',
-        status: "info"
-      })
+      if (hasNotEnoughMoneyToPlay) {
+        showToast({
+          title: 'Please deposit money in your wallet to play',
+          status: "info"
+        })
+      }
   }, [])
 
   const openModal = () => setModalOpen(true)
