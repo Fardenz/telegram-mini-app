@@ -12,7 +12,7 @@ const HomeView: React.FC = () => {
   const openModal = () => setModalOpen(true)
 
   useEffect(() => {
-    WebApp.MainButton.setText("Wallet").show().onClick(openModal)
+    WebApp.MainButton.setParams({ color: '#33084F', text: 'Wallet' }).show().onClick(openModal)
 
     return () => {
       WebApp.MainButton.offClick(openModal)
