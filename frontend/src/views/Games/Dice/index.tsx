@@ -46,10 +46,11 @@ const DiceView: React.FC = () => {
     setOutputDice(res)
     setTriggerRoll(false)
     await getBalance()
+    const hasUserWon = opt.includes(res)
     showToast({
-      title: `It was a ${res}`,
-      status: 'info'
-    })
+      title: `It was a ${res}. You ${hasUserWon ? "won" : "lost"}`,
+      status: hasUserWon ? "success" : "error",
+    });
   }
 
   const handleCheckboxChange = (index: number, checked: boolean) => {
