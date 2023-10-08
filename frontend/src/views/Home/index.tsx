@@ -5,10 +5,12 @@ import WalletModal from "../../components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
 import { WebApp } from "@grammyjs/web-app"
 import { GameSelectorGifStyle } from "./styles"
+import { useTelegramContext } from "../../contexts/telegramContext"
 
 const HomeView: React.FC = () => {
   const location = useLocation()
   const [isModalOpen, setModalOpen] = useState(false)
+  const { balance } = useTelegramContext()
 
   const openModal = () => setModalOpen(true)
 
@@ -38,7 +40,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="teal" variant="outline"> Dice </Button>
+                <Button colorScheme="teal" variant="outline" disabled={balance < 1}> Dice </Button>
               </Flex>
             </Box>
           </Flex>
@@ -50,7 +52,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="teal" variant="outline"> Coinflip </Button>
+                <Button colorScheme="teal" variant="outline" disabled={balance < 1} > Coinflip </Button>
               </Flex>
             </Box>
           </Flex>
