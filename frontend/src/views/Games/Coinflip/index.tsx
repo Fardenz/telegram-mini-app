@@ -66,7 +66,7 @@ const CoinflipView: React.FC = () => {
 
   return (
     <Flex direction="column" style={WrapperStyle}>
-      <Box display={'flex'} justifyContent={'right'}>
+      <Box display={'flex'} justifyContent={'right'} paddingTop={'5px'}>
         <Popover>
           <PopoverTrigger>
             <InfoOutlineIcon></InfoOutlineIcon>

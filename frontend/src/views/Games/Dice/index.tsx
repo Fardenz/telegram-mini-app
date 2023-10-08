@@ -78,7 +78,7 @@ const DiceView: React.FC = () => {
   return (
     <Flex style={WrapperStyle} direction="column">
 
-      <Box display={'flex'} justifyContent={'right'}>
+      <Box display={'flex'} justifyContent={'right'} paddingTop={'5px'}>
         <Popover>
           <PopoverTrigger>
             <InfoOutlineIcon></InfoOutlineIcon>
