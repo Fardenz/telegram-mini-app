@@ -4,7 +4,13 @@ import { useEffect, useState } from "react"
 import WalletModal from "@components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
 import { WebApp } from "@grammyjs/web-app"
-import { GameSelectorContainerStyle, GameSelectorGifStyle, roundedButtonStyle } from "./styles"
+import {
+  ContainerButtonStyle,
+  GameSelectorContainerStyle,
+  GameSelectorGifStyle,
+  WrapperStyle,
+  roundedButtonStyle,
+} from "./styles"
 import { useTelegramContext } from "@contexts/telegramContext"
 import { useCustomToast } from "@helpers/toastUtil"
 import isDarkMode from "@helpers/isDarkMode"
@@ -38,16 +44,8 @@ const HomeView: React.FC = () => {
   }, [location.pathname])
 
   return (
-    <Flex direction="row" align="center" maxW={{ xl: "1200px" }} m="0 auto" h="100%" px="10%">
-      <Box
-        w="100%"
-        h="100%"
-        color="white"
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-start"
-        flexDirection={{ base: "column", md: "row" }}
-      >
+    <Flex style={WrapperStyle} direction="row">
+      <Box style={ContainerButtonStyle} flexDirection={{ base: "column", md: "row" }}>
         <ChakraLink
           color="black"
           as={ReactRouterLink}
@@ -69,7 +67,6 @@ const HomeView: React.FC = () => {
                   style={roundedButtonStyle}
                   isDisabled={hasNotEnoughMoneyToPlay}
                 >
-                  {" "}
                   Dice 🎲
                 </Button>
               </Flex>
@@ -97,7 +94,6 @@ const HomeView: React.FC = () => {
                   style={roundedButtonStyle}
                   isDisabled={hasNotEnoughMoneyToPlay}
                 >
-                  {" "}
                   Coinflip 🪙
                 </Button>
               </Flex>
