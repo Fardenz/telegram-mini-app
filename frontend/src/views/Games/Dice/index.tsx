@@ -7,6 +7,7 @@ import GamesService from "@services/games"
 import { useTelegramContext } from "@contexts/telegramContext"
 import { WebApp } from "@grammyjs/web-app"
 import { DiceContainerStyle, OptionsContainerStyle, StackStyle, WrapperStyle } from "./styles"
+import { useCustomToast } from "@helpers/toastUtil"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()
@@ -16,12 +17,19 @@ const DiceView: React.FC = () => {
   const [checkedItems, setCheckedItems] = useState(options.map(() => false))
   const [triggerRoll, setTriggerRoll] = useState<boolean>(false)
   const [outputDice, setOutputDice] = useState<number>(1)
+  const showToast = useCustomToast()
 
   // Handle backend call
   const handleThrowDice = async () => {
     const opt = options.filter((val, idx) => checkedItems[idx] && val)
 
-    if (opt.length < 3) return alert("Please select 3 options")
+    if (opt.length < 3) {
+      showToast({
+        title: "Please select 3 options",
+        status: 'info'
+      })
+      return;
+    }
 
     setTriggerRoll(true)
 
@@ -29,13 +37,20 @@ const DiceView: React.FC = () => {
 
     if (!res) {
       setTriggerRoll(false)
-      return alert("Something went wrong")
+      showToast({
+        title: 'Something went wrong',
+        status: 'error'
+      })
+      return;
     }
 
     setOutputDice(res)
     setTriggerRoll(false)
     await getBalance()
-    alert(`It was a ${res}`)
+    showToast({
+      title: `It was a ${res}`,
+      status: 'info'
+    })
   }
 
   const handleCheckboxChange = (index: number, checked: boolean) => {

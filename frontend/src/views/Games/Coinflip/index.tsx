@@ -33,17 +33,18 @@ const CoinflipView: React.FC = () => {
 
   // Method who handles server call with the side chosen by user
   const handleThrowCoin = async () => {
-    if (!userChoice) return alert("Please select a side")
+    if (!userChoice) {
+      showToast({
+        title: `Please select a side.`,
+        status: 'info'
+      });
+      return;
+    }
 
     const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
     await getBalance()
     setTimeout(() => {
-      // WebApp.showPopup({
-      //   title: "hola",
-      //   message: `The result was ${res === 1 ? "Heads" : "Tails"}`,
-      // })
-      // alert(`The result was ${res === 1 ? "Heads" : "Tails"}`)
       showToast({
         title: `Has ${res === (userChoice == "Heads" ? 1 : 2) ? "ganado" : "perdido"}`,
         status: res === (userChoice == "Heads" ? 1 : 2) ? "success" : "error",
