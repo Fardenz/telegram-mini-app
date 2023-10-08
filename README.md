@@ -90,7 +90,18 @@ We're using Github Pages to deploy the frontend, this allows us to have a public
 You can find the configuration in `.github/workflows/staging-deployment-frontend.yml`
 </details>
 
-### Architecture 
+### Architecture
+
+```mermaid
+graph TD
+    A[Telegram] -->|1. Messages| B[TheVegasBot]
+    B -->|Web App Link| A
+    A -->|HTTPS| C[Frontend]
+    C -->|API Calls| D[Our Web Server]
+    D -->|Responses| C
+    D -->|Uses| E[MongoDB]
+    B -->|Uses| E
+```
 
 You can also check [`an in depth explanation of the backend architecture`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure)
 
