@@ -27,6 +27,10 @@
      ```sh
    npm run start
    ```
+5. To expose your backend to the internet you can use 
+  ```sh
+   npx localtunnel --port 3333
+   ```
 
 ### Configuration
 

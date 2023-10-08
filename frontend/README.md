@@ -28,6 +28,11 @@
    ```sh
    npm run dev
    ```
+7. To expose your frontend to the internet you can use 
+  ```sh
+   npx localtunnel --port 4000
+   ```
+
 
 
 ## Deployment

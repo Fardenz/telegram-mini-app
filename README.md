@@ -36,13 +36,15 @@ _brief overview of the coding contest and the purpose of your solution_
 - Docker
 - MongoDB
 
+Read on the deployment section more information about our setup.
+
 _list any prerequisites or dependencies that users need to have installed on their machines_
 
 ## Development
 
 ### Setup 
 
-1. Clone the repo into a public GitHub repository (or fork https://github.com/calcom/cal.com/fork).
+1. Clone the repo into a public GitHub repository (or fork https://github.com/Fardenz/telegram-mini-app/fork).
 
     ```sh
    git clone https://github.com/Fardenz/telegram-mini-app.git
@@ -50,9 +52,8 @@ _list any prerequisites or dependencies that users need to have installed on the
     
    > If you are on Windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true https://github.com/Fardenz/telegram-mini-app` <br>
 
-2. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
-
-3. Set up Frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md)
+2. Set up Frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md)
+3. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
 
 
 ## Solution Overview (_can connect to In-Depth Explanation Section?_)
@@ -91,6 +92,12 @@ https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-S
 
 ### Common Errors
 _list potential errors that users may encounter and explain how to troubleshoot them_
+
+<details>
+<summary>Swagger is not working correctly</summary>
+Ensure that you have the correct URL in the `.env` file. The URL should be the same as the one you used to expose your backend to the internet. Also make sure that the protocol is the correct one, so `http` for local.
+
+</details>
 
 ### Exception Handling
 _detail how your solution handles exceptions gracefully_
