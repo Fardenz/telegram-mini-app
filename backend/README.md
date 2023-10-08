@@ -13,24 +13,20 @@
     ```sh
    cp .env.example .env
    ```
-
     - Edit the `.env` File:
-      Open the [`env/.env`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/.env.example) file in your preferred text editor. Adjust the environment variables as per your requirements. Read more on the Configuration section
-   
+      Open the [`env/.env`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/.env.example) file in your 
+      preferred text editor. Adjust the environment variables as per your requirements.
 
-3. Build the Docker Container:
+3. Install the required packages:
    
-
      ```sh
    npm install
    ```
 4. Build the Docker Container:
    
-
      ```sh
    npm run start
    ```
-
 
 ### Configuration
 
