@@ -12,7 +12,7 @@ export default class TelegramBot {
       ctx.reply(`
       *Let's hit the jackpot 🎰*
 
-Please tap the button below to place your bets and start playing at the casino! 🎲💰
+Please tap the button below to place your bets and start playing at the casino\\! 🎲💰
 
 **Wallet**
 - _Top Up_: To add balance to your wallet, simply use the card number \`4242 4242 4242 4242\` as this is still a test bot.
