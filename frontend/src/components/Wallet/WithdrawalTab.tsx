@@ -17,11 +17,6 @@ const WithdrawalTab: React.FC<WithdrawalTabProps> = ({
   onSubmit
 }) => {
 
-  const isValidIBAN = (iban: string) => {
-    const ibanRegex = /^[A-Za-z]{2}\d{2}\s?(\w{4}\s?){1,7}\w{1,3}?$/;
-    return ibanRegex.test(iban);
-  };
-
   const isValidAmount = (amount: string) => {
     const floatRegex = /^-?\d+(?:[.,]\d*?)?$/;
     return floatRegex.test(amount) && parseFloat(amount) >= 0;
@@ -31,8 +26,7 @@ const WithdrawalTab: React.FC<WithdrawalTabProps> = ({
     <VStack spacing={4}>
       <Input
         type="text"
-        placeholder="Enter IBAN"
-        pattern="[A-Za-z]{2}\d{2}\s?(\w{4}\s?){1,7}\w{1,3}?"
+        placeholder="Enter Bank Account Number"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
@@ -42,9 +36,9 @@ const WithdrawalTab: React.FC<WithdrawalTabProps> = ({
         value={numberValue}
         onChange={(e) => onNumberChange(e.target.value)}
       />
-      <Button 
+      <Button
         onClick={onSubmit}
-        isDisabled={!isValidIBAN(value) || !isValidAmount(numberValue)}
+        isDisabled={!isValidAmount(numberValue)}
       >
         Withdraw
       </Button>
