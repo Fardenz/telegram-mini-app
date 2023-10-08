@@ -28,6 +28,13 @@ const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) 
   const emptyUserData: WebAppInitData = { hash: "", auth_date: 0 }
   const [userData, setUserData] = useState<WebAppInitData>(emptyUserData)
   const [balance, setBalance] = useState<number>(0)
+  const [hasExpanded, setHasExpanded] = useState<boolean>(false)
+
+  if (!hasExpanded && !window.Telegram.WebApp.isExpanded) {
+    setHasExpanded(true)
+    window.Telegram.WebApp.expand()
+  }
+
   const showToast = useCustomToast();
   const getBalance = async () => {
     const res = await Wallet.getBalance(showToast)
