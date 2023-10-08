@@ -93,8 +93,8 @@ You can find the configuration in `.github/workflows/staging-deployment-frontend
 ### Architecture
 
 ```mermaid
-graph TD
-    A[Telegram] -->|1. Messages| B[TheVegasBot]
+graph LR
+    A[Telegram] -->|Messages| B[Our Bot]
     B -->|Web App Link| A
     A -->|HTTPS| C[Frontend]
     C -->|API Calls| D[Our Web Server]
