@@ -9,7 +9,43 @@ export default class TelegramBot {
   constructor(readonly bot: Telegraf) {
     // Create a bot that uses 'polling' to fetch new updates
     bot.on(message('text'), async (ctx) => {
-      ctx.reply('👍', {
+      ctx.reply(`
+      #Welcome to the Casino Bot! 🎉 
+ 
+      Let's hit the jackpot 🎰 
+       
+      Please tap the button below to place your bets and start playing at the casino! 🎲💰 
+       
+      --- 
+       
+      Wallet Instructions 
+      - *Top Up*: To add balance to your wallet, simply use the card number 4242 4242 4242 4242 as this is still a test bot. 
+      - *Withdrawal*: You can withdraw money from your balance. 
+       
+      --- 
+       
+      Games Instructions 
+      - _Dice_: Choose up to 3 options and click "Throw Dice." Good luck! 
+      - *Coin*: Choose between "Heads" or "Tails" and throw the coin. Best of luck! 
+       
+      --- 
+       
+      Balance 
+      Your current balance is available at the top right corner of the web app. 💰
+      
+      *Welcome to the Casino Bot!* 🎉
+      Let's hit the jackpot 🎰
+      Please tap the button below to place your bets and start playing at the casino! 🎲💰
+      ---
+      *Wallet Instructions*- _Top Up_: To add balance to your wallet, simply use the card number 4242 4242 4242 4242 as this is still a test bot.
+      - _Withdrawal_: You can withdraw money from your balance.
+      ---
+      *Games Instructions*
+      - _Dice_: Choose up to 3 options and click "Throw Dice." Good luck!- _Coin_: Choose between "Heads" or "Tails" and throw the coin. Best of luck!
+      ---
+      *Balance*
+      Your current balance is available at the top right corner of the web app. 💰`, {
+        parse_mode: 'MarkdownV2',
         reply_markup: {
           inline_keyboard: [[{
             text: 'Open',
