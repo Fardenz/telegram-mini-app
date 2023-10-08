@@ -33,7 +33,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
           <Text style={HeaderTextStyle}>CasinoX</Text>
         </ChakraLink >
-        <Text style={HeaderTextStyle}>{balance}€</Text>
+        <Text style={HeaderTextStyle}>{balance ?? 0}€</Text>
       </Box>
       <Box style={ChildrenWrapperStyle}>{children}</Box>
     </Flex>
