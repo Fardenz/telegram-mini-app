@@ -38,9 +38,9 @@
 ## Deployment
 Build the Docker Container:
    
-     ```sh
-   docker-compose up 
-   ```
+```sh
+docker-compose up 
+```
 
 
 
