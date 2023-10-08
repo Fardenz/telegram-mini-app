@@ -19,7 +19,7 @@ const WrapperStyle = {
 
 const HeaderStyle = {
   width: "100%",
-  height: "64px",
+  height: "35px",
   backgroundColor: bg_color,
   color: text_color,
   paddingLeft: "10%",
@@ -37,7 +37,7 @@ const HeaderTextStyle = {
 
 const ChildrenWrapperStyle = {
   width: "100%",
-  height: `calc(100vh - 64px)`,
+  height: `calc(100vh - 35px)`,
 }
 
 export { WrapperStyle, HeaderStyle, HeaderTextStyle, ChildrenWrapperStyle }
