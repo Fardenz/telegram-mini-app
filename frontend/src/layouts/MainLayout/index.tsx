@@ -2,7 +2,7 @@
 // Path: src/layouts/MainLayout/mainLayout.tsx
 
 import React, { ReactNode, useEffect } from "react"
-import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react"
+import { Box, Flex, Text, Link as ChakraLink, Image } from "@chakra-ui/react"
 import { useNavigate, useLocation, Link as ReactRouterLink, } from "react-router-dom"
 import { HOME } from "@router/paths"
 import { useTelegramContext } from "@contexts/telegramContext"
@@ -31,7 +31,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <Flex style={WrapperStyle} direction="column">
       <Box style={HeaderStyle}>
         <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
-          <Text style={HeaderTextStyle}>CasinoX</Text>
+          <Text style={HeaderTextStyle}>
+            <Image src='./assets/img/poker_128px.png' alt='Casino bot logo' maxH={'30px'} />
+          </Text>
         </ChakraLink >
         <Text style={HeaderTextStyle}>{balance ?? 0}€</Text>
       </Box>
