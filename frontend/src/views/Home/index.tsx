@@ -13,7 +13,7 @@ const HomeView: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false)
   const { balance } = useTelegramContext()
   const showToast = useCustomToast()
-  const hasNotEnoughMoneyToPlay = balance < 1
+  const hasNotEnoughMoneyToPlay = balance !== null && balance < 1
 
   useEffect(() => {
       if (hasNotEnoughMoneyToPlay) {

@@ -8,13 +8,13 @@ import { useCustomToast } from "@helpers/toastUtil"
 interface TelegramContextType {
   userData: WebAppInitData
   getBalance: () => Promise<void>
-  balance: number
+  balance: number | null
 }
 
 const emptyTelegramContext: TelegramContextType = {
   userData: { hash: "", auth_date: 0 },
   getBalance: async () => { },
-  balance: 0,
+  balance: null,
 }
 
 const TelegramContext: React.Context<TelegramContextType> =
@@ -27,7 +27,7 @@ interface TelegramProviderProps {
 const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) => {
   const emptyUserData: WebAppInitData = { hash: "", auth_date: 0 }
   const [userData, setUserData] = useState<WebAppInitData>(emptyUserData)
-  const [balance, setBalance] = useState<number>(0)
+  const [balance, setBalance] = useState<number | null>(null)
   const [hasExpanded, setHasExpanded] = useState<boolean>(false)
 
   if (!hasExpanded && !window.Telegram.WebApp.isExpanded) {
