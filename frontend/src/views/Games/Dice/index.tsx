@@ -23,7 +23,7 @@ const DiceView: React.FC = () => {
 
   // Handle backend call
   const handleThrowDice = async () => {
-    const opt = options.filter((val, idx) => checkedItems[idx] && val)
+    const opt = options.filter((val, idx) => checkedItems[idx] && val).map((val) => val.value)
     if (opt.length < 1) {
       showToast({
         title: 'Please select at least one option 1️⃣',
