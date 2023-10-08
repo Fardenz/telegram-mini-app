@@ -45,7 +45,7 @@ const CoinflipView: React.FC = () => {
     setResult(res === 1 ? "Heads" : "Tails")
     setTimeout(() => {
       showToast({
-        title: `Has ${res === (userChoice == "Heads" ? 1 : 2) ? "ganado" : "perdido"}`,
+        title: `You ${res === (userChoice == "Heads" ? 1 : 2) ? "won" : "lost"}`,
         status: res === (userChoice == "Heads" ? 1 : 2) ? "success" : "error",
       });
       getBalance().catch((error) => { console.error(error) })
