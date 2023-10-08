@@ -15,12 +15,12 @@ export default class TelegramBot {
 Please tap the button below to place your bets and start playing at the casino\\! 🎲💰
 
 **Wallet**
-- _Top Up_: To add balance to your wallet, simply use the card number \`4242 4242 4242 4242\` as this is still a test bot.
-- _Withdrawal_: You can withdraw money from your balance.
+\\- _Top Up_: To add balance to your wallet, simply use the card number \`4242 4242 4242 4242\` as this is still a test bot.
+\\- _Withdrawal_: You can withdraw money from your balance.
 
 **Games**
-- _Dice_: Choose up to 3 options and click "Throw Dice." Good luck\\!
-- _Coin_: Choose between "Heads" or "Tails" and throw the coin. Best of luck\\!
+\\- _Dice_: Choose up to 3 options and click "Throw Dice." Good luck\\!
+\\- _Coin_: Choose between "Heads" or "Tails" and throw the coin. Best of luck\\!
 
 **Balance**: Your current balance is available at the top right corner of the web app. 💰`, {
         parse_mode: 'MarkdownV2',
