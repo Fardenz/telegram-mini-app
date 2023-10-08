@@ -10,6 +10,7 @@ import { DiceContainerStyle, OptionsContainerStyle, StackStyle, WrapperStyle } f
 import { useCustomToast } from "@helpers/toastUtil"
 import { InformationPopover } from "@components/Games/informationPopover"
 import isDarkMode from "../../../helpers/isDarkMode"
+import promisifiedSetTimeout from "../../../helpers/promisifiedSetTimeout"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()
@@ -34,7 +35,7 @@ const DiceView: React.FC = () => {
 
     setTriggerRoll(true)
 
-    const res: number | undefined = await GamesService.play(opt, "dice")
+    const [res]: [number | undefined, undefined] = await Promise.all([GamesService.play(opt, "dice"), promisifiedSetTimeout(1000)])
 
     if (!res) {
       setTriggerRoll(false)
