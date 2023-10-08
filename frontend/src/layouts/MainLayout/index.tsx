@@ -28,15 +28,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   })
 
   return (
-      <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
     <Flex style={WrapperStyle} direction="column">
-        <Box style={HeaderStyle}>
+      <Box style={HeaderStyle}>
+        <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
           <Text style={HeaderTextStyle}>CasinoX</Text>
-          <Text style={HeaderTextStyle}>{balance}€</Text>
-        </Box>
-        <Box style={ChildrenWrapperStyle}>{children}</Box>
+        </ChakraLink >
+        <Text style={HeaderTextStyle}>{balance}€</Text>
+      </Box>
+      <Box style={ChildrenWrapperStyle}>{children}</Box>
     </Flex>
-    </ChakraLink >
   )
 }
 
