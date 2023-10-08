@@ -35,7 +35,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <Image src='./assets/img/poker_128px.png' alt='Casino bot logo' maxH={'20px'} />
           </Text>
         </ChakraLink >
-        <Text style={HeaderTextStyle}>Balance: {balance ?? 0}€</Text>
+        <Text style={HeaderTextStyle}>💰 {balance ?? 0}€</Text>
       </Box>
       <Box style={ChildrenWrapperStyle}>{children}</Box>
     </Flex>
