@@ -1,17 +1,22 @@
-import { WebApp } from "@grammyjs/web-app"
 import { CSSProperties } from "react"
 
-const { text_color } = WebApp.themeParams
-
 const GameSelectorGifStyle: CSSProperties = {
-  alignContent: "center",
-  maxHeight: "48vh",
-  maxWidth: "48vw",
-  margin: "0 auto",
-  height: "100%",
-  paddingRight: "10%",
-  paddingLeft: "10%",
-  overflow: 'auto'
+  display: 'block',
+  width: '100%',
+  height: '100%',
+  objectFit: 'contain',
+  margin: '0 auto',
+  overflow: 'hidden',
 }
 
-export { GameSelectorGifStyle }
+const GameSelectorContainerStyle: CSSProperties = {
+  width: '40vw',
+  height: '40vw',
+  position: 'relative',
+  overflow: 'hidden',
+  margin: '0 auto',
+  paddingRight: '10%',
+  paddingLeft: '10%',
+}
+
+export { GameSelectorGifStyle, GameSelectorContainerStyle }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import WalletModal from "../../components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
 import { WebApp } from "@grammyjs/web-app"
-import { GameSelectorGifStyle } from "./styles"
+import { GameSelectorContainerStyle, GameSelectorGifStyle } from "./styles"
 import { useTelegramContext } from "../../contexts/telegramContext"
 import { useCustomToast } from "../../helpers/toastUtil"
 
@@ -47,7 +47,7 @@ const HomeView: React.FC = () => {
       >
         <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : DICE_GAME}>
           <Flex direction="column">
-            <Box>
+            <Box style={GameSelectorContainerStyle}>
               <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Description of GIF" />
             </Box>
             <Box>
@@ -59,7 +59,7 @@ const HomeView: React.FC = () => {
         </ChakraLink>
         <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : COIN_GAME}>
           <Flex direction="column">
-            <Box>
+            <Box style={GameSelectorContainerStyle}>
               <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
             </Box>
             <Box>
