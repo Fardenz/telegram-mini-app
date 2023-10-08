@@ -1,5 +1,5 @@
 import { Link as ReactRouterLink, useLocation } from "react-router-dom"
-import { Box, Button, Flex, Link as ChakraLink } from "@chakra-ui/react"
+import { Box, Button, Flex, Link as ChakraLink, Image } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import WalletModal from "../../components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
@@ -49,11 +49,11 @@ const HomeView: React.FC = () => {
         <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : DICE_GAME}>
           <Flex direction="column">
             <Box style={GameSelectorContainerStyle}>
-              <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Description of GIF" />
+              <Image src={`./assets/img/dice-animation-${isDarkMode ? 'dark' : 'light'}.gif`} alt='Dice game logo' style={GameSelectorGifStyle} />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Dice 🎲</Button>
+                <Button colorScheme="brand" variant="outline" style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Dice 🎲</Button>
               </Flex>
             </Box>
           </Flex>
@@ -61,11 +61,11 @@ const HomeView: React.FC = () => {
         <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : COIN_GAME}>
           <Flex direction="column">
             <Box style={GameSelectorContainerStyle}>
-              <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
+            <Image src={`./assets/img/coin-animation-${isDarkMode ? 'dark' : 'light'}.gif`} alt='Coinflip game logo' style={GameSelectorGifStyle} />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Coinflip 🪙</Button>
+                <Button colorScheme="brand" variant="outline" style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Coinflip 🪙</Button>
               </Flex>
             </Box>
           </Flex>
