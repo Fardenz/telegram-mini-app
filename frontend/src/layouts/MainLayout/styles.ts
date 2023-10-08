@@ -2,11 +2,6 @@ import { WebApp } from "@grammyjs/web-app"
 
 const {
   bg_color,
-  button_color,
-  button_text_color,
-  hint_color,
-  link_color,
-  secondary_bg_color,
   text_color,
 } = WebApp.themeParams
 
@@ -19,7 +14,7 @@ const WrapperStyle = {
 
 const HeaderStyle = {
   width: "100%",
-  height: "35px",
+  height: "8vh",
   backgroundColor: bg_color,
   color: text_color,
   paddingLeft: "10%",
@@ -37,7 +32,7 @@ const HeaderTextStyle = {
 
 const ChildrenWrapperStyle = {
   width: "100%",
-  height: `calc(100vh - 35px)`,
+  height: `calc(100vh - 8vh)`,
 }
 
 export { WrapperStyle, HeaderStyle, HeaderTextStyle, ChildrenWrapperStyle }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import WalletModal from "../../components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
 import { WebApp } from "@grammyjs/web-app"
-import { GameSelectorContainerStyle, GameSelectorGifStyle } from "./styles"
+import { GameSelectorContainerStyle, GameSelectorGifStyle, roundedButtonStyle } from "./styles"
 import { useTelegramContext } from "../../contexts/telegramContext"
 import { useCustomToast } from "../../helpers/toastUtil"
 
@@ -52,7 +52,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
+                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
               </Flex>
             </Box>
           </Flex>
@@ -64,7 +64,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
+                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
               </Flex>
             </Box>
           </Flex>
