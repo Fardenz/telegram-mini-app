@@ -48,7 +48,7 @@ const DiceView: React.FC = () => {
     setOutputDice(res)
     setTriggerRoll(false)
     await getBalance()
-    const hasUserWon = opt.some((val) => val.value === res)
+    const hasUserWon = opt.some((value) => value === res)
     showToast({
       title: `It was a ${res}. You ${hasUserWon ? "won 🤑" : "lost 💸"}`,
       status: hasUserWon ? "success" : "error",
