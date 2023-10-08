@@ -11,7 +11,7 @@ export default class TelegramBot {
     bot.on(message('text'), async (ctx) => {
       ctx.reply('👍', {
         reply_markup: {
-          keyboard: [[{
+          inline_keyboard: [[{
             text: 'Open',
             web_app: {
               url: config.frontendEndpoint
