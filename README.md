@@ -60,7 +60,33 @@ _list any prerequisites or dependencies that users need to have installed on the
 
 ### Deployment
 
+#### Database
+We're using [`MongoDB Atlas`](https://www.mongodb.com/atlas/database) to host our database. In our case it's free and allows us to scale easily.
+
 #### GitHub Actions
+
+We're using Github Actions as our CI/CD tool. You can find the configuration in `.github/workflows/`, whenever a push is made to the `main` branch, the workflow will be triggered, deploying the latest code.
+
+<details>
+<summary>Backend</summary>
+The backend is automatically deployed to a custom server owned by us running Linux. You can set your custom secrets in the repository settings and it will automatically deploy to your server. The secrets are:
+
+```
+SSH_HOST
+SSH_PRIVATE_KEY
+SSH_USERNAME
+ENV_VARIABLES
+```
+
+You can find the configuration in `.github/workflows/staging-deployment-backend.yml`
+</details>
+
+<details>
+<summary>Frontend</summary>
+We're using Github Pages to deploy the frontend, this allows us to have a public URL with HTTPS for the web app without having to pay for a server. The disadvantage is that you can only host static webpages. To deploy it automatically configure your github pages in the repository settings and set the `ENV_VARIABLES_FRONTEND` secret.
+
+You can find the configuration in `.github/workflows/staging-deployment-frontend.yml`
+</details>
 
 ### Architecture 
 
@@ -93,11 +119,19 @@ https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-S
 ### Common Errors
 _list potential errors that users may encounter and explain how to troubleshoot them_
 
+Most of the expected requests will be on the Swagger file, so you can test them there. If you are using Postman, you can import the Swagger file and use the requests from there.
+
 <details>
-<summary>Swagger is not working correctly</summary>
+<summary>Requests stated in Swagger are not working correctly</summary>
 Ensure that you have the correct URL in the `.env` file. The URL should be the same as the one you used to expose your backend to the internet. Also make sure that the protocol is the correct one, so `http` for local.
 
 </details>
+
+<details>
+<summary>Web app is only accessible through Telegram by https and in a public url</summary>
+You will have to use a service like ngrok or localtunnel to expose your local web app to the internet. Then, you will have to change the `TELEGRAM_FRONTEND` variable in the `.env` file to the URL provided by the service. Make sure that the protocol is the correct one, so `https` for ngrok.
+</details>
+
 
 ### Exception Handling
 _detail how your solution handles exceptions gracefully_
