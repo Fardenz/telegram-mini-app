@@ -57,15 +57,9 @@ _list any prerequisites or dependencies that users need to have installed on the
 
 ## Solution Overview (_can connect to In-Depth Explanation Section?_)
 
-GitHub Actions
+### Deployment
 
-### Code Structure (_explain the organization of your code, detailing the purpose of each major component or module_)
-
-#### Backend
-https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md#Code-Structure
-      
-#### Frontend
-https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure
+#### GitHub Actions
 
 ### Architecture 
 
@@ -85,6 +79,13 @@ The presence of [`inversify.config.ts`](https://github.com/Fardenz/telegram-mini
 
 A dedicated module [`telegramBot`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/telegramBot) handles Telegram bot functionalities, indicating a clear separation of concerns and modularity.
 
+### Code Structure (_explain the organization of your code, detailing the purpose of each major component or module_)
+
+#### Backend
+https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md#Code-Structure
+      
+#### Frontend
+https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure
 
 ## Error Handling
 
