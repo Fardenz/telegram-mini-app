@@ -31,7 +31,7 @@ export const ButtonRoundedStyle = {
   padding: "10px 20px",
   backgroundColor: "var(--chakra-colors-brand-400)",
   border: "none",
-  borderRadius: "25px",
+  borderRadius: "8px",
   color: "#FFFFFF",
   fontSize: "16px",
   cursor: "pointer",
