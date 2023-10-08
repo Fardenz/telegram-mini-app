@@ -46,7 +46,7 @@ const CoinflipView: React.FC = () => {
     setResult(res === 1 ? "Heads" : "Tails")
     setTimeout(() => {
       showToast({
-        title: `You ${res === (userChoice == "Heads" ? 1 : 2) ? "won" : "lost"}`,
+        title: `You ${res === (userChoice == "Heads" ? 1 : 2) ? "won 🤑" : "lost 💸"}`,
         status: res === (userChoice == "Heads" ? 1 : 2) ? "success" : "error",
       });
       getBalance().catch((error) => { console.error(error) })
@@ -57,7 +57,7 @@ const CoinflipView: React.FC = () => {
 
   useEffect(() => {
     if (WebApp.MainButton.isVisible)
-      WebApp.MainButton.setText("Throw Coin").offClick(handleThrowCoin).onClick(handleThrowCoin)
+      WebApp.MainButton.setText("Throw Coin 🪙").offClick(handleThrowCoin).onClick(handleThrowCoin)
 
     return () => {
       WebApp.MainButton.offClick(handleThrowCoin)

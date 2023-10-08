@@ -14,8 +14,7 @@ import promisifiedSetTimeout from "../../../helpers/promisifiedSetTimeout"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()
-
-  const options = [1, 2, 3, 4, 5, 6]
+  const options = [{ display: "1️⃣", value: 1 }, { display: "2️⃣", value: 2 }, { display: "3️⃣", value: 3 }, { display: "4️⃣", value: 4 }, { display: "5️⃣", value: 5 }, { display: "6️⃣", value: 6 }];
 
   const [checkedItems, setCheckedItems] = useState(options.map(() => false))
   const [triggerRoll, setTriggerRoll] = useState<boolean>(false)
@@ -24,10 +23,10 @@ const DiceView: React.FC = () => {
 
   // Handle backend call
   const handleThrowDice = async () => {
-    const opt = options.filter((val, idx) => checkedItems[idx] && val)
+    const opt = options.filter((val, idx) => checkedItems[idx] && val).map((val) => val.value)
     if (opt.length < 1) {
       showToast({
-        title: 'Please select at least one option',
+        title: 'Please select at least one option 1️⃣',
         status: 'info'
       })
       return;
@@ -49,9 +48,9 @@ const DiceView: React.FC = () => {
     setOutputDice(res)
     setTriggerRoll(false)
     await getBalance()
-    const hasUserWon = opt.includes(res)
+    const hasUserWon = opt.some((value) => value === res)
     showToast({
-      title: `It was a ${res}. You ${hasUserWon ? "won" : "lost"}`,
+      title: `It was a ${res}. You ${hasUserWon ? "won 🤑" : "lost 💸"}`,
       status: hasUserWon ? "success" : "error",
       duration: 1000,
     });
@@ -71,7 +70,7 @@ const DiceView: React.FC = () => {
 
   useEffect(() => {
     if (WebApp.MainButton.isVisible)
-      WebApp.MainButton.setText("Throw Dice").offClick(handleThrowDice).onClick(handleThrowDice)
+      WebApp.MainButton.setText("Throw Dice 🎲").offClick(handleThrowDice).onClick(handleThrowDice)
 
     return () => {
       WebApp.MainButton.offClick(handleThrowDice)
@@ -90,12 +89,14 @@ const DiceView: React.FC = () => {
             {options.map((option, index) => {
               return (
                 <Checkbox
+                  iconColor='brand.100' iconSize='1rem'
+                  colorScheme={"red"}
                   isChecked={checkedItems[index]}
                   key={index}
-                  value={option}
+                  value={option.value}
                   onChange={(e) => handleCheckboxChange(index, e.target.checked)}
                 >
-                  <Text color={isDarkMode ? "brand.100" : "brand.900"}>{option}</Text>
+                  <Text color={isDarkMode ? "brand.100" : "brand.900"}>{option.display}</Text>
                 </Checkbox>
               )
             })}

@@ -1,6 +1,7 @@
 // Code adapted from https://codesandbox.io/s/coin-flip-react-example-01j7q?file=/src/App.js
 import { useEffect, useState } from "react"
 import "./style.scss"
+import isDarkMode from "@helpers/isDarkMode"
 
 interface CoinFlipInterface {
   result: "Heads" | "Tails" | ""
@@ -20,7 +21,7 @@ const CoinFlip = ({ result }: CoinFlipInterface) => {
 
   return (
     <div id="coin" className={animationClass}>
-      <div className="side-a">
+      <div className={`side-a${isDarkMode ? "-dark" : ""}`}>
         <h2>TAIL</h2>
       </div>
       <div className="side-b">

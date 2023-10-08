@@ -1,5 +1,5 @@
 import { Link as ReactRouterLink, useLocation } from "react-router-dom"
-import { Box, Button, Flex, Link as ChakraLink } from "@chakra-ui/react"
+import { Box, Button, Flex, Link as ChakraLink, Image } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import WalletModal from "../../components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
@@ -19,7 +19,7 @@ const HomeView: React.FC = () => {
   useEffect(() => {
     if (hasNotEnoughMoneyToPlay) {
       showToast({
-        title: "Please deposit money in your wallet to play",
+        title: "Please deposit money in your wallet to play 🏦",
         status: "info",
       })
     }
@@ -28,7 +28,7 @@ const HomeView: React.FC = () => {
   const openModal = () => setModalOpen(true)
 
   useEffect(() => {
-    WebApp.MainButton.setParams({ color: isDarkMode ? "#30cccc" : "#33084F", text: "Wallet" })
+    WebApp.MainButton.setParams({ color: isDarkMode ? "#30cccc" : "#33084F", text: "Wallet 👛" })
       .show()
       .onClick(openModal)
 
@@ -55,10 +55,10 @@ const HomeView: React.FC = () => {
         >
           <Flex direction="column">
             <Box style={GameSelectorContainerStyle}>
-              <img
-                src="./assets/img/dice.gif"
+              <Image
+                src={`./assets/img/dice-animation-${isDarkMode ? "dark" : "light"}.gif`}
+                alt="Dice game logo"
                 style={GameSelectorGifStyle}
-                alt="Description of GIF"
               />
             </Box>
             <Box>
@@ -70,7 +70,7 @@ const HomeView: React.FC = () => {
                   isDisabled={hasNotEnoughMoneyToPlay}
                 >
                   {" "}
-                  Dice{" "}
+                  Dice 🎲
                 </Button>
               </Flex>
             </Box>
@@ -83,7 +83,11 @@ const HomeView: React.FC = () => {
         >
           <Flex direction="column">
             <Box style={GameSelectorContainerStyle}>
-              <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
+              <Image
+                src={`./assets/img/coin-animation-${isDarkMode ? "dark" : "light"}.gif`}
+                alt="Coinflip game logo"
+                style={GameSelectorGifStyle}
+              />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
@@ -94,7 +98,7 @@ const HomeView: React.FC = () => {
                   isDisabled={hasNotEnoughMoneyToPlay}
                 >
                   {" "}
-                  Coinflip{" "}
+                  Coinflip 🪙
                 </Button>
               </Flex>
             </Box>
