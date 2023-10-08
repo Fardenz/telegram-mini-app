@@ -43,12 +43,13 @@ const CoinflipView: React.FC = () => {
 
     const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
-    await getBalance()
     setTimeout(() => {
       showToast({
         title: `Has ${res === (userChoice == "Heads" ? 1 : 2) ? "ganado" : "perdido"}`,
         status: res === (userChoice == "Heads" ? 1 : 2) ? "success" : "error",
-      })
+      });
+      getBalance().catch((error) => { console.error(error) })
+
       setResult("")
     }, 1500)
   }
