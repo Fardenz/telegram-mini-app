@@ -19,8 +19,8 @@ const HomeView: React.FC = () => {
   useEffect(() => {
     if (hasNotEnoughMoneyToPlay) {
       showToast({
-        title: 'Please deposit money in your wallet to play',
-        status: "info"
+        title: "Please deposit money in your wallet to play",
+        status: "info",
       })
     }
   }, [])
@@ -28,7 +28,9 @@ const HomeView: React.FC = () => {
   const openModal = () => setModalOpen(true)
 
   useEffect(() => {
-    WebApp.MainButton.setParams({ color: isDarkMode ? '#30cccc' : '#33084F', text: 'Wallet' }).show().onClick(openModal)
+    WebApp.MainButton.setParams({ color: isDarkMode ? "#30cccc" : "#33084F", text: "Wallet" })
+      .show()
+      .onClick(openModal)
 
     return () => {
       WebApp.MainButton.offClick(openModal)
@@ -46,26 +48,54 @@ const HomeView: React.FC = () => {
         justifyContent="flex-start"
         flexDirection={{ base: "column", md: "row" }}
       >
-        <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : DICE_GAME}>
+        <ChakraLink
+          color="black"
+          as={ReactRouterLink}
+          to={hasNotEnoughMoneyToPlay ? "./" : DICE_GAME}
+        >
           <Flex direction="column">
             <Box style={GameSelectorContainerStyle}>
-              <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Description of GIF" />
+              <img
+                src="./assets/img/dice.gif"
+                style={GameSelectorGifStyle}
+                alt="Description of GIF"
+              />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
+                <Button
+                  colorScheme="brand"
+                  variant="outline"
+                  style={roundedButtonStyle}
+                  isDisabled={hasNotEnoughMoneyToPlay}
+                >
+                  {" "}
+                  Dice{" "}
+                </Button>
               </Flex>
             </Box>
           </Flex>
         </ChakraLink>
-        <ChakraLink color="black" as={ReactRouterLink} to={hasNotEnoughMoneyToPlay ? './' : COIN_GAME}>
+        <ChakraLink
+          color="black"
+          as={ReactRouterLink}
+          to={hasNotEnoughMoneyToPlay ? "./" : COIN_GAME}
+        >
           <Flex direction="column">
             <Box style={GameSelectorContainerStyle}>
               <img src="./assets/img/dice.gif" style={GameSelectorGifStyle} alt="Dice GIF" />
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
+                <Button
+                  colorScheme="brand"
+                  variant="outline"
+                  style={roundedButtonStyle}
+                  isDisabled={hasNotEnoughMoneyToPlay}
+                >
+                  {" "}
+                  Coinflip{" "}
+                </Button>
               </Flex>
             </Box>
           </Flex>

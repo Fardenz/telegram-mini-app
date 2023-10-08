@@ -1,12 +1,14 @@
-import React from "react";
-import { Input, Button, VStack } from "@chakra-ui/react";
+import React from "react"
+import { Input, Button, VStack } from "@chakra-ui/react"
+import isDarkMode from "@helpers/isDarkMode"
+import { ButtonRoundedStyle, FocusInputStyle, InputStyle } from "./styles"
 
 interface WithdrawalTabProps {
-  value: string;
-  numberValue: string;
-  onChange: (value: string) => void;
-  onNumberChange: (value: string) => void;
-  onSubmit: () => void;
+  value: string
+  numberValue: string
+  onChange: (value: string) => void
+  onNumberChange: (value: string) => void
+  onSubmit: () => void
 }
 
 const WithdrawalTab: React.FC<WithdrawalTabProps> = ({
@@ -14,17 +16,19 @@ const WithdrawalTab: React.FC<WithdrawalTabProps> = ({
   numberValue,
   onChange,
   onNumberChange,
-  onSubmit
+  onSubmit,
 }) => {
-
   const isValidAmount = (amount: string) => {
-    const floatRegex = /^-?\d+(?:[.,]\d*?)?$/;
-    return floatRegex.test(amount) && parseFloat(amount) >= 0;
-  };
+    const floatRegex = /^-?\d+(?:[.,]\d*?)?$/
+    return floatRegex.test(amount) && parseFloat(amount) >= 0
+  }
 
   return (
     <VStack spacing={4}>
       <Input
+        style={InputStyle}
+        _placeholder={InputStyle}
+        _focus={FocusInputStyle}
         type="text"
         placeholder="Enter Bank Account Number"
         value={value}
@@ -32,18 +36,22 @@ const WithdrawalTab: React.FC<WithdrawalTabProps> = ({
       />
       <Input
         type="number"
+        style={InputStyle}
+        _placeholder={InputStyle}
+        _focus={FocusInputStyle}
         placeholder="Enter Amount"
         value={numberValue}
         onChange={(e) => onNumberChange(e.target.value)}
       />
       <Button
         onClick={onSubmit}
-        isDisabled={!isValidAmount(numberValue)}
+        isDisabled={!isValidAmount(numberValue) || value.length == 0}
+        style={ButtonRoundedStyle}
       >
         Withdraw
       </Button>
     </VStack>
-  );
-};
+  )
+}
 
-export default WithdrawalTab;
+export default WithdrawalTab
