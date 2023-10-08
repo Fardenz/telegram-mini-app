@@ -9,6 +9,7 @@ import { WebApp } from "@grammyjs/web-app"
 import { DiceContainerStyle, OptionsContainerStyle, StackStyle, WrapperStyle } from "./styles"
 import { useCustomToast } from "@helpers/toastUtil"
 import { InformationPopover } from "@components/Games/informationPopover"
+import isDarkMode from "../../../helpers/isDarkMode"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()
@@ -51,6 +52,7 @@ const DiceView: React.FC = () => {
     showToast({
       title: `It was a ${res}. You ${hasUserWon ? "won" : "lost"}`,
       status: hasUserWon ? "success" : "error",
+      duration: 1000,
     });
   }
 
@@ -88,7 +90,7 @@ const DiceView: React.FC = () => {
               return (
                 <Checkbox
                   isChecked={checkedItems[index]}
-                  color="telegram"
+                  color={isDarkMode ? "brand.100" : "brand.900"}
                   key={index}
                   value={option}
                   onChange={(e) => handleCheckboxChange(index, e.target.checked)}
