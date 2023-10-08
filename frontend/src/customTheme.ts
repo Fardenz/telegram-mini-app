@@ -1,4 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
+import isDarkMode from "./helpers/isDarkMode";
+import { WebApp } from "@grammyjs/web-app";
 
 export const customTheme = extendTheme({
   colors: {
@@ -13,5 +15,6 @@ export const customTheme = extendTheme({
       800: "#33084F",
       900: "#000000", // darkest
     },
+    background: isDarkMode ? WebApp.themeParams.bg_color : "#000000",
   },
 })
