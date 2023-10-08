@@ -1,5 +1,4 @@
 const WrapperStyle = {
-  alignItems: "center",
   margin: "0 auto",
   height: "100%",
   paddingRight: "10%",

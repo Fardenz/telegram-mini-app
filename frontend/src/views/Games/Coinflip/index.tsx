@@ -1,7 +1,7 @@
 // Coinflip component
 
 import React, { useEffect, useState } from "react"
-import { Box, Button, Flex, HStack, Text, useRadioGroup } from "@chakra-ui/react"
+import { Box, Flex, HStack, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger, useRadioGroup } from "@chakra-ui/react"
 import RadioCard from "@components/RadioCard"
 import GamesService from "@services/games"
 import { useTelegramContext } from "@contexts/telegramContext"
@@ -9,6 +9,7 @@ import CoinFlip from "@components/CoinFlip"
 import { WebApp } from "@grammyjs/web-app"
 import { CoinBoxStyle, HStackStyle, OptionBoxStyle, WrapperStyle } from "./styles"
 import { useCustomToast } from "@helpers/toastUtil"
+import { InfoOutlineIcon } from "@chakra-ui/icons"
 
 type CoinType = "Heads" | "Tails"
 
@@ -65,6 +66,18 @@ const CoinflipView: React.FC = () => {
 
   return (
     <Flex direction="column" style={WrapperStyle}>
+      <Box display={'flex'} justifyContent={'right'}>
+        <Popover>
+          <PopoverTrigger>
+            <InfoOutlineIcon></InfoOutlineIcon>
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverBody>Every bet is 1€</PopoverBody>
+          </PopoverContent>
+        </Popover >
+      </Box>
       <Box style={CoinBoxStyle}>
         <CoinFlip result={result} />
       </Box>
