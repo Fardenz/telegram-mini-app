@@ -19,7 +19,7 @@ const HomeView: React.FC = () => {
   useEffect(() => {
     if (hasNotEnoughMoneyToPlay) {
       showToast({
-        title: 'Please deposit money in your wallet to play',
+        title: 'Please deposit money in your wallet to play 🏦',
         status: "info"
       })
     }
@@ -53,7 +53,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
+                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Dice 🎲</Button>
               </Flex>
             </Box>
           </Flex>
@@ -65,7 +65,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
+                <Button colorScheme="brand" variant="outline"  style={roundedButtonStyle} isDisabled={hasNotEnoughMoneyToPlay}> Coinflip 🪙</Button>
               </Flex>
             </Box>
           </Flex>

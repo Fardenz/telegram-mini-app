@@ -27,7 +27,7 @@ const DiceView: React.FC = () => {
     const opt = options.filter((val, idx) => checkedItems[idx] && val)
     if (opt.length < 1) {
       showToast({
-        title: 'Please select at least one option',
+        title: 'Please select at least one option 1️⃣',
         status: 'info'
       })
       return;
@@ -51,7 +51,7 @@ const DiceView: React.FC = () => {
     await getBalance()
     const hasUserWon = opt.includes(res)
     showToast({
-      title: `It was a ${res}. You ${hasUserWon ? "won" : "lost"}`,
+      title: `It was a ${res}. You ${hasUserWon ? "won 🤑" : "lost 💸"}`,
       status: hasUserWon ? "success" : "error",
       duration: 1000,
     });
