@@ -9,8 +9,8 @@ import { WebApp } from "@grammyjs/web-app"
 import { DiceContainerStyle, OptionsContainerStyle, StackStyle, WrapperStyle } from "./styles"
 import { useCustomToast } from "@helpers/toastUtil"
 import { InformationPopover } from "@components/Games/informationPopover"
-import isDarkMode from "../../../helpers/isDarkMode"
-import promisifiedSetTimeout from "../../../helpers/promisifiedSetTimeout"
+import isDarkMode from "@helpers/isDarkMode"
+import promisifiedSetTimeout from "@helpers/promisifiedSetTimeout"
 
 const DiceView: React.FC = () => {
   const { getBalance } = useTelegramContext()

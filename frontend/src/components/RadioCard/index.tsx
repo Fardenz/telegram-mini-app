@@ -1,4 +1,5 @@
 import { Box, useRadio } from "@chakra-ui/react"
+import { RadioCheckedStyle, RadioFocusStyle, RadioStyle } from "./style"
 
 const RadioCard = (props: any) => {
   const { getInputProps, getRadioProps } = useRadio(props)
@@ -12,24 +13,10 @@ const RadioCard = (props: any) => {
       <Box
         {...checkbox}
         cursor="pointer"
-        borderWidth="1px"
-        borderRadius="md"
-        color="black"
-        w="100px"
-        alignContent="center"
-        justifyContent="center"
-        display="flex"
-        boxShadow="md"
-        _checked={{
-          bg: "telegram.500",
-          color: "white",
-          borderColor: "telegram.500",
-        }}
-        _focus={{
-          boxShadow: "outline",
-        }}
-        px={5}
-        py={3}
+        style={RadioStyle}
+        _checked={RadioCheckedStyle}
+        _selected={RadioCheckedStyle}
+        _focus={RadioFocusStyle}
       >
         {props.children}
       </Box>

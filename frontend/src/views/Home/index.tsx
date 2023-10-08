@@ -1,13 +1,13 @@
 import { Link as ReactRouterLink, useLocation } from "react-router-dom"
 import { Box, Button, Flex, Link as ChakraLink, Image } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import WalletModal from "../../components/Wallet/WalletModal"
+import WalletModal from "@components/Wallet/WalletModal"
 import { COIN_GAME, DICE_GAME } from "@router/paths"
 import { WebApp } from "@grammyjs/web-app"
 import { GameSelectorContainerStyle, GameSelectorGifStyle, roundedButtonStyle } from "./styles"
-import { useTelegramContext } from "../../contexts/telegramContext"
-import { useCustomToast } from "../../helpers/toastUtil"
-import isDarkMode from "../../helpers/isDarkMode"
+import { useTelegramContext } from "@contexts/telegramContext"
+import { useCustomToast } from "@helpers/toastUtil"
+import isDarkMode from "@helpers/isDarkMode"
 
 const HomeView: React.FC = () => {
   const location = useLocation()

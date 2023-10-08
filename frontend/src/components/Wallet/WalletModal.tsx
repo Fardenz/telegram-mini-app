@@ -18,8 +18,6 @@ import WithdrawalTab from "./WithdrawalTab"
 import Wallet from "@services/wallet"
 import { useTelegramContext } from "@contexts/telegramContext"
 import { useCustomToast } from "@helpers/toastUtil"
-import isDarkMode from "@helpers/isDarkMode"
-import { WebApp } from "@grammyjs/web-app"
 import { BackgroundModalStyle, BorderStyle, TabSelectedStyle } from "./styles"
 
 interface WalletModalProps {

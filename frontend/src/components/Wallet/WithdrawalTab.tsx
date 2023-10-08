@@ -1,6 +1,5 @@
 import React from "react"
 import { Input, Button, VStack } from "@chakra-ui/react"
-import isDarkMode from "@helpers/isDarkMode"
 import { ButtonRoundedStyle, FocusInputStyle, InputStyle } from "./styles"
 
 interface WithdrawalTabProps {
