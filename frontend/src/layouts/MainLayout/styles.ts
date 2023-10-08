@@ -1,3 +1,5 @@
+import isDarkMode from "../../helpers/isDarkMode"
+
 const WrapperStyle = {
   display: "flex",
   alignItems: "center",
@@ -8,7 +10,7 @@ const WrapperStyle = {
 const HeaderStyle = {
   width: "100%",
   height: "8vh",
-  backgroundColor: `var(--chakra-colors-brand-700)`,
+  backgroundColor: isDarkMode ? `var(--chakra-colors-brand-700)` : `var(--chakra-colors-brand-300)`,
   color: 'var(--chakra-colors-brand-100)',
   paddingLeft: "10%",
   paddingRight: "10%",

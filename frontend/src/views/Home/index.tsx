@@ -7,6 +7,7 @@ import { WebApp } from "@grammyjs/web-app"
 import { GameSelectorContainerStyle, GameSelectorGifStyle, roundedButtonStyle } from "./styles"
 import { useTelegramContext } from "../../contexts/telegramContext"
 import { useCustomToast } from "../../helpers/toastUtil"
+import isDarkMode from "../../helpers/isDarkMode"
 
 const HomeView: React.FC = () => {
   const location = useLocation()
@@ -16,18 +17,18 @@ const HomeView: React.FC = () => {
   const hasNotEnoughMoneyToPlay = balance !== null && balance < 1
 
   useEffect(() => {
-      if (hasNotEnoughMoneyToPlay) {
-        showToast({
-          title: 'Please deposit money in your wallet to play',
-          status: "info"
-        })
-      }
+    if (hasNotEnoughMoneyToPlay) {
+      showToast({
+        title: 'Please deposit money in your wallet to play',
+        status: "info"
+      })
+    }
   }, [])
 
   const openModal = () => setModalOpen(true)
 
   useEffect(() => {
-    WebApp.MainButton.setParams({ color: '#33084F', text: 'Wallet' }).show().onClick(openModal)
+    WebApp.MainButton.setParams({ color: isDarkMode ? '#33084F' : '#30cccc', text: 'Wallet' }).show().onClick(openModal)
 
     return () => {
       WebApp.MainButton.offClick(openModal)
