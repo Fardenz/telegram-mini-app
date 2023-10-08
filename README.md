@@ -94,13 +94,21 @@ You can find the configuration in `.github/workflows/staging-deployment-frontend
 
 ```mermaid
 graph LR
-    A[Telegram] -->|Messages| B[Our Bot]
-    B -->|Web App Link| A
-    A -->|HTTPS| C[Frontend]
-    C -->|API Calls| D[Our Web Server]
+    A[Telegram] -->|Messages| B[Bot]
+    B --> |Web App Configuration|A
+    A -->|Web app view using HTTPS| C[Frontend]
+    C -->|API Calls| D[Web Server]
     D -->|Responses| C
-    D -->|Uses| E[MongoDB]
-    B -->|Uses| E
+    D --> |Queries|E[MongoDB]
+    B --> |Queries|E
+    subgraph "Backend Structure"
+        D
+        B
+    end
+    subgraph "User interface Layer"
+        C
+        A
+    end
 ```
 
 You can also check [`an in depth explanation of the backend architecture`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure)
