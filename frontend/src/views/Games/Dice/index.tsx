@@ -89,6 +89,8 @@ const DiceView: React.FC = () => {
             {options.map((option, index) => {
               return (
                 <Checkbox
+                  iconColor='brand.100' iconSize='1rem'
+                  colorScheme={"red"}
                   isChecked={checkedItems[index]}
                   key={index}
                   value={option.value}
