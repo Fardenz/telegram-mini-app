@@ -10,7 +10,7 @@ const WrapperStyle = {
 const HeaderStyle = {
   width: "100%",
   height: "8vh",
-  backgroundColor: isDarkMode ? `var(--chakra-colors-brand-700)` : `var(--chakra-colors-brand-300)`,
+  backgroundColor: isDarkMode ? `var(--chakra-colors-brand-300)` : `var(--chakra-colors-brand-700)`,
   color: 'var(--chakra-colors-brand-100)',
   paddingLeft: "10%",
   paddingRight: "10%",
