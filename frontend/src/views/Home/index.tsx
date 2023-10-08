@@ -52,7 +52,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="teal" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
+                <Button colorScheme="brand" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Dice </Button>
               </Flex>
             </Box>
           </Flex>
@@ -64,7 +64,7 @@ const HomeView: React.FC = () => {
             </Box>
             <Box>
               <Flex direction="row" justifyContent={"center"}>
-                <Button colorScheme="teal" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
+                <Button colorScheme="brand" variant="outline" isDisabled={hasNotEnoughMoneyToPlay}> Coinflip </Button>
               </Flex>
             </Box>
           </Flex>
