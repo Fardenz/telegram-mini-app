@@ -38,7 +38,7 @@ const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) 
   const showToast = useCustomToast();
   const getBalance = async () => {
     const res = await Wallet.getBalance(showToast)
-    if (!res) return;
+    if (!res && res !== 0) return;
     setBalance(res)
   }
 
