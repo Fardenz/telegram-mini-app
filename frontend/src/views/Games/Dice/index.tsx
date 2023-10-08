@@ -91,12 +91,11 @@ const DiceView: React.FC = () => {
               return (
                 <Checkbox
                   isChecked={checkedItems[index]}
-                  color={isDarkMode ? "brand.100" : "brand.900"}
                   key={index}
                   value={option}
                   onChange={(e) => handleCheckboxChange(index, e.target.checked)}
                 >
-                  <Text color="black">{option}</Text>
+                  <Text color={isDarkMode ? "brand.100" : "brand.900"}>{option}</Text>
                 </Checkbox>
               )
             })}
