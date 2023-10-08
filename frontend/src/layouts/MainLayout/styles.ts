@@ -1,10 +1,3 @@
-import { WebApp } from "@grammyjs/web-app"
-
-const {
-  bg_color,
-  text_color,
-} = WebApp.themeParams
-
 const WrapperStyle = {
   display: "flex",
   alignItems: "center",
@@ -15,8 +8,8 @@ const WrapperStyle = {
 const HeaderStyle = {
   width: "100%",
   height: "8vh",
-  backgroundColor: bg_color,
-  color: text_color,
+  backgroundColor: `var(--chakra-colors-brand-700)`,
+  color: 'var(--chakra-colors-brand-100)',
   paddingLeft: "10%",
   paddingRight: "10%",
   display: "flex",
@@ -27,7 +20,7 @@ const HeaderStyle = {
 const HeaderTextStyle = {
   fontSize: "medium",
   fontWeight: "bold",
-  color: text_color,
+  color: 'var(--chakra-colors-brand-100)',
 }
 
 const ChildrenWrapperStyle = {
