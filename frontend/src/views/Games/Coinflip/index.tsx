@@ -41,7 +41,7 @@ const CoinflipView: React.FC = () => {
       });
       return;
     }
-    if (balance && balance < 1) {
+    if (balance !== null && balance < 1) {
       showToast({
         title: 'You don\'t have enough money to play this game. 💸',
         status: 'error'

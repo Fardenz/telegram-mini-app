@@ -32,7 +32,7 @@ const DiceView: React.FC = () => {
       return;
     }
 
-    if (balance && balance < opt.length * 1) {
+    if (balance !== null && balance < opt.length) {
       showToast({
         title: 'You don\'t have enough money to play this game. 💸',
         status: 'error'
