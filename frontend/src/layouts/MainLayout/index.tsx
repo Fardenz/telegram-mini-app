@@ -2,8 +2,8 @@
 // Path: src/layouts/MainLayout/mainLayout.tsx
 
 import React, { ReactNode, useEffect } from "react"
-import { Box, Flex, Text } from "@chakra-ui/react"
-import { useNavigate, useLocation } from "react-router-dom"
+import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react"
+import { useNavigate, useLocation, Link as ReactRouterLink, } from "react-router-dom"
 import { HOME } from "@router/paths"
 import { useTelegramContext } from "@contexts/telegramContext"
 import { WebApp } from "@grammyjs/web-app"
@@ -28,13 +28,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   })
 
   return (
+      <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
     <Flex style={WrapperStyle} direction="column">
-      <Box style={HeaderStyle}>
-        <Text style={HeaderTextStyle}>CasinoX</Text>
-        <Text style={HeaderTextStyle}>{balance}€</Text>
-      </Box>
-      <Box style={ChildrenWrapperStyle}>{children}</Box>
+        <Box style={HeaderStyle}>
+          <Text style={HeaderTextStyle}>CasinoX</Text>
+          <Text style={HeaderTextStyle}>{balance}€</Text>
+        </Box>
+        <Box style={ChildrenWrapperStyle}>{children}</Box>
     </Flex>
+    </ChakraLink >
   )
 }
 
