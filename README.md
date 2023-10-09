@@ -40,7 +40,17 @@ _list any prerequisites or dependencies that users need to have installed on the
 3. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
 
 
-## Solution Overview (_can connect to In-Depth Explanation Section?_)
+## Solution Overview
+
+### Swagger API Documentation 
+
+For our current project, we have integrated the [`Swagger API documentation`](https://en.wikipedia.org/wiki/Swagger_(software)) to provide detailed information about all the endpoints supported by our API. This makes it easier for developers to understand the available functionality and test the API.
+
+You can access the Swagger API documentation [here](https://5c37-79-137-37-91.ngrok-free.app/api-documentation-ui/). This interactive documentation provides a comprehensive overview of the API endpoints, their input parameters, expected responses, and any required authentication.
+
+We also use this Swagger specification to validate all the requests and responses that the bot receives. This ensures that the data is in the correct format and structure before being processed by the backend.
+
+Please note that the Swagger API documentation will be regularly updated as new features are added or existing ones are modified in the project. Therefore, it is essential to refer to the latest version of the documentation to stay up to date with the API's capabilities.
 
 ### Deployment
 
