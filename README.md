@@ -1,5 +1,7 @@
 # Telegram Bot
 
+dark & light
+
 <!-- ABOUT THE PROJECT -->
 
 ## About the Project
@@ -145,14 +147,22 @@ If you encounter errors related to invalid input or parameters when making reque
 
 </details>
 
-## Roadmap
-_roadmap project for a list of proposed features (and known issues)_
-- Add crypto top up and withdrawal (investigate integrating with @wallet)
-- Add support for more languages
-- Better error handling and logging
-- Add tests
-- Add more games to the web app
-- Add more comands to the bot to be more user friendly
+## 🛣️ Roadmap
+
+### 🚀 **Initial Phase**
+- [ ] 🔍 **Investigate Crypto Integration**
+  - Explore possibilities of integrating with @wallet for crypto top-up and withdrawal.
+
+### 🌍 **Localization & User Experience**
+- [ ] Add support for more languages.
+- [ ] 🔧 Improve error handling and logging for a smoother user experience.
+
+### 🎮 **Feature Enhancements**
+- [ ] Add more games to the web app.
+- [ ] 🤖 Enhance bot commands to be more user-friendly.
+
+### 🧪 **Quality Assurance**
+- [ ] Implement comprehensive tests to ensure stability and reliability.
 
 
 
