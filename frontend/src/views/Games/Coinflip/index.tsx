@@ -70,7 +70,7 @@ const CoinflipView: React.FC = () => {
     return () => {
       WebApp.MainButton.offClick(handleThrowCoin)
     }
-  }, [location.pathname, userChoice])
+  }, [location.pathname, userChoice, balance])
 
   return (
     <Flex direction="column" style={WrapperStyle}>
