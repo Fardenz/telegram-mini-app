@@ -83,7 +83,7 @@ const DiceView: React.FC = () => {
     return () => {
       WebApp.MainButton.offClick(handleThrowDice)
     }
-  }, [location.pathname, checkedItems])
+  }, [location.pathname, checkedItems, balance])
 
   return (
     <Flex style={WrapperStyle} direction="column">
