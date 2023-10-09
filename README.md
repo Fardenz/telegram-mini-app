@@ -6,7 +6,9 @@
 _insert vid like cal_
 
 ### Overview
-This project was created as a solution for the project launched by Telegram
+This project was created as a solution for the project launched by Telegram. 
+
+You can [test the bot here](https://t.me/TheVegasBot)
 
 Read more about the [`Telegram contest`](https://t.me/contest/327)
 
