@@ -33,7 +33,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Box style={HeaderStyle}>
         <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
           <Text style={HeaderTextStyle}>
-            <Image src={`./assets/img/poker_128px-${isDarkMode ? "dark" : "light"}.png`} alt='Casino bot logo' maxH={'20px'} />
+            <Image src={`./assets/img/poker_128px-dark.png`} alt='Casino bot logo' maxH={'20px'} />
           </Text>
         </ChakraLink >
         <Text style={HeaderTextStyle}>💰 {balance ?? 0}€</Text>
