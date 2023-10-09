@@ -12,19 +12,31 @@ const GAME_AMOUNT = 100
 
 @injectable()
 export default class GameEndpoints {
-  constructor() {}
+  constructor() { }
 
   public async postGame(
     req: CustomExpressRequest<unknown, unknown, PostGameBody>,
     res: Response<PostGameResult>
   ) {
     try {
-      const user = await User.findOne({
+      let user = await User.findOne({
         telegramId: req.customData.telegramId,
       })
       const gameCost = new Decimal(GAME_AMOUNT).mul(req.body.choice.length)
       const walletAvailable = new Decimal(user?.walletAmountInCents ?? 0)
       if (user === null || walletAvailable.lessThan(gameCost)) {
+        throw new CustomError("Not enough balance")
+      }
+
+      // charge game amount
+      await executeWalletIncrement(req.customData.telegramId, gameCost.mul(-1).toNumber())
+
+      user = await User.findOne({
+        telegramId: req.customData.telegramId,
+      })
+
+      if (new Decimal(user?.walletAmountInCents ?? 0).lessThan(0)) {
+        await executeWalletIncrement(req.customData.telegramId, gameCost.toNumber())
         throw new CustomError("Not enough balance")
       }
 
@@ -38,12 +50,6 @@ export default class GameEndpoints {
         result = await getCoinflipResult()
       } else {
         throw new CustomError("Unrecognized game type")
-      }
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      for (const choice of req.body.choice) {
-        // charge game amount
-        await executeWalletIncrement(req.customData.telegramId, GAME_AMOUNT * -1)
       }
 
       if (req.body.choice.includes(result)) {
