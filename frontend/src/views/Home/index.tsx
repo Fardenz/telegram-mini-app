@@ -75,7 +75,7 @@ const HomeView: React.FC = () => {
                   style={roundedButtonStyle}
                   isDisabled={hasNotEnoughMoneyToPlay}
                 >
-                  Dice 🎲
+                  PLAY 🎲
                 </Button>
               </Flex>
             </Box>
@@ -102,7 +102,7 @@ const HomeView: React.FC = () => {
                   style={roundedButtonStyle}
                   isDisabled={hasNotEnoughMoneyToPlay}
                 >
-                  Coinflip 🪙
+                  PLAY 🪙
                 </Button>
               </Flex>
             </Box>

@@ -17,7 +17,7 @@ export const TabSelectedStyle = {
 
 export const InputStyle = {
   color: isDarkMode ? "#ffffff" : "#000000",
-  borderColor: "#30cccc",
+  borderColor: isDarkMode ? "#30cccc" : "#33084F",
 }
 
 export const FocusInputStyle = {
