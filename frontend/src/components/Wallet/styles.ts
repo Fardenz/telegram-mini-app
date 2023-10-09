@@ -21,8 +21,8 @@ export const InputStyle = {
 }
 
 export const FocusInputStyle = {
-  borderColor: "#30cccc",
-  boxShadow: "0 0 0 1px #30cccc",
+  borderColor: isDarkMode ? "#30cccc" : "#33084F",
+  boxShadow: `0 0 0 1px ${isDarkMode ? "#30cccc" : "#33084F"}}`,
 }
 
 export const ButtonRoundedStyle = {
