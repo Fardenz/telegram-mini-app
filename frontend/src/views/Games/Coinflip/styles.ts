@@ -1,3 +1,5 @@
+import { CSSProperties } from "react"
+
 const WrapperStyle = {
   margin: "0 auto",
   height: "100%",
@@ -23,9 +25,9 @@ const OptionBoxStyle = {
   justifyContent: "space-between",
 }
 
-const HStackStyle = {
+const HStackStyle: CSSProperties = {
   width: "100%",
-  justifyContent: "center",
+  justifyContent: "center"
 }
 
 export { WrapperStyle, CoinBoxStyle, OptionBoxStyle, HStackStyle }

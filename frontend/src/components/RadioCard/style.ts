@@ -13,8 +13,8 @@ export const RadioStyle = {
 }
 
 export const RadioCheckedStyle = {
-  backgroundColor: isDarkMode ? "#30cccc" : "#ED2A4A",
-  borderColor: isDarkMode ? "#30cccc" : "#ED2A4A",
+  backgroundColor: "#ED2A4A",
+  borderColor: "#ED2A4A",
   color: "#fff !important",
 }
 

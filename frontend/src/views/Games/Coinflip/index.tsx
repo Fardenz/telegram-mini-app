@@ -90,7 +90,7 @@ const CoinflipView: React.FC = () => {
           })}
         </HStack>
       </Box>
-    </Flex>
+    </Flex >
   )
 }
 

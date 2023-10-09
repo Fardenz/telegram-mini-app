@@ -7,12 +7,12 @@ export const BackgroundModalStyle = {
 }
 
 export const BorderStyle = {
-  borderColor: "#30cccc",
+  borderColor: isDarkMode ? "#30cccc" : "#33084F",
 }
 
 export const TabSelectedStyle = {
   color: "#ffffff",
-  bg: "#30cccc",
+  bg: isDarkMode ? "#30cccc" : "#33084F",
 }
 
 export const InputStyle = {
