@@ -16,7 +16,7 @@
 
 3.  Edit the `.env` file:
 
-    - Open the [`env/.env`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/env/.env.example) file in your        preferred text editor. Adjust the environment variables as per your requirements.
+    - Open the [`env/.env`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/env/.env.example) file in your preferred text editor. Adjust the environment variables as per your requirements.
 
 4. Install the required packages:
 
