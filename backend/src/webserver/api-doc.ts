@@ -1,4 +1,4 @@
-import { OpenAPIV3 } from "openapi-types";
+import { OpenAPIV3 } from "openapi-types"
 
 const apiDoc: OpenAPIV3.Document = {
   openapi: "3.0.1",
@@ -80,7 +80,7 @@ const apiDoc: OpenAPIV3.Document = {
                     type: "array",
                     items: {
                       type: "number",
-                      enum: [1, 2, 3, 4, 5, 6], 
+                      enum: [1, 2, 3, 4, 5, 6],
                     },
                   },
                   type: {
@@ -203,4 +203,4 @@ const apiDoc: OpenAPIV3.Document = {
   },
 }
 
-module.exports = apiDoc;
+module.exports = apiDoc

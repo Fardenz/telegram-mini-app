@@ -5,13 +5,13 @@ export default class Auth {
   static async validateTelegramData(initData: string): Promise<boolean> {
     const endpoint: string = Settings.apiUrl() + "/auth/validateData"
     const body: JSONRecord = {
-      initData
+      initData,
     }
     let result: boolean
 
     try {
       const response: JSONRecord = await SuperFetch.post(endpoint, body)
-      result = Boolean(response.result);
+      result = Boolean(response.result)
     } catch {
       result = false
     }

@@ -1,29 +1,28 @@
-
 export enum SUPPORTED_CURRENCIES {
-  EURO = 'EUR'
+  EURO = "EUR",
 }
 
 export interface GetWalletResponsee {
-  telegramId: string,
+  telegramId: string
   amountInCents: string
 }
 export interface PostWithdrawMoneyRequestBody {
-  iban: string;
+  iban: string
   amountInCents: string
 }
 
 export interface PostWithdrawMoneyResponse {
-  telegramId: string;
+  telegramId: string
   amountInCents: string
 }
 
 export interface WithdrawalRequest {
-  amountInCents: string;
-  ibam: string;
-  isCompleted: boolean;
+  amountInCents: string
+  ibam: string
+  isCompleted: boolean
 }
 
 export interface PaymentLinkResponseBody {
-  telegramId: string,
+  telegramId: string
   url: string
 }

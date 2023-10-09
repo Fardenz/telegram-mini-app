@@ -2,9 +2,9 @@ import { ErrorResponse } from "../../../types"
 
 export type PostGameResult = PostGameResultSuccess | ErrorResponse
 
-export enum GameType{
-  DICE = 'dice',
-  COINFLIP = 'coinflip'
+export enum GameType {
+  DICE = "dice",
+  COINFLIP = "coinflip",
 }
 
 export interface PostGameBody {

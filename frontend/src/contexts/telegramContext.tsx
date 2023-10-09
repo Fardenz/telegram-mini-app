@@ -13,7 +13,7 @@ interface TelegramContextType {
 
 const emptyTelegramContext: TelegramContextType = {
   userData: { hash: "", auth_date: 0 },
-  getBalance: async () => { },
+  getBalance: async () => {},
   balance: null,
 }
 
@@ -35,10 +35,10 @@ const TelegramContextProvider: React.FC<TelegramProviderProps> = ({ children }) 
     window.Telegram.WebApp.expand()
   }
 
-  const showToast = useCustomToast();
+  const showToast = useCustomToast()
   const getBalance = async () => {
     const res = await Wallet.getBalance(showToast)
-    if (!res && res !== 0) return;
+    if (!res && res !== 0) return
     setBalance(res)
   }
 

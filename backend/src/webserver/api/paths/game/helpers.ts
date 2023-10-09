@@ -1,4 +1,4 @@
-import { randomInt } from "crypto";
+import { randomInt } from "crypto"
 
 export function getDiceResult(): Promise<number> {
   return randomIntPromisified(1, 7)
@@ -12,9 +12,9 @@ export const randomIntPromisified = function (min: number, max: number): Promise
   return new Promise((resolve, reject) => {
     randomInt(min, max, (err, result) => {
       if (err) {
-        reject(err);
+        reject(err)
       }
-      resolve(result);
-    });
-  });
-};
+      resolve(result)
+    })
+  })
+}

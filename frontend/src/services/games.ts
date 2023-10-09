@@ -1,7 +1,10 @@
 import Settings from "@infrastructure/settings"
 
 export default class GamesService {
-  static async play(choices: number[] | number, type: "dice" | "coinflip"): Promise<number | undefined> {
+  static async play(
+    choices: number[] | number,
+    type: "dice" | "coinflip"
+  ): Promise<number | undefined> {
     try {
       const body: any = {
         choice: choices,

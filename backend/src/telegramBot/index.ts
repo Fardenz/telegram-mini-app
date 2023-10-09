@@ -1,17 +1,18 @@
-import { message } from 'telegraf/filters'
+import { message } from "telegraf/filters"
 import config from "../config"
-import { injectable } from "inversify";
-import { Telegraf } from 'telegraf';
-import { handleSuccessfulPayment } from './paymentHandle';
-import { SUPPORTED_CURRENCIES } from "../webserver/api/paths/wallet/types";
+import { injectable } from "inversify"
+import { Telegraf } from "telegraf"
+import { handleSuccessfulPayment } from "./paymentHandle"
+import { SUPPORTED_CURRENCIES } from "../webserver/api/paths/wallet/types"
 @injectable()
 export default class TelegramBot {
   constructor(readonly bot: Telegraf) {
     // Create a bot that uses 'polling' to fetch new updates
-    bot.on(message('text'), async (ctx) => {
+    bot.on(message("text"), async (ctx) => {
       // WATCH OUT WHILE EDITING THIS MESSAGE
       // THE MARKDOWN SYNTAX IS VERY SENSITIVE TO SPECIAL CHARACTERS
-      ctx.reply(`
+      ctx.reply(
+        `
       *Let's hit the jackpot 🎰*
 
 Please tap the button below to place your bets and start playing at the casino\\! 🎲💰
@@ -24,61 +25,66 @@ Please tap the button below to place your bets and start playing at the casino\\
 \\- _DICE_: Choose up to 3 options and click "Throw Dice\\." Good luck\\!
 \\- _COIN_: Choose between "Heads" or "Tails" and throw the coin\\. Best of luck\\!
 
-**BALANCE**: Your current balance is available at the top right corner of the web app\\. 💰`, {
-        parse_mode: 'MarkdownV2',
-        reply_markup: {
-          inline_keyboard: [[{
-            text: 'Open',
-            web_app: {
-              url: config.frontendEndpoint
-            }
-          }]]
+**BALANCE**: Your current balance is available at the top right corner of the web app\\. 💰`,
+        {
+          parse_mode: "MarkdownV2",
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: "Open",
+                  web_app: {
+                    url: config.frontendEndpoint,
+                  },
+                },
+              ],
+            ],
+          },
         }
-      })
+      )
 
       await ctx.setChatMenuButton({
-        type: 'web_app',
-        text: 'Open',
-        web_app: { url: config.frontendEndpoint }
-      });
-    });
+        type: "web_app",
+        text: "Open",
+        web_app: { url: config.frontendEndpoint },
+      })
+    })
 
-    bot.on('pre_checkout_query', async (ctx) => {
+    bot.on("pre_checkout_query", async (ctx) => {
       try {
-        const preCheckoutQuery = ctx.update.pre_checkout_query;
-        const currency = preCheckoutQuery.currency;
+        const preCheckoutQuery = ctx.update.pre_checkout_query
+        const currency = preCheckoutQuery.currency
 
-        if (!Object.values(SUPPORTED_CURRENCIES).find(cur => cur === currency)) {
-          await ctx.answerPreCheckoutQuery(false, 'Invalid Currency');
-          return;
-        };
+        if (!Object.values(SUPPORTED_CURRENCIES).find((cur) => cur === currency)) {
+          await ctx.answerPreCheckoutQuery(false, "Invalid Currency")
+          return
+        }
 
-        await ctx.answerPreCheckoutQuery(true);
-
+        await ctx.answerPreCheckoutQuery(true)
       } catch (error) {
-        console.error('Error handling pre_checkout_query', error);
-        await ctx.answerPreCheckoutQuery(false, 'An error occurred');
+        console.error("Error handling pre_checkout_query", error)
+        await ctx.answerPreCheckoutQuery(false, "An error occurred")
       }
-    });
+    })
 
-    bot.on('successful_payment', async (ctx) => {
+    bot.on("successful_payment", async (ctx) => {
       try {
-        const user_id = ctx.from.id;
-        const amount = ctx.message.successful_payment.total_amount;
+        const user_id = ctx.from.id
+        const amount = ctx.message.successful_payment.total_amount
 
-        await handleSuccessfulPayment({ amount, user_id });
+        await handleSuccessfulPayment({ amount, user_id })
 
-        await ctx.reply('Payment successful!');
+        await ctx.reply("Payment successful!")
       } catch (error) {
-        console.error('Error handling successful payment', error);
-        await ctx.reply('An error occurred while processing your payment.');
+        console.error("Error handling successful payment", error)
+        await ctx.reply("An error occurred while processing your payment.")
       }
-    });
+    })
 
-    bot.launch();
+    bot.launch()
 
     // Enable graceful stop
-    process.once('SIGINT', () => bot.stop('SIGINT'))
-    process.once('SIGTERM', () => bot.stop('SIGTERM'))
+    process.once("SIGINT", () => bot.stop("SIGINT"))
+    process.once("SIGTERM", () => bot.stop("SIGTERM"))
   }
 }
