@@ -1,22 +1,4 @@
-Telegram Bot
-
-## How to set it up in local
-
-npx localtunnel --port 3333
-
-npx localtunnel --port 4000
-
-
-cd backend \
- && echo `BOT_TOKEN=66....
-TELEGRAM_FRONTEND=localtunnel result url` > .env\
- &&  npm i \
- && npm run start
-
-cd frontend && npm i && npm run dev
-
-cada cambio de back & front se sube
-front en github pages
+# Telegram Bot
 
 <!-- ABOUT THE PROJECT -->
 
@@ -24,7 +6,9 @@ front en github pages
 _insert vid like cal_
 
 ### Overview
-_brief overview of the coding contest and the purpose of your solution_
+This project was created as a solution for the project launched by Telegram
+
+Read more about the [`Telegram contest`](https://t.me/contest/327)
 
 <!-- GETTING STARTED -->
 
