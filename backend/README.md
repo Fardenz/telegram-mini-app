@@ -49,12 +49,15 @@ Ensure you adjust these settings as per your requirements.
 
 1. Dependency Injection:
 
-The presence of [`inversify.config.ts`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/src/inversify.config.ts) suggests the use of Inversion of Control (IoC) through dependency injection, promoting decoupling and making the code more maintainable and testable.
+For further developments you will want to keep maintaining [`inversify.config.ts`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/src/inversify.config.ts). These file configure the Inversion of Control (IoC) through dependency injection, promoting decoupling and making the code more maintainable and testable. 
 
 2. Telegram Bot Integration:
 
 A dedicated module [`telegramBot`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/telegramBot) handles Telegram bot functionalities, indicating a clear separation of concerns and modularity.
 
+2. Webserver:
+
+The second biggest module is the [`webserver`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/webserver) it handles all the calls coming from the web app. It also handles the authentication with Telegram and the API documentation.
 
 
 ### Code Structure

@@ -113,20 +113,6 @@ graph LR
 
 You can also check [`an in depth explanation of the backend architecture`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure)
 
-#### Backend
-
-1. Configuration Management:
-
-The backend uses configuration files ([`custom-environment-variables.js`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/config/custom-environment-variables.js) and [`default.js`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/config/default.js) to manage environment-specific settings. This allows for flexibility in deploying the application in different environments without changing the code.
-
-2. Dependency Injection:
-
-The presence of [`inversify.config.ts`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/src/inversify.config.ts) suggests the use of Inversion of Control (IoC) through dependency injection, promoting decoupling and making the code more maintainable and testable.
-
-3. Telegram Bot Integration:
-
-A dedicated module [`telegramBot`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/telegramBot) handles Telegram bot functionalities, indicating a clear separation of concerns and modularity.
-
 ### Code Structure (_explain the organization of your code, detailing the purpose of each major component or module_)
 
 #### Backend
@@ -153,13 +139,26 @@ Ensure that you have the correct URL in the `.env` file. The URL should be the s
 You will have to use a service like ngrok or localtunnel to expose your local web app to the internet. Then, you will have to change the `TELEGRAM_FRONTEND` variable in the `.env` file to the URL provided by the service. Make sure that the protocol is the correct one, so `https` for ngrok.
 </details>
 
+<details>
+<summary>Invalid input or parameters when making requests</summary>
+If you encounter errors related to invalid input or parameters when making requests, consider the following troubleshooting steps:
+- Check the error returned by the backend, it's usually explicitly telling you what's wrong.
+- Double-check the format and structure of the data being sent with each request. 
+- Ensure that it matches the expected format specified by the API endpoints.
+- Verify that you are providing all the required parameters for each request. 
+- Check the API documentation or Swagger file to ensure that you are including all the necessary parameters.
+- Validate the user input on the client side before making the request to prevent invalid data from being sent.
 
-### Exception Handling
-_detail how your solution handles exceptions gracefully_
+</details>
 
 ## Next Steps/Roadmap
 _roadmap project for a list of proposed features (and known issues)_
-
+- Add crypto top up and withdrawal (investigate integrating with @wallet)
+- Add support for more languages
+- Better error handling and logging
+- Add tests
+- Add more games to the web app
+- Add more comands to the bot to be more user friendly
 
 
 
