@@ -19,7 +19,7 @@ export function generateHMAC(
   return hmac.digest()
 }
 
-export async function executeWalletIncrement(telegramId: string, amount: number): Promise<unknown> {
+export async function executeWalletIncrementAndReturnUpdatedUser(telegramId: string, amount: number) {
   return User.findOneAndUpdate(
     {
       telegramId: telegramId,

@@ -6,7 +6,7 @@ import { GameType, PostGameBody, PostGameResult } from "./types"
 import Decimal from "decimal.js"
 import { getCoinflipResult, getDiceResult } from "./helpers"
 import config from "../../../../config"
-import { executeWalletIncrement } from "../../../../helpers"
+import { executeWalletIncrementAndReturnUpdatedUser } from "../../../../helpers"
 
 const GAME_AMOUNT = 100
 
@@ -29,14 +29,10 @@ export default class GameEndpoints {
       }
 
       // charge game amount
-      await executeWalletIncrement(req.customData.telegramId, gameCost.mul(-1).toNumber())
-
-      user = await User.findOne({
-        telegramId: req.customData.telegramId,
-      })
+      user = await executeWalletIncrementAndReturnUpdatedUser(req.customData.telegramId, gameCost.mul(-1).toNumber())
 
       if (new Decimal(user?.walletAmountInCents ?? 0).lessThan(0)) {
-        await executeWalletIncrement(req.customData.telegramId, gameCost.toNumber())
+        await executeWalletIncrementAndReturnUpdatedUser(req.customData.telegramId, gameCost.toNumber())
         throw new CustomError("Not enough balance")
       }
 
@@ -55,12 +51,12 @@ export default class GameEndpoints {
       if (req.body.choice.includes(result)) {
         // the user choice is correct
         if (req.body.type === GameType.DICE) {
-          await executeWalletIncrement(
+          await executeWalletIncrementAndReturnUpdatedUser(
             req.customData.telegramId,
             new Decimal(GAME_AMOUNT * 6).mul(new Decimal(1).sub(config.houseEdge)).toNumber()
           )
         } else if (req.body.type === GameType.COINFLIP) {
-          await executeWalletIncrement(
+          await executeWalletIncrementAndReturnUpdatedUser(
             req.customData.telegramId,
             new Decimal(GAME_AMOUNT * 2).mul(new Decimal(1).sub(config.houseEdge)).toNumber()
           )

@@ -13,19 +13,24 @@ export default class TelegramBot {
       // THE MARKDOWN SYNTAX IS VERY SENSITIVE TO SPECIAL CHARACTERS
       ctx.reply(
         `
-      *Let's hit the jackpot 🎰*
+      *Let's hit the jackpot* 🎰
 
 Please tap the button below to place your bets and start playing at the casino\\! 🎲💰
 
-**Wallet**
-\\- _TOP UP_: To add balance to your wallet, simply use the card number \`4242 4242 4242 4242\` as this is still a test bot\\.
-\\- _WITHDRAWAL_: You can withdraw money from your balance\\.
+🔝 TOP UP
+To add balance to your wallet, simply use the card number 4242 4242 4242 4242 as this is still a test bot\\. For the remaining details, you can input them randomly\\.
 
-**Games**
-\\- _DICE_: Choose up to 3 options and click "Throw Dice\\." Good luck\\!
-\\- _COIN_: Choose between "Heads" or "Tails" and throw the coin\\. Best of luck\\!
+💸 WITHDRAWAL
+You can withdraw money from your balance\\.
 
-**BALANCE**: Your current balance is available at the top right corner of the web app\\. 💰`,
+🎲 DICE
+Choose up to 3 options and click "Throw Dice" Good luck\\!
+
+🪙 COIN
+Choose between "Heads" or "Tails" and throw the coin\\. Best of luck\\!
+
+💰 BALANCE
+Your current balance is available at the top right corner of the web app\\.`,
         {
           parse_mode: "MarkdownV2",
           reply_markup: {
