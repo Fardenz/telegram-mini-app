@@ -31,6 +31,14 @@ const HomeView: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (isModalOpen) {
+      WebApp.MainButton.hide()
+    } else {
+      WebApp.MainButton.show()
+    }
+  }, [isModalOpen])
+
   const openModal = () => setModalOpen(true)
 
   useEffect(() => {
