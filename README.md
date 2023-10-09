@@ -105,8 +105,6 @@ graph LR
     end
 ```
 
-You can also check [`an in depth explanation of the backend architecture`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure)
-
 ### Code Structure (_explain the organization of your code, detailing the purpose of each major component or module_)
 
 #### Backend
@@ -145,7 +143,7 @@ If you encounter errors related to invalid input or parameters when making reque
 
 </details>
 
-## Next Steps/Roadmap
+## Roadmap
 _roadmap project for a list of proposed features (and known issues)_
 - Add crypto top up and withdrawal (investigate integrating with @wallet)
 - Add support for more languages
