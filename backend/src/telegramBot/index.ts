@@ -20,7 +20,7 @@ Please tap the button below to place your bets and start playing at the casino\\
 🔝 TOP UP
 To add balance to your wallet, simply use the card number 4242 4242 4242 4242 as this is still a test bot\\. For the remaining details, you can input them randomly\\.
 
-💸 WITHDRAWAL
+🤑 WITHDRAWAL
 You can withdraw money from your balance\\.
 
 🎲 DICE
