@@ -167,6 +167,11 @@ _list potential errors that users may encounter and explain how to troubleshoot 
 Most of the expected requests will be on the Swagger file, so you can test them there. If you are using Postman, you can import the Swagger file and use the requests from there.
 
 <details>
+<summary>How do I use the Swagger API documentation?</summary>
+The Swagger API documentation provides a comprehensive overview of the API endpoints, their input parameters, expected responses, and any required authentication. You can access the Swagger API documentation by navigating to the /api-documentation-ui/ endpoint of the backend server. You can use this documentation to understand how to interact with the API and to test the API endpoints.
+</details>
+
+<details>
 <summary>Requests stated in Swagger are not working correctly</summary>
 Ensure that you have the correct URL in the `.env` file. The URL should be the same as the one you used to expose your backend to the internet. Also make sure that the protocol is the correct one, so `http` for local.
 
@@ -189,6 +194,13 @@ If you encounter errors related to invalid input or parameters when making reque
 
 </details>
 
+<details>
+<summary>Is this game safe?</summary>
+This game is totally safe, @Fardenz one of our creators [investigated in depth](https://javascript.plainenglish.io/generating-a-secure-safe-and-truly-random-number-in-node-js-e943224cbe30) how to generate cryptographically secure random numbers and this work applies the results from that investigation. We also made sure that that the money handling is safe and there is no risk of running into race conditions.
+
+One of the future improvements we're planning for the future is implementing a [provably fair](https://provablyfair.org/) feature, so you can verify that the results have not been tampered with in favor of the casino.
+</details>
+
 ## 🛣️ Roadmap
 
 ### 🚀 **Initial Phase**
@@ -200,6 +212,7 @@ If you encounter errors related to invalid input or parameters when making reque
 - [ ] 🔧 Improve error handling and logging for a smoother user experience.
 
 ### 🎮 **Feature Enhancements**
+- [ ] Make games provably fair by implementing a verifiable random number generator.
 - [ ] Add more games to the web app.
 - [ ] 🤖 Enhance bot commands to be more user-friendly.
 
