@@ -15,7 +15,7 @@
 
 > @TheVegasBot – a Mini App that offers a streamlined gaming experience with Dice and Coinflip. User is presented with a virtual casino interface where they can top up funds, choose their preferred game, place bets, and withdraw their winnings.
 
-This project built for Telegram. It consists of a backend and a frontend, both of which are containerized using Docker for easy deployment and scalability.
+This project is built for Telegram. It consists of a backend and a frontend, both of which are containerized using Docker for easy deployment and scalability.
 
 The backend is built with Node.js and Express, and it uses MongoDB for data storage. It handles Telegram bot functionalities, manages game states, and processes transactions. The backend also provides an API for the frontend to interact with, and it uses Swagger for API documentation.
 
@@ -30,6 +30,13 @@ This project was created as a solution for the project launched by Telegram.
 You can [test the bot here](https://t.me/TheVegasBot).
 
 Read more about the [`Telegram contest`](https://t.me/contest/327).
+
+### Team Members
+- [@Fardlan/Fardenz](https://t.me/Fardlan)
+- [@NoProtocol](https://t.me/6360734775)
+- [@Kn33l3ss](https://t.me/Kn33l3ss)
+- [@bpeel26](https://t.me/bpeel26)
+
 
 ## Getting Started
 
@@ -54,9 +61,9 @@ Read on the deployment section for more information about our setup.
     
    > If you are on Windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true https://github.com/Fardenz/telegram-mini-app` <br>
 
-2. Set up Frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md)
+2. Set up frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md)
    
-4. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
+4. Set up the backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
 
 
 ## Solution Overview
@@ -74,17 +81,18 @@ Please note that the Swagger API documentation will be regularly updated as new 
 ### Deployment
 
 #### Database
-We're using [`MongoDB Atlas`](https://www.mongodb.com/atlas/database) to host our database. In our case it's free and allows us to scale easily.
+
+We are using [`MongoDB Atlas`](https://www.mongodb.com/atlas/database) to host our database. In our case, it is free and allows us to scale easily.
 
 #### GitHub Actions
 
-We're using Github Actions as our CI/CD tool. You can find the configuration in `.github/workflows/`, whenever a push is made to the `main` branch, the workflow will be triggered, deploying the latest code.
+We are using Github Actions as our CI/CD tool. You can find the configuration in `.github/workflows/`, whenever a push is made to the `main` branch, the workflow will be triggered, deploying the latest code.
 
 <details>
   
 <summary>Backend</summary>
   
-The backend is automatically deployed to a custom server owned by us running Linux. We use docker to package the code so it's easier to spin multiple copies, isolate instances, and deploy the minimum amount of code.
+The backend is automatically deployed to a custom server owned by us running Linux. We use docker to package the code so it is easier to spin multiple copies, isolate instances, and deploy the minimum amount of code.
 
 You can set your custom secrets in the repository settings and it will automatically deploy to your server. The secrets are:
 
@@ -103,7 +111,7 @@ You can find the configuration in `.github/workflows/staging-deployment-backend.
   
 <summary>Frontend</summary>
   
-We're using GitHub Pages to deploy the frontend, this allows us to have a public URL with HTTPS for the web app without having to pay for a server. The disadvantage is that you can only host static web pages. To deploy it automatically configure your GitHub pages in the repository settings and set the `ENV_VARIABLES_FRONTEND` secret.
+We are using GitHub Pages to deploy the frontend, this allows us to have a public URL with HTTPS for the web app without having to pay for a server. The disadvantage is that you can only host static web pages. To deploy it automatically configure your GitHub pages in the repository settings and set the `ENV_VARIABLES_FRONTEND` secret.
 
 You can find the configuration in `.github/workflows/staging-deployment-frontend.yml`.
 
@@ -173,7 +181,7 @@ You will have to use a service like ngrok or local tunnel to expose your local w
 <summary>Invalid input or parameters when making requests</summary>
   
 If you encounter errors related to invalid input or parameters when making requests, consider the following troubleshooting steps:
-- Check the error returned by the backend, it's usually explicitly telling you what's wrong.
+- Check the error returned by the backend, it is usually explicitly telling you what is wrong.
 - Double-check the format and structure of the data being sent with each request. 
 - Ensure that it matches the expected format specified by the API endpoints.
 - Verify that you are providing all the required parameters for each request. 
@@ -188,7 +196,7 @@ If you encounter errors related to invalid input or parameters when making reque
   
 This game is totally safe, @Fardenz one of our creators [investigated in depth](https://javascript.plainenglish.io/generating-a-secure-safe-and-truly-random-number-in-node-js-e943224cbe30) how to generate cryptographically secure random numbers and this work applies the results from that investigation. We also made sure that the money handling is safe and there is no risk of running into race conditions.
 
-One of the future improvements we're planning for the future is implementing a [provably fair](https://provablyfair.org/) feature, so you can verify that the results have not been tampered with in favor of the casino.
+One of the future improvements we are planning for the future is implementing a [provably fair](https://provablyfair.org/) feature, so you can verify that the results have not been tampered with in favor of the casino.
 
 </details>
 
