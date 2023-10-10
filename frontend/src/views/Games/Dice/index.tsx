@@ -102,14 +102,11 @@ const DiceView: React.FC = () => {
       </Box>
       <Box style={OptionsContainerStyle}>
         <Stack direction={["column", "row"]} style={StackStyle} pos={"relative"}>
-          <InformationPopover
-            style={{
-              position: "absolute",
-              top: "-25px",
-              right: "0",
-              color: "black",
-            }}
-          />
+            <InformationPopover
+              style={{
+                color: "black",
+              }}
+            />
           <Grid templateColumns="repeat(3, 1fr)" gap={10}>
             {options.map((option, index) => {
               return (

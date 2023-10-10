@@ -16,7 +16,7 @@ type InformationPopoverProps = {
 
 export const InformationPopover: React.FC<InformationPopoverProps> = ({ style }) => {
   return (
-    <Box display={"flex"} justifyContent={"right"} paddingTop={"5px"} zIndex={99} style={style}>
+    <Box display={"flex"} width={'100%'} justifyContent={"right"} paddingRight={'30px'} paddingTop={"5px"} zIndex={99} style={style}>
       <Popover>
         <PopoverTrigger>
           <InfoOutlineIcon color={isDarkMode ? "whiteAlpha.900" : "black"}></InfoOutlineIcon>

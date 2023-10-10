@@ -79,15 +79,14 @@ const CoinflipView: React.FC = () => {
       <Box style={CoinBoxStyle}>
         <CoinFlip result={result} />
       </Box>
-      <Box style={OptionBoxStyle} pos={"relative"}>
+      <Box >
         <InformationPopover
           style={{
-            position: "absolute",
-            top: "0",
-            right: "0",
             color: "black",
           }}
         />
+      </Box>
+      <Box style={OptionBoxStyle} pos={"relative"}>
         <HStack {...group} style={HStackStyle}>
           {options.map((value) => {
             const radio = getRadioProps({ value })
