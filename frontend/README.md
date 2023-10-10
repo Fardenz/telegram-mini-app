@@ -68,7 +68,7 @@ Update the [`tsconfig.json`](https://github.com/Fardenz/telegram-mini-app/blob/m
 - Development: File .env.development on env folder.
 - Production: File .env.production on env folder.
 
-Create these two files and copy the info of the .env.example file
+Create these two files and copy the info of the .env.example file.
 
 </details>
 
