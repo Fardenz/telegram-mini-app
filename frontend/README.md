@@ -8,7 +8,7 @@
 
 2. Set up your `.env` file:
    
-   - Duplicate `.env.example` to `.env`
+   - Duplicate `.env.example` to `.env`:
 
     ```sh
    cp .env.example .env
@@ -23,17 +23,17 @@
     ```sh
    npm install
    ```
-6. Execute the frontend in your local machine:
+    
+5. Execute the frontend in your local machine:
 
    ```sh
    npm run dev
    ```
-7. To expose your frontend to the internet you can use 
+
+6. To expose your frontend to the internet you can use 
   ```sh
    npx localtunnel --port 4000
    ```
-
-
 
 ## Deployment
 Build the Docker Container:
@@ -42,36 +42,37 @@ Build the Docker Container:
 docker-compose up 
 ```
 
-
-
 ## How to
 
 <details>
+   
 <summary>Route mapping</summary>
-update the [`tsconfig.json`](https://github.com/Fardenz/telegram-mini-                  
-      app/blob/main/frontend/tsconfig.json) and [`tsconfig.vite.json`](https://github.com/Fardenz/telegram-mini- 
-      app/blob/main/frontend/tsconfig.vite.json) to use the new path aliases, just like all the rest.
+
+Update the [`tsconfig.json`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/tsconfig.json) and [`tsconfig.vite.json`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/tsconfig.vite.json) to use the new path aliases, just like all the rest.
 
 </details>
 
 <details>
+   
 <summary>Adding a new view</summary>
-      1. Create a new route in [`paths.ts`](https://github.com/Fardenz/telegram-mini- 
-         app/blob/main/frontend/src/router/paths.ts).
-      2. Add the route to the router. If a header is needed, ensure to include the `MainLayout` component.
-      3. Create the view in the `views` folder.
+   
+1. Create a new route in [`paths.ts`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/src/router/paths.ts).
+2. Add the route to the router. If a header is needed, ensure to include the `MainLayout` component.
+3. Create the view in the `views` folder.
 
 </details>
 <details>
+   
 <summary>Create environments</summary>
+
 - Development: File .env.development on env folder.
 - Production: File .env.production on env folder.
 
-Create this two files and copy the info of the .env.example file
+Create these two files and copy the info of the .env.example file
+
 </details>
 
-
-### Code Structure
+## Code Structure
 
 The frontend of the Telegram mini-app is structured as follows:
 
