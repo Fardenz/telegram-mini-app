@@ -20,6 +20,14 @@ dark & light
 <!-- ABOUT THE PROJECT -->
 
 ## About the Project
+This project is a mini application built for Telegram. It consists of a backend and a frontend, both of which are containerized using Docker for easy deployment and scalability.
+
+The backend is built with Node.js and Express, and it uses MongoDB for data storage. It handles Telegram bot functionalities, manages game states, and processes transactions. The backend also provides an API for the frontend to interact with, and it uses Swagger for API documentation.
+
+The frontend is built with React and Chakra UI. It provides a user interface for playing games and managing user wallets. The frontend communicates with the backend through API calls, and it uses Telegram's OAuth for user authentication.
+
+The project uses GitHub Actions for continuous integration and deployment. The backend is deployed to a custom Linux server, and the frontend is deployed to GitHub Pages.
+
 _insert vid like cal_
 
 ### Overview
