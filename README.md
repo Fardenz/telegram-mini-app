@@ -1,6 +1,6 @@
 # Telegram Bot
 
-<table>
+<table align="center">
   <tr>
     <td align="center" style="padding:0 15px">
       <img src="media/thevegasbot-light.gif" width="300">
@@ -11,35 +11,11 @@
   </tr>
 </table>
 
-
-
-
-
-
-
-
-
-| <img src="media/thevegasbot-dark.gif" width="300"> | <img src="media/thevegasbot-dark.gif" width="300"> |
-|----------------------------------------------------|----------------------------------------------------|
-
-
-<div align="left">
-    <img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-dark.gif" width="100">
-</div>
-
-<div align="right">
-    <img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-light.gif" width="100">
-</div>
-
-
-
-
-dark & light
-
-<!-- ABOUT THE PROJECT -->
-
 ## About the Project
-This project is a mini application built for Telegram. It consists of a backend and a frontend, both of which are containerized using Docker for easy deployment and scalability.
+
+> @TheVegasBot – a Mini App that offers a streamlined gaming experience with Dice and Coinflip. User is presented with a virtual casino interface where they can top up funds, choose their preferred game, place bets, and withdraw their winnings.
+
+This project built for Telegram. It consists of a backend and a frontend, both of which are containerized using Docker for easy deployment and scalability.
 
 The backend is built with Node.js and Express, and it uses MongoDB for data storage. It handles Telegram bot functionalities, manages game states, and processes transactions. The backend also provides an API for the frontend to interact with, and it uses Swagger for API documentation.
 
@@ -47,16 +23,12 @@ The frontend is built with React and Chakra UI. It provides a user interface for
 
 The project uses GitHub Actions for continuous integration and deployment. The backend is deployed to a custom Linux server, and the frontend is deployed to GitHub Pages.
 
-_insert vid like cal_
-
 ### Overview
 This project was created as a solution for the project launched by Telegram. 
 
 You can [test the bot here](https://t.me/TheVegasBot)
 
 Read more about the [`Telegram contest`](https://t.me/contest/327)
-
-<!-- GETTING STARTED -->
 
 ## Getting Started
 
@@ -83,7 +55,8 @@ _list any prerequisites or dependencies that users need to have installed on the
    > If you are on Windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true https://github.com/Fardenz/telegram-mini-app` <br>
 
 2. Set up Frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md)
-3. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
+   
+4. Set up the Backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
 
 
 ## Solution Overview
