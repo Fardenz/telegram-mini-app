@@ -12,7 +12,7 @@ const WrapperStyle = {
 }
 const DiceContainerStyle = {
   width: "100%",
-  height: "70%",
+  height: "65%",
   color: text_color,
   display: "flex",
   alignItems: "center",
