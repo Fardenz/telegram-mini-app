@@ -1,6 +1,6 @@
 # Telegram Bot
 
-<img src="[https://github.com/calcom/cal.com/assets/8019099/407e727e-ff19-4ca4-bcae-049dca05cf02](https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-dark.gif)">
+<img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-dark.gif">
 
 
 dark & light
