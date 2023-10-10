@@ -3,10 +3,10 @@
 <table align="center">
   <tr>
     <td align="center" style="padding:0 15px">
-      <img src="media/thevegasbot-light.gif" width="300">
+      <img src="media/thevegasbot-light-5mb.gif" width="300">
     </td>
     <td align="center" style="padding:0 15px">
-      <img src="media/thevegasbot-dark.gif" width="300">
+      <img src="media/thevegasbot-dark-5mb.gif" width="300">
     </td>
   </tr>
 </table>
