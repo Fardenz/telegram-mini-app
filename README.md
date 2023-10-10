@@ -27,9 +27,9 @@ The project uses GitHub Actions for continuous integration and deployment. The b
 
 This project was created as a solution for the project launched by Telegram. 
 
-You can [test the bot here](https://t.me/TheVegasBot).
+You can test our [@TheVegasBot](https://t.me/TheVegasBot).
 
-Read more about the [`Telegram contest`](https://t.me/contest/327).
+Read more about the [`Telegram Contest`](https://t.me/contest/327).
 
 ### Team Members
 - [@Fardlan/Fardenz](https://t.me/Fardlan)
