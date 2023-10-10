@@ -1,5 +1,9 @@
 # Telegram Bot
 
+| <img src="media/thevegasbot-dark.gif" width="300"> | <img src="media/thevegasbot-dark.gif" width="300"> |
+|----------------------------------------------------|----------------------------------------------------|
+
+
 <div align="left">
     <img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-dark.gif" width="100">
 </div>
