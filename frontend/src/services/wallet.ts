@@ -1,6 +1,5 @@
 import Settings from "@infrastructure/settings"
 import { centsToEuros } from "@helpers/centsToEuros"
-import { ToastOptions } from "@helpers/toastUtil"
 
 export default class Wallet {
   private static getAuthToken(): string {
@@ -40,7 +39,7 @@ export default class Wallet {
       })
     } catch (e) {
       showToast({
-        title: `Erro processing payment.`,
+        title: `Error processing payment.`,
         status: "error",
       })
     }

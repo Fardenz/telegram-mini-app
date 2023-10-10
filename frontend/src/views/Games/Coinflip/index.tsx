@@ -50,6 +50,7 @@ const CoinflipView: React.FC = () => {
     }
 
     const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
+
     setResult(res === 1 ? "Heads" : "Tails")
     setTimeout(() => {
       showToast({
@@ -84,7 +85,7 @@ const CoinflipView: React.FC = () => {
             position: "absolute",
             top: "0",
             right: "0",
-            color: "black"
+            color: "black",
           }}
         />
         <HStack {...group} style={HStackStyle}>

@@ -3,12 +3,11 @@
 
 import React, { ReactNode, useEffect } from "react"
 import { Box, Flex, Text, Link as ChakraLink, Image } from "@chakra-ui/react"
-import { useNavigate, useLocation, Link as ReactRouterLink, } from "react-router-dom"
+import { useNavigate, useLocation, Link as ReactRouterLink } from "react-router-dom"
 import { HOME } from "@router/paths"
 import { useTelegramContext } from "@contexts/telegramContext"
 import { WebApp } from "@grammyjs/web-app"
 import { ChildrenWrapperStyle, HeaderStyle, HeaderTextStyle, WrapperStyle } from "./styles"
-import isDarkMode from "../../helpers/isDarkMode"
 
 interface MainLayoutProps {
   children: ReactNode
@@ -33,9 +32,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Box style={HeaderStyle}>
         <ChakraLink color="black" as={ReactRouterLink} to={HOME}>
           <Text style={HeaderTextStyle}>
-            <Image src={`./assets/img/poker_128px-dark.png`} alt='Casino bot logo' maxH={'36px'} />
+            <Image src={`./assets/img/poker_128px-dark.png`} alt="Casino bot logo" maxH={"36px"} />
           </Text>
-        </ChakraLink >
+        </ChakraLink>
         <Text style={HeaderTextStyle}>💰 {balance ?? 0}€</Text>
       </Box>
       <Box style={ChildrenWrapperStyle}>{children}</Box>
