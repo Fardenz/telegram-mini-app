@@ -1,6 +1,6 @@
 // Coinflip component
 
-import React, { useEffect, useState } from "react"
+import React, { CSSProperties, useEffect, useState } from "react"
 import { Box, Flex, HStack, useRadioGroup } from "@chakra-ui/react"
 import RadioCard from "@components/RadioCard"
 import GamesService from "@services/games"
@@ -37,18 +37,17 @@ const CoinflipView: React.FC = () => {
     if (!userChoice) {
       showToast({
         title: `Please select a side.`,
-        status: 'info'
-      });
-      return;
+        status: "info",
+      })
+      return
     }
     if (balance !== null && balance < 1) {
       showToast({
-        title: 'You don\'t have enough money to play this game. 💸',
-        status: 'error'
+        title: "You don't have enough money to play this game. 💸",
+        status: "error",
       })
-      return;
+      return
     }
-
 
     const res = await GamesService.play(userChoice === "Heads" ? [1] : [2], "coinflip")
     setResult(res === 1 ? "Heads" : "Tails")
@@ -56,8 +55,10 @@ const CoinflipView: React.FC = () => {
       showToast({
         title: `You ${res === (userChoice == "Heads" ? 1 : 2) ? "won 🤑" : "lost 💸"}`,
         status: res === (userChoice == "Heads" ? 1 : 2) ? "success" : "error",
-      });
-      getBalance().catch((error) => { console.error(error) })
+      })
+      getBalance().catch((error) => {
+        console.error(error)
+      })
 
       setResult("")
     }, 1500)
@@ -74,11 +75,18 @@ const CoinflipView: React.FC = () => {
 
   return (
     <Flex direction="column" style={WrapperStyle}>
-      <InformationPopover />
       <Box style={CoinBoxStyle}>
         <CoinFlip result={result} />
       </Box>
-      <Box style={OptionBoxStyle}>
+      <Box style={OptionBoxStyle} pos={"relative"}>
+        <InformationPopover
+          style={{
+            position: "absolute",
+            top: "0",
+            right: "0",
+            color: "black"
+          }}
+        />
         <HStack {...group} style={HStackStyle}>
           {options.map((value) => {
             const radio = getRadioProps({ value })
@@ -90,7 +98,7 @@ const CoinflipView: React.FC = () => {
           })}
         </HStack>
       </Box>
-    </Flex >
+    </Flex>
   )
 }
 
