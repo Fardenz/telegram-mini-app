@@ -48,21 +48,13 @@ The rules that define which environment variables are overwritten are at https:/
 
 Ensure you adjust these settings as per your requirements. 
 
-
 ### Architecture 
 
-1. Dependency Injection:
-   
-   For further developments, you will want to keep maintaining [`inversify.config.ts`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/src/inversify.config.ts). These file configure the Inversion of Control (IoC) through dependency injection, promoting decoupling and making the code more maintainable and testable. 
+1. Dependency Injection: For further developments, you will want to keep maintaining [`inversify.config.ts`](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/src/inversify.config.ts). These file configure the Inversion of Control (IoC) through dependency injection, promoting decoupling and making the code more maintainable and testable. 
 
-2. Telegram Bot Integration:
-   
-   A dedicated module [`telegramBot`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/telegramBot) handles Telegram bot functionalities, indicating a clear separation of concerns and modularity.
+2. Telegram Bot Integration: A dedicated module [`telegramBot`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/telegramBot) handles Telegram bot functionalities, indicating a clear separation of concerns and modularity.
 
-3. Webserver:
-   
-   The second biggest module is the [`webserver`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/webserver) it handles all the calls coming from the web app. It also handles the authentication with Telegram and the API documentation.
-
+3. Webserver: The second biggest module is the [`webserver`](https://github.com/Fardenz/telegram-mini-app/tree/main/backend/src/webserver) it handles all the calls coming from the web app. It also handles the authentication with Telegram and the API documentation.
 
 ### Code Structure
 The backend of the Telegram mini-app is structured as follows:
