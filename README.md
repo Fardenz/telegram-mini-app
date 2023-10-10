@@ -1,4 +1,4 @@
-# Telegram Bot
+# Telegram Mini App
 
 <table align="center">
   <tr>
@@ -24,23 +24,23 @@ The frontend is built with React and Chakra UI. It provides a user interface for
 The project uses GitHub Actions for continuous integration and deployment. The backend is deployed to a custom Linux server, and the frontend is deployed to GitHub Pages.
 
 ### Overview
+
 This project was created as a solution for the project launched by Telegram. 
 
-You can [test the bot here](https://t.me/TheVegasBot)
+You can [test the bot here](https://t.me/TheVegasBot).
 
-Read more about the [`Telegram contest`](https://t.me/contest/327)
+Read more about the [`Telegram contest`](https://t.me/contest/327).
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (Version: >=16.x)
 - npm
 - Docker
 - MongoDB
 
-Read on the deployment section more information about our setup.
-
-_list any prerequisites or dependencies that users need to have installed on their machines_
+Read on the deployment section for more information about our setup.
 
 ## Development
 
@@ -82,6 +82,7 @@ We're using Github Actions as our CI/CD tool. You can find the configuration in 
 
 <details>
 <summary>Backend</summary>
+  
 The backend is automatically deployed to a custom server owned by us running Linux. We use docker to package the code so it's easier to spin multiple copies, isolate instances and deploy the minimum amount of code.
 
 You can set your custom secrets in the repository settings and it will automatically deploy to your server. The secrets are:
@@ -98,9 +99,10 @@ You can find the configuration in `.github/workflows/staging-deployment-backend.
 
 <details>
 <summary>Frontend</summary>
-We're using Github Pages to deploy the frontend, this allows us to have a public URL with HTTPS for the web app without having to pay for a server. The disadvantage is that you can only host static webpages. To deploy it automatically configure your github pages in the repository settings and set the `ENV_VARIABLES_FRONTEND` secret.
+  
+We're using GitHub Pages to deploy the frontend, this allows us to have a public URL with HTTPS for the web app without having to pay for a server. The disadvantage is that you can only host static web pages. To deploy it automatically configure your GitHub pages in the repository settings and set the `ENV_VARIABLES_FRONTEND` secret.
 
-You can find the configuration in `.github/workflows/staging-deployment-frontend.yml`
+You can find the configuration in `.github/workflows/staging-deployment-frontend.yml`.
 </details>
 
 ### Architecture
@@ -124,39 +126,44 @@ graph LR
     end
 ```
 
-### Code Structure (_explain the organization of your code, detailing the purpose of each major component or module_)
+### Code Structure
 
 #### Backend
+
 https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md#Code-Structure
       
 #### Frontend
+
 https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-Structure
 
 ## Error Handling
 
 ### Common Errors
-_list potential errors that users may encounter and explain how to troubleshoot them_
 
 Most of the expected requests will be on the Swagger file, so you can test them there. If you are using Postman, you can import the Swagger file and use the requests from there.
 
 <details>
 <summary>How do I use the Swagger API documentation?</summary>
+  
 The Swagger API documentation provides a comprehensive overview of the API endpoints, their input parameters, expected responses, and any required authentication. You can access the Swagger API documentation by navigating to the /api-documentation-ui/ endpoint of the backend server. You can use this documentation to understand how to interact with the API and to test the API endpoints.
 </details>
 
 <details>
 <summary>Requests stated in Swagger are not working correctly</summary>
+  
 Ensure that you have the correct URL in the `.env` file. The URL should be the same as the one you used to expose your backend to the internet. Also make sure that the protocol is the correct one, so `http` for local.
 
 </details>
 
 <details>
 <summary>Web app is only accessible through Telegram by https and in a public url</summary>
+  
 You will have to use a service like ngrok or localtunnel to expose your local web app to the internet. Then, you will have to change the `TELEGRAM_FRONTEND` variable in the `.env` file to the URL provided by the service. Make sure that the protocol is the correct one, so `https` for ngrok.
 </details>
 
 <details>
 <summary>Invalid input or parameters when making requests</summary>
+  
 If you encounter errors related to invalid input or parameters when making requests, consider the following troubleshooting steps:
 - Check the error returned by the backend, it's usually explicitly telling you what's wrong.
 - Double-check the format and structure of the data being sent with each request. 
@@ -169,6 +176,7 @@ If you encounter errors related to invalid input or parameters when making reque
 
 <details>
 <summary>Is this game safe?</summary>
+  
 This game is totally safe, @Fardenz one of our creators [investigated in depth](https://javascript.plainenglish.io/generating-a-secure-safe-and-truly-random-number-in-node-js-e943224cbe30) how to generate cryptographically secure random numbers and this work applies the results from that investigation. We also made sure that that the money handling is safe and there is no risk of running into race conditions.
 
 One of the future improvements we're planning for the future is implementing a [provably fair](https://provablyfair.org/) feature, so you can verify that the results have not been tampered with in favor of the casino.
