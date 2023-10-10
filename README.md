@@ -61,7 +61,7 @@ Read on the deployment section for more information about our setup.
     
    > If you are on Windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true https://github.com/Fardenz/telegram-mini-app` <br>
 
-2. Set up frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md)
+2. Set up frontend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md).
    
 4. Set up the backend [here](https://github.com/Fardenz/telegram-mini-app/blob/main/backend/README.md). 
 
