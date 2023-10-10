@@ -8,19 +8,19 @@
 
 2. Set up your `.env` file:
    
-   - Duplicate `.env.example` to `.env`:
+   Duplicate `.env.example` to `.env`:
 
-    ```sh
+   ```sh
    cp .env.example .env
    ```
 
 3.  Edit the `.env` file:
 
-    - Open the [`env/.env`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/env/.env.example) file in your preferred text editor. Adjust the environment variables as per your requirements.
+    Open the [`env/.env`](https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/env/.env.example) file in your preferred text editor. Adjust the environment variables as per your requirements.
 
 4. Install the required packages:
 
-    ```sh
+   ```sh
    npm install
    ```
     
@@ -30,12 +30,14 @@
    npm run dev
    ```
 
-6. To expose your frontend to the internet you can use 
-  ```sh
+6. To expose your frontend to the internet you can use:
+   
+   ```sh
    npx localtunnel --port 4000
    ```
 
 ## Deployment
+
 Build the Docker Container:
    
 ```sh
