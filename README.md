@@ -81,9 +81,10 @@ We're using [`MongoDB Atlas`](https://www.mongodb.com/atlas/database) to host ou
 We're using Github Actions as our CI/CD tool. You can find the configuration in `.github/workflows/`, whenever a push is made to the `main` branch, the workflow will be triggered, deploying the latest code.
 
 <details>
+  
 <summary>Backend</summary>
   
-The backend is automatically deployed to a custom server owned by us running Linux. We use docker to package the code so it's easier to spin multiple copies, isolate instances and deploy the minimum amount of code.
+The backend is automatically deployed to a custom server owned by us running Linux. We use docker to package the code so it's easier to spin multiple copies, isolate instances, and deploy the minimum amount of code.
 
 You can set your custom secrets in the repository settings and it will automatically deploy to your server. The secrets are:
 
@@ -94,15 +95,18 @@ SSH_USERNAME
 ENV_VARIABLES
 ```
 
-You can find the configuration in `.github/workflows/staging-deployment-backend.yml`
+You can find the configuration in `.github/workflows/staging-deployment-backend.yml`.
+
 </details>
 
 <details>
+  
 <summary>Frontend</summary>
   
 We're using GitHub Pages to deploy the frontend, this allows us to have a public URL with HTTPS for the web app without having to pay for a server. The disadvantage is that you can only host static web pages. To deploy it automatically configure your GitHub pages in the repository settings and set the `ENV_VARIABLES_FRONTEND` secret.
 
 You can find the configuration in `.github/workflows/staging-deployment-frontend.yml`.
+
 </details>
 
 ### Architecture
@@ -143,12 +147,14 @@ https://github.com/Fardenz/telegram-mini-app/blob/main/frontend/README.md#Code-S
 Most of the expected requests will be on the Swagger file, so you can test them there. If you are using Postman, you can import the Swagger file and use the requests from there.
 
 <details>
+  
 <summary>How do I use the Swagger API documentation?</summary>
   
 The Swagger API documentation provides a comprehensive overview of the API endpoints, their input parameters, expected responses, and any required authentication. You can access the Swagger API documentation by navigating to the /api-documentation-ui/ endpoint of the backend server. You can use this documentation to understand how to interact with the API and to test the API endpoints.
 </details>
 
 <details>
+  
 <summary>Requests stated in Swagger are not working correctly</summary>
   
 Ensure that you have the correct URL in the `.env` file. The URL should be the same as the one you used to expose your backend to the internet. Also make sure that the protocol is the correct one, so `http` for local.
@@ -156,12 +162,14 @@ Ensure that you have the correct URL in the `.env` file. The URL should be the s
 </details>
 
 <details>
-<summary>Web app is only accessible through Telegram by https and in a public url</summary>
   
-You will have to use a service like ngrok or localtunnel to expose your local web app to the internet. Then, you will have to change the `TELEGRAM_FRONTEND` variable in the `.env` file to the URL provided by the service. Make sure that the protocol is the correct one, so `https` for ngrok.
+<summary>Web app is only accessible through Telegram by HTTPS and in a public URL </summary>
+  
+You will have to use a service like ngrok or local tunnel to expose your local web app to the internet. Then, you will have to change the `TELEGRAM_FRONTEND` variable in the `.env` file to the URL provided by the service. Make sure that the protocol is the correct one, so `https` for ngrok.
 </details>
 
 <details>
+  
 <summary>Invalid input or parameters when making requests</summary>
   
 If you encounter errors related to invalid input or parameters when making requests, consider the following troubleshooting steps:
@@ -175,11 +183,13 @@ If you encounter errors related to invalid input or parameters when making reque
 </details>
 
 <details>
+  
 <summary>Is this game safe?</summary>
   
-This game is totally safe, @Fardenz one of our creators [investigated in depth](https://javascript.plainenglish.io/generating-a-secure-safe-and-truly-random-number-in-node-js-e943224cbe30) how to generate cryptographically secure random numbers and this work applies the results from that investigation. We also made sure that that the money handling is safe and there is no risk of running into race conditions.
+This game is totally safe, @Fardenz one of our creators [investigated in depth](https://javascript.plainenglish.io/generating-a-secure-safe-and-truly-random-number-in-node-js-e943224cbe30) how to generate cryptographically secure random numbers and this work applies the results from that investigation. We also made sure that the money handling is safe and there is no risk of running into race conditions.
 
 One of the future improvements we're planning for the future is implementing a [provably fair](https://provablyfair.org/) feature, so you can verify that the results have not been tampered with in favor of the casino.
+
 </details>
 
 ## 🛣️ Roadmap
