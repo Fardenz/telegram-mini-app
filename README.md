@@ -33,7 +33,7 @@ Read more about the [`Telegram Contest`](https://t.me/contest/327).
 
 ### Team Members
 - [@Fardlan/Fardenz](https://t.me/Fardlan)
-- [@NoProtocol](https://t.me/6360734775)
+- [@NoProtocol](https://t.me/NoProtocol)
 - [@Kn33l3ss](https://t.me/Kn33l3ss)
 - [@bpeel26](https://t.me/bpeel26)
 
@@ -200,22 +200,22 @@ One of the future improvements we are planning for the future is implementing a 
 
 </details>
 
-## 🛣️ Roadmap
+## Roadmap
 
-### 🚀 **Initial Phase**
-- [ ] 🔍 **Investigate Crypto Integration**
+### **Initial Phase** 🚀
+- [ ] **Investigate Crypto Integration**
   - Explore possibilities of integrating with @wallet for crypto top-up and withdrawal.
 
-### 🌍 **Localization & User Experience**
+### **Localization & User Experience** 🌍
 - [ ] Add support for more languages.
-- [ ] 🔧 Improve error handling and logging for a smoother user experience.
+- [ ] Improve error handling and logging for a smoother user experience.
 
-### 🎮 **Feature Enhancements**
+### **Feature Enhancements** 🎮
 - [ ] Make games provably fair by implementing a verifiable random number generator.
 - [ ] Add more games to the web app.
-- [ ] 🤖 Enhance bot commands to be more user-friendly.
+- [ ] Enhance bot commands to be more user-friendly.
 
-### 🧪 **Quality Assurance**
+### **Quality Assurance** 🧪
 - [ ] Implement comprehensive tests to ensure stability and reliability.
 
 
