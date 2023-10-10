@@ -1,6 +1,14 @@
 # Telegram Bot
 
-<img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-dark.gif">
+<div align="left">
+    <img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-dark.gif" width="100">
+</div>
+
+<div align="right">
+    <img src="https://github.com/Fardenz/telegram-mini-app/blob/main/media/thevegasbot-light.gif" width="100">
+</div>
+
+
 
 
 dark & light
